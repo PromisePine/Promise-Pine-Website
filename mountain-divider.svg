@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="100%" height="150" viewBox="0 0 1440 150" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Mountain (Sage Green) -->
+  <path d="M0,100 L120,20 L240,80 L360,10 L480,90 L600,30 L720,110 L840,20 L960,100 L1080,40 L1200,120 L1320,30 L1440,110 L1440,150 L0,150 Z" fill="#476D50" fill-opacity="0.4">
+    <animate attributeName="d" 
+             values="M0,100 L120,20 L240,80 L360,10 L480,90 L600,30 L720,110 L840,20 L960,100 L1080,40 L1200,120 L1320,30 L1440,110 L1440,150 L0,150 Z;
+                    M-200,100 L80,20 L280,80 L480,10 L680,90 L880,30 L1080,110 L1280,20 L1480,100 L1680,40 L1880,120 L2080,30 L2280,110 L1440,110 L1440,150 L0,150 Z"
+             dur="200s" 
+             repeatCount="indefinite" />
+  </path>
+  
+  <!-- Middle Mountain (Pine Green) -->
+  <path d="M-100,150 L100,50 L300,120 L500,30 L700,100 L900,50 L1100,120 L1300,40 L1500,100 L1500,150 Z" fill="#3C6042" fill-opacity="0.6">
+    <animate attributeName="d" 
+             values="M-100,150 L100,50 L300,120 L500,30 L700,100 L900,50 L1100,120 L1300,40 L1500,100 L1500,150 Z;
+                    M100,150 L300,50 L500,120 L700,30 L900,100 L1100,50 L1300,120 L1500,40 L1700,100 L1500,100 L1500,150 Z"
+             dur="180s" 
+             repeatCount="indefinite" />
+  </path>
+  
+  <!-- Foreground Mountain (Terracotta) -->
+  <path d="M-50,150 L150,70 L350,130 L550,50 L750,110 L950,60 L1150,130 L1350,70 L1550,130 L1550,150 Z" fill="#B95F33" fill-opacity="0.8">
+    <animate attributeName="d" 
+             values="M-50,150 L150,70 L350,130 L550,50 L750,110 L950,60 L1150,130 L1350,70 L1550,130 L1550,150 Z;
+                    M50,150 L250,70 L450,130 L650,50 L850,110 L1050,60 L1250,130 L1450,70 L1650,130 L1550,130 L1550,150 Z"
+             dur="160s" 
+             repeatCount="indefinite" />
+  </path>
+</svg>

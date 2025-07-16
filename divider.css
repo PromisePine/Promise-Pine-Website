@@ -1,0 +1,20 @@
+/* Mountain Shape Divider */
+.mountain-divider {
+    position: relative;
+    width: 100%;
+    height: 150px; /* Height of the SVG */
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+    overflow: hidden;
+    background-color: var(--light-color);
+    transform: translateY(-1px);
+}
+
+.mountain-svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
