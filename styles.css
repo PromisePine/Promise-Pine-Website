@@ -160,9 +160,15 @@ body {
 .portfolio-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    gap: 3rem 2rem;
     max-width: 1400px;
     margin: 0 auto;
+}
+
+.portfolio-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .video-lightbox {
@@ -173,6 +179,7 @@ body {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    aspect-ratio: 16/9;
 }
 
 .video-lightbox:hover {
@@ -225,21 +232,38 @@ body {
 }
 
 .video-title {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    padding: 1rem;
-    background: linear-gradient(rgba(0,0,0,0.7), transparent);
-    color: var(--white);
+    margin-top: 1.2rem;
+    text-align: center;
+    padding: 0.5rem 0;
+    width: 100%;
 }
 
 .video-title h3 {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-family: 'Playfair Display', serif;
     text-align: center;
     margin: 0;
     letter-spacing: 0.5px;
+    color: var(--primary-color);
+    font-weight: 500;
+    position: relative;
+    display: inline-block;
+}
+
+.video-title h3::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.video-lightbox:hover + .video-title h3::after {
+    width: 80px;
 }
 
 /* Lightbox Styles */
