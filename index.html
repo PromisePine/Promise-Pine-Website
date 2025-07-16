@@ -76,52 +76,32 @@
             <h2>Portfolio</h2>
             <div class="portfolio-container">
                 <div class="video-lightbox">
-                    <div class="video-thumbnail">
+                    <div class="video-thumbnail" data-video-id="764368341">
                         <div class="video-title">
                             <h3>Hayley & Tony</h3>
                         </div>
-                        <div style="padding:56.25% 0 0 0;position:relative;">
-                            <iframe src="https://player.vimeo.com/video/764368341?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
-                                    frameborder="0" 
-                                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-                                    style="position:absolute;top:0;left:0;width:100%;height:100%;" 
-                                    title="Hayley & Tony.mp4"></iframe>
-                        </div>
-                        <script src="https://player.vimeo.com/api/player.js"></script>
+                        <div class="video-preview" style="background-image: url('https://vumbnail.com/764368341.jpg');"></div>
                     </div>
                 </div>
                 <div class="video-lightbox">
-                    <div class="video-thumbnail">
+                    <div class="video-thumbnail" data-video-id="620087889">
                         <div class="video-title">
                             <h3>Sarah & Brennen</h3>
                         </div>
-                        <div style="padding:56.25% 0 0 0;position:relative;">
-                            <iframe src="https://player.vimeo.com/video/620087889?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
-                                    frameborder="0" 
-                                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-                                    style="position:absolute;top:0;left:0;width:100%;height:100%;" 
-                                    title="Brennen & Sarah.mp4"></iframe>
-                        </div>
-                        <script src="https://player.vimeo.com/api/player.js"></script>
+                        <div class="video-preview" style="background-image: url('https://vumbnail.com/620087889.jpg');"></div>
                     </div>
                 </div>
                 <div class="video-lightbox">
-                    <div class="video-thumbnail">
+                    <div class="video-thumbnail" data-video-id="591884117">
                         <div class="video-title">
                             <h3>Georgie & Micah</h3>
                         </div>
-                        <div style="padding:56.25% 0 0 0;position:relative;">
-                            <iframe src="https://player.vimeo.com/video/591884117?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
-                                    frameborder="0" 
-                                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-                                    style="position:absolute;top:0;left:0;width:100%;height:100%;" 
-                                    title="Georgie & Micah.mp4"></iframe>
-                        </div>
-                        <script src="https://player.vimeo.com/api/player.js"></script>
+                        <div class="video-preview" style="background-image: url('https://vumbnail.com/591884117.jpg');"></div>
                     </div>
                 </div>
             </div>
         </section>
+
 
         <!-- Contact Section -->
         <section id="contact" class="contact">
@@ -184,6 +164,17 @@
         </div>
     </footer>
 
+    <!-- Lightbox for Portfolio Videos -->
+    <div id="videoLightbox" class="lightbox">
+        <div class="lightbox-content">
+            <div class="video-container">
+                <iframe id="lightboxIframe" src="" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <span class="close-lightbox">&times;</span>
+        </div>
+    </div>
+
     <script src="script.js"></script>
+    <script src="lightbox.js"></script>
 </body>
 </html>
