@@ -388,23 +388,40 @@ body {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-    .hero-title {
-        font-size: 3rem;
+@media (max-width: 992px) {
+    /* General Adjustments */
+    body {
+        font-size: 16px;
+        line-height: 1.6;
     }
     
-    .hero-subtitle {
-        font-size: 1.2rem;
-    }
-    
+    /* Navigation */
     .nav-links {
         display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        flex-direction: column;
+        padding: 1rem 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-links.active {
+        display: flex;
+    }
+    
+    .nav-link {
+        padding: 0.75rem 1.5rem;
+        text-align: center;
     }
     
     .nav-toggle {
         display: block;
         cursor: pointer;
         padding: 1rem;
+        z-index: 1000;
     }
     
     .nav-toggle span {
@@ -414,6 +431,115 @@ body {
         background: var(--text-color);
         margin: 5px 0;
         transition: 0.3s;
+    }
+    
+    /* Hero Section */
+    .hero-title {
+        font-size: 2.5rem;
+        padding: 0 1rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+        padding: 0 1rem;
+    }
+    
+    .cta-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    /* About Section */
+    .about-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .about-text {
+        padding-right: 0;
+    }
+    
+    .about-image {
+        margin-top: 1rem;
+    }
+    
+    /* Portfolio Section */
+    .portfolio-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .video-lightbox {
+        margin-bottom: 1rem;
+    }
+    
+    /* Contact Section */
+    .contact-form {
+        padding: 1.5rem;
+    }
+    
+    /* Footer */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .footer-section {
+        text-align: center;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+    
+    .contact-info {
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+    
+    .contact-item {
+        justify-content: center;
+    }
+    
+    /* Form Elements */
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        font-size: 16px; /* Prevents iOS zoom on focus */
+    }
+    
+    /* Hide Vimeo play button on mobile */
+    iframe[src*="vimeo"] {
+        pointer-events: none;
+    }
+}
+
+/* Smaller mobile devices */
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .section-title, .portfolio h2 {
+        font-size: 2rem;
+    }
+    
+    .contact h2 {
+        font-size: 2rem;
+    }
+    
+    .footer {
+        padding: 2rem 1rem 0.5rem;
+    }
+    
+    .footer-bottom {
+        margin-top: 2rem;
+        padding: 1rem 0;
+        font-size: 0.9rem;
     }
 }
 
