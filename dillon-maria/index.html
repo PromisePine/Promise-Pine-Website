@@ -328,11 +328,47 @@
             container.style.display = 'flex';
             document.body.style.overflow = 'hidden';
             
-            // Initialize player
-            player = new Vimeo.Player(iframe);
-            player.play().catch(error => {
-                console.error('Error playing video:', error);
+            // Initialize player with mobile support
+            player = new Vimeo.Player(iframe, {
+                responsive: true,
+                autoplay: true,
+                muted: true, // Muted autoplay works on mobile
+                playsinline: true // For iOS inline playback
             });
+            
+            // Unmute and play with sound after user interaction
+            const playPromise = player.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    // Autoplay was prevented, wait for user interaction
+                    const playButton = document.createElement('button');
+                    playButton.innerHTML = '▶ Play Video with Sound';
+                    playButton.style.cssText = `
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        background: var(--accent);
+                        color: white;
+                        border: none;
+                        padding: 12px 24px;
+                        border-radius: 30px;
+                        font-size: 16px;
+                        cursor: pointer;
+                        z-index: 1001;
+                        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                    `;
+                    container.appendChild(playButton);
+                    
+                    playButton.onclick = function() {
+                        player.setMuted(false).then(() => {
+                            player.play();
+                            playButton.remove();
+                        });
+                    };
+                });
+            }
             
             // Close functionality
             const closeBtn = document.querySelector('.close-lightbox');
@@ -355,6 +391,9 @@
             if (player) {
                 player.pause();
                 player.unload();
+                // Remove any existing play buttons
+                const playButtons = container.querySelectorAll('button');
+                playButtons.forEach(btn => btn.remove());
             }
             container.style.display = 'none';
             document.body.style.overflow = '';
@@ -362,3 +401,4 @@
     </script>
 </body>
 </html>
+
