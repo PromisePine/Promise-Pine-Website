@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dillon & Maria - Promise Pine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="divider.css">
+    <style>
+        :root {
+            --pine-green: #2c5545;
+            --sage: #8a9b6e;
+            --sand: #d4c9b8;
+            --light: #f5f1eb;
+            --accent: #c17c54;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: #333;
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .wedding-hero {
+            position: relative;
+            height: 100vh;
+            background: linear-gradient(rgba(44, 85, 69, 0.3), rgba(138, 155, 110, 0.3)), 
+                        url('Dillon and Maria 1.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+            margin: 0;
+            z-index: 1;
+        }
+
+        .wedding-title {
+            font-size: 4rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            color: white;
+        }
+
+        .wedding-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .video-gallery {
+            padding: 5rem 0;
+            background-color: var(--light);
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 0 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(44, 85, 69, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid rgba(138, 155, 110, 0.5);
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(44, 85, 69, 0.15);
+            border-color: var(--accent);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            background-color: var(--pine-green);
+        }
+
+        .video-thumbnail img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-card:hover .video-thumbnail img {
+            opacity: 1;
+        }
+
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--pine-green);
+            font-size: 32px;
+            transition: all 0.3s ease;
+            border: 3px solid var(--accent);
+        }
+
+        .video-card:hover .play-icon {
+            background: #fff;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .video-info {
+            padding: 1.5rem;
+            text-align: center;
+            background: white;
+        }
+
+        .video-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--pine-green);
+            font-family: 'Playfair Display', serif;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .video-title:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 2px;
+            bottom: -5px;
+            left: 25%;
+            background-color: var(--accent);
+            transition: all 0.3s ease;
+        }
+        
+        .video-card:hover .video-title:after {
+            width: 80%;
+            left: 10%;
+        }
+
+        .video-duration {
+            color: var(--sage);
+            font-size: 0.9rem;
+        }
+
+        .coming-soon {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(44, 85, 69, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 300;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .download-section a:hover {
+            background-color: transparent;
+            color: var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            .wedding-title {
+                font-size: 3rem;
+            }
+            
+            .wedding-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .video-grid {
+                grid-template-columns: 1fr;
+                padding: 0 20px;
+            }
+            
+            .play-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wedding-hero">
+        <div class="hero-content">
+            <h1 class="wedding-title">Dillon & Maria</h1>
+            <p class="wedding-subtitle">Your Wedding Films</p>
+        </div>
+    </div>
+
+    <div class="custom-shape-divider" style="position: relative; display: block; width: 100%; overflow: hidden; line-height: 0; margin-top: -1px;">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" style="position: relative; display: block; width: calc(100% + 1.3px); height: 100px;">
+            <path d="M1200 0L0 0 598.97 114.72 1200 0z" style="fill: #f5f1eb;"></path>
+        </svg>
+    </div>
+
+    <section class="video-gallery">
+        <div class="video-grid">
+            <!-- Ceremony Edit -->
+            <div class="video-card" onclick="openLightbox('1111378007')">
+                <div class="video-thumbnail">
+                    <img src="Dillon & Maria 2.jpg" alt="Ceremony Edit">
+                    <div class="play-icon">▶</div>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Ceremony Edit</h3>
+                    <p class="video-duration">Full Ceremony</p>
+                </div>
+            </div>
+
+            <!-- Speeches Edit -->
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <img src="Dillon & Maria 3.jpg" alt="Speeches Edit">
+                    <div class="coming-soon">Coming Soon</div>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Speeches Edit</h3>
+                    <p class="video-duration">To Be Announced</p>
+                </div>
+            </div>
+
+            <!-- Wedding Film -->
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <img src="Dillon & Maria 4.jpg" alt="Wedding Film">
+                    <div class="coming-soon">Coming Soon</div>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Wedding Film</h3>
+                    <p class="video-duration">To Be Announced</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download-section" style="background: linear-gradient(135deg, var(--pine-green) 0%, #1e3c30 100%); padding: 4rem 0; color: white; text-align: center;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1.5rem; color: white;">Download Your Videos</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+                Your high-quality wedding videos are available for download. Click the button below to access all your video files on OneDrive.
+            </p>
+            <a href="https://1drv.ms/f/c/a7ba6ea02575ee91/EqMZNrX6FSRFjKIqvBUnpGIBaiFemRlq765-kzG1Bjo1Rw?e=4qTiNd" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               style="display: inline-block; 
+                      background-color: var(--accent); 
+                      color: white; 
+                      padding: 12px 30px; 
+                      border-radius: 50px; 
+                      text-decoration: none; 
+                      font-weight: 500; 
+                      font-size: 1.1rem;
+                      transition: all 0.3s ease;
+                      border: 2px solid var(--accent);">
+                Download All Videos
+            </a>
+            <p style="margin-top: 1.5rem; font-size: 0.9rem; opacity: 0.8;">
+                The download link will open in a new tab. Please make sure to save the files to your device.
+            </p>
+        </div>
+    </section>
+
+    <!-- Video Container -->
+    <div id="videoContainer" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); z-index: 1000; justify-content: center; align-items: center;">
+        <div style="position: relative; width: 90%; max-width: 1200px; margin: 0 auto;">
+            <span class="close-lightbox" style="position: absolute; top: -40px; right: 0; color: white; font-size: 30px; cursor: pointer; z-index: 1001;">&times;</span>
+            <div id="vimeoPlayer" style="padding:56.25% 0 0 0;position:relative;"></div>
+        </div>
+    </div>
+
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script>
+        let player;
+        
+        // Function to open video
+        function openLightbox(videoId) {
+            const container = document.getElementById('videoContainer');
+            const playerElement = document.getElementById('vimeoPlayer');
+            
+            // Clear previous iframe
+            playerElement.innerHTML = '';
+            
+            // Create new iframe
+            const iframe = document.createElement('iframe');
+            iframe.src = `https://player.vimeo.com/video/${videoId}?h=28328dd623&badge=0&autopause=0&player_id=0&app_id=58479`;
+            iframe.frameBorder = '0';
+            iframe.allow = 'autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share';
+            iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+            iframe.style.position = 'absolute';
+            iframe.style.top = '0';
+            iframe.style.left = '0';
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.title = 'Dillon & Maria Wedding Video';
+            
+            playerElement.appendChild(iframe);
+            container.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            
+            // Initialize player
+            player = new Vimeo.Player(iframe);
+            player.play().catch(error => {
+                console.error('Error playing video:', error);
+            });
+            
+            // Close functionality
+            const closeBtn = document.querySelector('.close-lightbox');
+            closeBtn.onclick = closeVideo;
+            
+            // Close on escape key
+            document.onkeydown = function(evt) {
+                evt = evt || window.event;
+                if (evt.key === 'Escape') closeVideo();
+            };
+            
+            // Close on background click
+            container.onclick = function(e) {
+                if (e.target === container) closeVideo();
+            };
+        }
+        
+        function closeVideo() {
+            const container = document.getElementById('videoContainer');
+            if (player) {
+                player.pause();
+                player.unload();
+            }
+            container.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    </script>
+</body>
+</html>
