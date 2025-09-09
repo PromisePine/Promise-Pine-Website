@@ -64,10 +64,13 @@
 
         .video-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             max-width: 1200px;
             margin: 2rem auto 0;
+            width: 100%;
+            padding: 0 20px;
+            box-sizing: border-box;
         }
         
         .wedding-film-container {
@@ -133,6 +136,9 @@
             transition: all 0.3s ease;
             cursor: pointer;
             border: 2px solid rgba(138, 155, 110, 0.5);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         
         .video-card:hover {
@@ -145,6 +151,7 @@
             position: relative;
             padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
             background-color: var(--pine-green);
+            flex-shrink: 0;
         }
 
         .video-thumbnail img {
@@ -189,6 +196,10 @@
             padding: 1.5rem;
             text-align: center;
             background: white;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .video-title {
@@ -244,22 +255,39 @@
 
         @media (max-width: 768px) {
             .wedding-title {
-                font-size: 3rem;
+                font-size: 2.5rem;
+                padding: 0 20px;
             }
             
             .wedding-subtitle {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
+                padding: 0 20px;
             }
             
             .video-grid {
                 grid-template-columns: 1fr;
-                padding: 0 20px;
+                padding: 0 15px;
+                gap: 1.5rem;
             }
             
             .play-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 24px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+                padding: 0 15px;
+            }
+            
+            .vimeo-embed {
+                border-radius: 0;
+            }
+            
+            .video-card {
+                max-width: 100%;
+                margin: 0 auto;
             }
         }
     </style>
@@ -458,5 +486,6 @@
     </script>
 </body>
 </html>
+
 
 
