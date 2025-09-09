@@ -59,15 +59,70 @@
         .video-gallery {
             padding: 5rem 0;
             background-color: var(--light);
+            overflow: hidden;
         }
 
         .video-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto 0;
+        }
+        
+        .wedding-film-container {
+            max-width: 1200px;
+            margin: 0 auto 4rem;
             padding: 0 5%;
-            max-width: 1400px;
+            width: 100%;
+        }
+        
+        .other-videos {
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 0 5%;
+            width: 100%;
+        }
+        
+        .vimeo-embed {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .vimeo-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            color: var(--pine-green);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--accent);
         }
 
         .video-card {
@@ -217,47 +272,49 @@
         </div>
     </div>
 
-    <div class="custom-shape-divider" style="position: relative; display: block; width: 100%; overflow: hidden; line-height: 0; margin-top: -1px;">
-        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" style="position: relative; display: block; width: calc(100% + 1.3px); height: 100px;">
-            <path d="M1200 0L0 0 598.97 114.72 1200 0z" style="fill: #f5f1eb;"></path>
+    <div class="custom-shape-divider" style="position: relative; display: block; width: 100%; overflow: hidden; line-height: 0; margin-top: -2px;">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" style="position: relative; display: block; width: calc(100% + 1.3px); height: 120px;">
+            <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="#2c5545"></path>
+            <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,141.56,70.5,11.3,19.17,19.6,39.75,28.44,60.65V0Z" opacity=".5" fill="#2c5545"></path>
+            <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="#f5f1eb"></path>
         </svg>
     </div>
 
     <section class="video-gallery">
-        <div class="video-grid">
-            <!-- Ceremony Edit -->
-            <div class="video-card" onclick="openLightbox('1111378007')">
-                <div class="video-thumbnail">
-                    <img src="images/Dillon & Maria 2.jpg" alt="Ceremony Edit">
-                    <div class="play-icon">▶</div>
-                </div>
-                <div class="video-info">
-                    <h3 class="video-title">Ceremony Edit</h3>
-                    <p class="video-duration">Full Ceremony</p>
-                </div>
+        <!-- Wedding Film (Full Width) -->
+        <div class="wedding-film-container">
+            <h2 class="section-title">Wedding Film</h2>
+            <div class="vimeo-embed">
+                <iframe src="https://player.vimeo.com/video/1117159225?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Dillon &amp; Maria"></iframe>
             </div>
+        </div>
 
-            <!-- Speeches Edit -->
-            <div class="video-card">
-                <div class="video-thumbnail">
-                    <img src="images/Dillon & Maria 3.jpg" alt="Speeches Edit">
-                    <div class="coming-soon">Coming Soon</div>
+        <div class="other-videos">
+            <h2 class="section-title">Additional Videos</h2>
+            <div class="video-grid">
+                <!-- Ceremony Edit -->
+                <div class="video-card" onclick="openLightbox('1111378007')">
+                    <div class="video-thumbnail">
+                        <img src="images/Dillon & Maria 2.jpg" alt="Ceremony Edit">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Full Ceremony</h3>
+                        <p class="video-duration">Watch Now</p>
+                    </div>
                 </div>
-                <div class="video-info">
-                    <h3 class="video-title">Speeches Edit</h3>
-                    <p class="video-duration">To Be Announced</p>
-                </div>
-            </div>
 
-            <!-- Wedding Film -->
-            <div class="video-card">
-                <div class="video-thumbnail">
-                    <img src="images/Dillon & Maria 4.jpg" alt="Wedding Film">
-                    <div class="coming-soon">Coming Soon</div>
-                </div>
-                <div class="video-info">
-                    <h3 class="video-title">Wedding Film</h3>
-                    <p class="video-duration">To Be Announced</p>
+                <!-- Speeches Edit -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <div class="vimeo-embed">
+                            <iframe src="https://player.vimeo.com/video/1117248452?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Speeches Edit"></iframe>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Reception & Speeches</h3>
+                        <p class="video-duration">Watch Now</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -401,4 +458,5 @@
     </script>
 </body>
 </html>
+
 
