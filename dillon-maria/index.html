@@ -495,19 +495,15 @@
             // Check if videoId already contains query parameters
             const hasParams = videoId.includes('?');
             const baseUrl = `https://player.vimeo.com/video/${videoId}`;
-            const params = hasParams ? '&badge=0&autopause=0&player_id=0&app_id=58479' : '?badge=0&autopause=0&player_id=0&app_id=58479';
-            iframe.src = baseUrl + params;
-            iframe.frameBorder = '0';
-            iframe.allow = 'autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share';
-            iframe.referrerPolicy = 'strict-origin-when-cross-origin';
-            iframe.style.position = 'absolute';
-            iframe.style.top = '0';
-            iframe.style.left = '0';
-            iframe.style.width = '100%';
-            iframe.style.height = '100%';
-            iframe.title = 'Dillon & Maria Wedding Video';
+            const params = hasParams ? '&' : '?';
+            const fullUrl = `${baseUrl}${params}autoplay=1&muted=0&controls=1&loop=0`;
             
+            iframe.src = fullUrl;
+            iframe.allow = 'autoplay; fullscreen; picture-in-picture';
+            iframe.allowFullscreen = true;
             playerElement.appendChild(iframe);
+            
+            // Show the container
             container.style.display = 'flex';
             document.body.style.overflow = 'hidden';
             
@@ -523,20 +519,17 @@
                 dnt: true // Do Not Track
             });
             
-            // Ensure player is unmuted on mobile after interaction
-            const unmuteOnInteraction = () => {
-                if (player) {
-                    player.setVolume(1);
-                    document.removeEventListener('click', unmuteOnInteraction);
-                    document.removeEventListener('touchstart', unmuteOnInteraction);
-                }
-            };
+            // Add close button if it doesn't exist
+            let closeBtn = container.querySelector('.close-lightbox');
+            if (!closeBtn) {
+                closeBtn = document.createElement('div');
+                closeBtn.className = 'close-lightbox';
+                closeBtn.innerHTML = '&times;';
+                closeBtn.onclick = closeVideo;
+                container.appendChild(closeBtn);
+            }
             
-            // Try to unmute on first interaction
-            document.addEventListener('click', unmuteOnInteraction);
-            document.addEventListener('touchstart', unmuteOnInteraction);
-            
-            // Unmute and play with sound after user interaction
+            // Play the video
             const playPromise = player.play();
             
             if (playPromise !== undefined) {
@@ -570,33 +563,69 @@
                 });
             }
             
-            // Close functionality
-            const closeBtn = document.querySelector('.close-lightbox');
-            closeBtn.onclick = closeVideo;
-            
             // Close on escape key
-            document.onkeydown = function(evt) {
+            const handleKeyDown = function(evt) {
                 evt = evt || window.event;
                 if (evt.key === 'Escape') closeVideo();
             };
             
             // Close on background click
-            container.onclick = function(e) {
-                if (e.target === container) closeVideo();
+            const handleClick = function(e) {
+                if (e.target === container || e.target.classList.contains('close-lightbox')) {
+                    closeVideo();
+                }
             };
+            
+            // Store references to remove them later
+            container._handleKeyDown = handleKeyDown;
+            container._handleClick = handleClick;
+            
+            document.addEventListener('keydown', handleKeyDown);
+            container.addEventListener('click', handleClick);
         }
         
         function closeVideo() {
             const container = document.getElementById('videoContainer');
-            if (player) {
-                player.pause();
-                player.unload();
-                // Remove any existing play buttons
-                const playButtons = container.querySelectorAll('button');
-                playButtons.forEach(btn => btn.remove());
+            
+            // Remove event listeners
+            if (container._handleKeyDown) {
+                document.removeEventListener('keydown', container._handleKeyDown);
+                delete container._handleKeyDown;
             }
+            
+            if (container._handleClick) {
+                container.removeEventListener('click', container._handleClick);
+                delete container._handleClick;
+            }
+            
+            // Clean up the player
+            if (player) {
+                player.pause().then(() => {
+                    return player.unload();
+                }).then(() => {
+                    player = null;
+                    const playerElement = document.getElementById('vimeoPlayer');
+                    if (playerElement) {
+                        playerElement.innerHTML = '';
+                    }
+                }).catch(error => {
+                    console.error('Error closing player:', error);
+                });
+            }
+            
+            // Remove any play buttons
+            const playButtons = container.querySelectorAll('button');
+            playButtons.forEach(btn => btn.remove());
+            
+            // Hide the container
             container.style.display = 'none';
             document.body.style.overflow = '';
+            
+            // Remove close button
+            const closeBtn = container.querySelector('.close-lightbox');
+            if (closeBtn) {
+                closeBtn.remove();
+            }
         }
     </script>
 </body>
