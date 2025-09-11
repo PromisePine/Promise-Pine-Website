@@ -105,76 +105,54 @@
             width: 100%;
             height: 100%;
             border: none;
-        }
+        }   
         
-        #videoContainer {
+        /* Video Lightbox */
+        .video-lightbox {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             z-index: 1000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            padding: 0;
             box-sizing: border-box;
+            align-items: center;
+            justify-content: center;
         }
         
-        #videoContainer > div {
-            width: 90%;
-            max-width: 1000px;
-            height: 0;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            margin: 0 auto;
+        .video-wrapper {
             position: relative;
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+            max-height: 100vh;
+            margin: 0;
         }
         
         #vimeoPlayer {
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            right: 0;
+            bottom: 0;
+            width: 100% !important;
+            height: 100% !important;
             border: none;
+            background: #000;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
-        @media (max-width: 768px) {
-            #videoContainer {
-                padding: 0;
-                display: flex !important;
-                align-items: center;
-                justify-content: center;
-            }
-            
-            #videoContainer > div {
-                width: 100%;
-                height: 60vh;
-                max-width: 100%;
-                padding: 0 15px;
-                margin: 0 auto;
-                position: relative;
-            }
-            
-            #vimeoPlayer {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 100% !important;
-                height: 100% !important;
-                max-height: 100%;
-            }
-            
-            .close-lightbox {
-                top: 15px;
-                right: 15px;
-                font-size: 24px;
-                width: 36px;
-                height: 36px;
-            }
+        #vimeoPlayer iframe {
+            width: 100% !important;
+            height: 100% !important;
+            max-width: 100%;
+            max-height: 100vh;
         }
         
         .close-lightbox {
@@ -193,6 +171,37 @@
             align-items: center;
             justify-content: center;
             line-height: 1;
+        }
+        
+        @media (max-width: 1024px) {
+            .video-lightbox {
+                padding: 60px 0 0;
+            }
+            
+            .video-wrapper {
+                width: 100%;
+                height: 100%;
+                padding: 0;
+                margin: 0;
+                max-width: 100%;
+                padding-bottom: 56.25%;
+            }
+            
+            #vimeoPlayer {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                max-height: 100vh;
+            }
+            
+            .close-lightbox {
+                top: 15px;
+                right: 15px;
+                font-size: 30px;
+                width: 40px;
+                height: 40px;
+                background: rgba(0, 0, 0, 0.7);
+            }
         }
         
         .section-title {
@@ -471,10 +480,9 @@
     </section>
 
     <!-- Video Container -->
-    <div id="videoContainer" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); z-index: 1000; justify-content: center; align-items: center;">
-        <div style="position: relative; width: 90%; max-width: 1200px; margin: 0 auto;">
-            <span class="close-lightbox" style="position: absolute; top: -40px; right: 0; color: white; font-size: 30px; cursor: pointer; z-index: 1001;">&times;</span>
-            <div id="vimeoPlayer" style="padding:56.25% 0 0 0;position:relative;"></div>
+    <div id="videoContainer" class="video-lightbox">
+        <div class="video-wrapper">
+            <div id="vimeoPlayer"></div>
         </div>
     </div>
 
@@ -490,36 +498,35 @@
             // Clear previous iframe
             playerElement.innerHTML = '';
             
-            // Create new iframe
+            // Create new iframe with Vimeo embed
             const iframe = document.createElement('iframe');
-            // Check if videoId already contains query parameters
-            const hasParams = videoId.includes('?');
             const baseUrl = `https://player.vimeo.com/video/${videoId}`;
-            const params = hasParams ? '&' : '?';
-            const fullUrl = `${baseUrl}${params}autoplay=1&muted=0&controls=1&loop=0`;
-            
-            iframe.src = fullUrl;
+            const params = videoId.includes('?') ? '&' : '?';
+            iframe.src = `${baseUrl}${params}autoplay=1&muted=0&controls=1&loop=0&responsive=1&title=0&byline=0&portrait=0`;
             iframe.allow = 'autoplay; fullscreen; picture-in-picture';
             iframe.allowFullscreen = true;
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.style.border = 'none';
+            playerElement.innerHTML = '';
             playerElement.appendChild(iframe);
+            
+            // Initialize Vimeo player with responsive settings
+            player = new Vimeo.Player(iframe, {
+                responsive: true,
+                width: '100%',
+                height: '100%',
+                autoplay: true,
+                muted: false,
+                controls: true,
+                playsinline: true
+            });
             
             // Show the container
             container.style.display = 'flex';
             document.body.style.overflow = 'hidden';
             
-            // Initialize player with mobile support
-            player = new Vimeo.Player(iframe, {
-                responsive: true,
-                autoplay: true,
-                muted: false, // Start with sound on
-                playsinline: true, // For iOS inline playback
-                controls: true,
-                transparent: false,
-                quality: 'auto',
-                dnt: true // Do Not Track
-            });
-            
-            // Add close button if it doesn't exist
+            // Add close button
             let closeBtn = container.querySelector('.close-lightbox');
             if (!closeBtn) {
                 closeBtn = document.createElement('div');
@@ -529,63 +536,30 @@
                 container.appendChild(closeBtn);
             }
             
-            // Play the video
-            const playPromise = player.play();
-            
-            if (playPromise !== undefined) {
-                playPromise.catch(error => {
-                    // Autoplay was prevented, wait for user interaction
-                    const playButton = document.createElement('button');
-                    playButton.innerHTML = '▶ Play Video with Sound';
-                    playButton.style.cssText = `
-                        position: absolute;
-                        top: 50%;
-                        left: 50%;
-                        transform: translate(-50%, -50%);
-                        background: var(--accent);
-                        color: white;
-                        border: none;
-                        padding: 12px 24px;
-                        border-radius: 30px;
-                        font-size: 16px;
-                        cursor: pointer;
-                        z-index: 1001;
-                        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-                    `;
-                    container.appendChild(playButton);
-                    
-                    playButton.onclick = function() {
-                        player.setMuted(false).then(() => {
-                            player.play();
-                            playButton.remove();
-                        });
-                    };
-                });
+            // Close on escape key
+            function handleKeyDown(e) {
+                if (e.key === 'Escape') closeVideo();
             }
             
-            // Close on escape key
-            const handleKeyDown = function(evt) {
-                evt = evt || window.event;
-                if (evt.key === 'Escape') closeVideo();
-            };
-            
             // Close on background click
-            const handleClick = function(e) {
+            function handleClick(e) {
                 if (e.target === container || e.target.classList.contains('close-lightbox')) {
                     closeVideo();
                 }
-            };
+            }
             
-            // Store references to remove them later
-            container._handleKeyDown = handleKeyDown;
-            container._handleClick = handleClick;
-            
+            // Add event listeners
             document.addEventListener('keydown', handleKeyDown);
             container.addEventListener('click', handleClick);
+            
+            // Store references for cleanup
+            container._handleKeyDown = handleKeyDown;
+            container._handleClick = handleClick;
         }
         
         function closeVideo() {
             const container = document.getElementById('videoContainer');
+            const playerElement = document.getElementById('vimeoPlayer');
             
             // Remove event listeners
             if (container._handleKeyDown) {
@@ -598,24 +572,14 @@
                 delete container._handleClick;
             }
             
-            // Clean up the player
+            // Clean up
             if (player) {
-                player.pause().then(() => {
-                    return player.unload();
-                }).then(() => {
-                    player = null;
-                    const playerElement = document.getElementById('vimeoPlayer');
-                    if (playerElement) {
-                        playerElement.innerHTML = '';
-                    }
-                }).catch(error => {
-                    console.error('Error closing player:', error);
-                });
+                player.pause().catch(() => {});
+                player = null;
             }
             
-            // Remove any play buttons
-            const playButtons = container.querySelectorAll('button');
-            playButtons.forEach(btn => btn.remove());
+            // Clear the iframe
+            playerElement.innerHTML = '';
             
             // Hide the container
             container.style.display = 'none';
