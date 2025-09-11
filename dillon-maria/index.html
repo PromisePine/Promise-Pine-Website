@@ -107,6 +107,79 @@
             border: none;
         }
         
+        #videoContainer {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        #videoContainer > div {
+            width: 90%;
+            max-width: 1000px;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        #vimeoPlayer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        @media (max-width: 768px) {
+            #videoContainer {
+                padding: 0;
+            }
+            
+            #videoContainer > div {
+                width: 100%;
+                height: 100%;
+                max-width: 100%;
+                max-height: 100%;
+                padding: 0;
+            }
+            
+            #vimeoPlayer {
+                position: relative;
+                height: 100% !important;
+                width: 100% !important;
+                padding: 0 !important;
+            }
+        }
+        
+        .close-lightbox {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 1001;
+            background: rgba(0, 0, 0, 0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+        
         .section-title {
             text-align: center;
             font-family: 'Playfair Display', serif;
@@ -328,7 +401,7 @@
             <h2 class="section-title">Additional Videos</h2>
             <div class="video-grid">
                 <!-- Ceremony Edit -->
-                <div class="video-card" onclick="openLightbox('1111378007')">
+                <div class="video-card" onclick="openLightbox('1111378007?h=28328dd623')">
                     <div class="video-thumbnail">
                         <img src="images/Dillon & Maria 2.jpg" alt="Ceremony Edit">
                         <div class="play-icon">▶</div>
@@ -340,7 +413,7 @@
                 </div>
 
                 <!-- Speeches Edit -->
-                <div class="video-card">
+                <div class="video-card" onclick="openLightbox('1117248452?h=602d73325a')">
                     <div class="video-thumbnail">
                         <img src="images/Dillon & Maria 3.jpg" alt="Reception & Speeches">
                         <div class="play-icon">▶</div>
@@ -404,7 +477,11 @@
             
             // Create new iframe
             const iframe = document.createElement('iframe');
-            iframe.src = `https://player.vimeo.com/video/${videoId}?h=28328dd623&badge=0&autopause=0&player_id=0&app_id=58479`;
+            // Check if videoId already contains query parameters
+            const hasParams = videoId.includes('?');
+            const baseUrl = `https://player.vimeo.com/video/${videoId}`;
+            const params = hasParams ? '&badge=0&autopause=0&player_id=0&app_id=58479' : '?badge=0&autopause=0&player_id=0&app_id=58479';
+            iframe.src = baseUrl + params;
             iframe.frameBorder = '0';
             iframe.allow = 'autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share';
             iframe.referrerPolicy = 'strict-origin-when-cross-origin';
@@ -423,9 +500,26 @@
             player = new Vimeo.Player(iframe, {
                 responsive: true,
                 autoplay: true,
-                muted: true, // Muted autoplay works on mobile
-                playsinline: true // For iOS inline playback
+                muted: false, // Start with sound on
+                playsinline: true, // For iOS inline playback
+                controls: true,
+                transparent: false,
+                quality: 'auto',
+                dnt: true // Do Not Track
             });
+            
+            // Ensure player is unmuted on mobile after interaction
+            const unmuteOnInteraction = () => {
+                if (player) {
+                    player.setVolume(1);
+                    document.removeEventListener('click', unmuteOnInteraction);
+                    document.removeEventListener('touchstart', unmuteOnInteraction);
+                }
+            };
+            
+            // Try to unmute on first interaction
+            document.addEventListener('click', unmuteOnInteraction);
+            document.addEventListener('touchstart', unmuteOnInteraction);
             
             // Unmute and play with sound after user interaction
             const playPromise = player.play();
