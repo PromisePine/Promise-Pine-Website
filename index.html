@@ -18,14 +18,14 @@
     <!-- Hero Section -->
     <header class="hero">
         <div class="hero-overlay"></div>
-        <div class="hero-video-container">
+        <div class="hero-video-container" style="background-image: url('PP Website Load.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
             <div style="padding:56.25% 0 0 0;position:relative;">
                 <iframe 
-                    src="https://player.vimeo.com/video/1101663998?background=1&autopause=0&loop=1&autoplay=1&muted=1&controls=0&title=0&byline=0&portrait=0" 
+                    src="https://player.vimeo.com/video/1118904818?background=1&autopause=0&loop=1&autoplay=1&muted=1&controls=0&title=0&byline=0&portrait=0" 
                     frameborder="0" 
                     allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
                     style="position:absolute;top:0;left:0;width:100%;height:100%;" 
-                    title="Weddings Hero 2"
+                    title="Weddings Hero"
                     webkitallowfullscreen
                     mozallowfullscreen
                     allowfullscreen
@@ -114,6 +114,32 @@
             </div>
         </section>
 
+        <!-- Promotion Section -->
+        <section class="promotion">
+            <div class="container">
+                <div class="promotion-content">
+                    <div class="promotion-text">
+                        <h2 class="section-title">Last Minute Fall and Winter Weddings</h2>
+                        <p class="promotion-subtitle">Special Offer: $1,400</p>
+                        <p class="promotion-dates">Available for weddings from September 2025 to February 2026</p>
+                        <p>Perfect for couples who haven't booked a videographer yet! This exclusive package includes:</p>
+                        <ul class="promotion-features">
+                            <li>Full-day event coverage</li>
+                            <li>Drone footage and multi-cam setup</li>
+                            <li>A 6–12 minute wedding highlight film</li>
+                            <li>Full raw footage archive</li>
+                            <li>A personalized website for easy viewing and downloading</li>
+                        </ul>
+                        <div class="cta-container">
+                            <a href="#contact" class="cta-button">Book This Special Offer</a>
+                        </div>
+                    </div>
+                    <div class="promotion-image">
+                        <img src="PP Fall Special.jpg" alt="Fall and Winter Wedding Special" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- Contact Section -->
         <section id="contact" class="contact">
@@ -122,6 +148,7 @@
                 <form id="contactForm" action="https://formspree.io/f/mpwlzbld" method="POST" class="contact-form">
                     <input type="text" name="name" placeholder="Your Name" required>
                     <input type="email" name="email" placeholder="Your Email" required>
+                    <input type="tel" name="phone" placeholder="Your Phone Number (optional)" pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number">
                     <textarea name="message" placeholder="Your Message" required></textarea>
                     <!-- Add a hidden input for the _subject parameter if you want to customize the email subject -->
                     <input type="hidden" name="_subject" value="New message from Promise Pine website">
