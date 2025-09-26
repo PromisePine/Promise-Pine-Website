@@ -1,0 +1,556 @@
+/* Global Styles */
+:root {
+    --primary-color: #3C6042;     /* Pine Green */
+    --secondary-color: #B95F33;   /* Terracotta Rust */
+    --accent-color: #DA9052;      /* Warm Clay */
+    --text-color: #2c2c2c;        /* Dark gray */
+    --light-color: #F3E6D1;       /* Ivory Beige */
+    --white: #ffffff;
+    --black: #000000;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--light-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    margin-top: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('Screenshot.jpeg') center/cover no-repeat;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    text-align: center;
+    z-index: 2;
+    color: var(--white);
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.5rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    color: var(--white);
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+    color: var(--white);
+    font-weight: 300;
+}
+
+/* Video Sections */
+.video-section, .wedding-film, .raw-footage {
+    padding: 6rem 2rem;
+    text-align: center;
+    background-color: var(--white);
+}
+
+.wedding-film {
+    background-color: var(--light-color);
+}
+
+.raw-footage {
+    background-color: var(--white);
+}
+
+.wedding-film h2, .raw-footage h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.wedding-film h2::after, .raw-footage h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent-color);
+}
+
+.wedding-film p, .raw-footage p {
+    color: var(--text-color);
+    margin-bottom: 2.5rem;
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Vimeo Player Container */
+.vimeo-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    background: #fff;
+}
+
+/* Main Player */
+.vimeo-player {
+    position: relative;
+    background: #000;
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
+}
+
+.vimeo-player iframe {
+    display: block;
+    width: 100%;
+    border: none;
+}
+
+/* Playlist */
+.vimeo-playlist {
+    padding: 1.5rem;
+    background: #fff;
+    border-radius: 0 0 12px 12px;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.playlist-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0 0 1rem 0;
+    font-family: 'Lato', sans-serif;
+}
+
+.playlist-scroll {
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 8px;
+    margin-right: -8px;
+}
+
+/* Custom scrollbar */
+.playlist-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.playlist-scroll::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.05);
+    border-radius: 3px;
+}
+
+.playlist-scroll::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 3px;
+}
+
+.playlist-loading {
+    color: var(--text-color);
+    text-align: center;
+    padding: 1rem;
+    opacity: 0.7;
+    font-style: italic;
+}
+
+/* Playlist items will be added by JavaScript */
+.playlist-item {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: var(--light-color);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
+    color: var(--text-color);
+    border-left: 3px solid transparent;
+}
+
+.playlist-item:hover {
+    background: rgba(60, 96, 66, 0.1);
+    transform: translateX(3px);
+}
+
+.playlist-item.active {
+    border-left-color: var(--primary-color);
+    background: rgba(60, 96, 66, 0.1);
+    font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .vimeo-container {
+        border-radius: 8px;
+    }
+    
+    .vimeo-playlist {
+        padding: 1rem;
+    }
+    
+    .playlist-scroll {
+        max-height: 200px;
+    }
+}
+
+.video-section h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    position: relative;
+    display: inline-block;
+}
+
+.video-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--accent-color);
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    background: #000;
+    cursor: pointer;
+    aspect-ratio: 16/9;
+}
+
+.video-thumbnail {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.video-thumbnail::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.video-container:hover .video-thumbnail::before {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.play-button {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.play-button::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 15px 0 15px 26px;
+    border-color: transparent transparent transparent #ffffff;
+    margin-left: 5px;
+}
+
+.video-container:hover .play-button {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.video-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: none;
+}
+
+.video-loaded .video-thumbnail {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.video-loaded .video-iframe {
+    display: block;
+}
+
+/* Downloads Section */
+.downloads {
+    background-color: var(--white);
+    padding: 6rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.downloads::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgcGF0dGVyblRyYW5zZm9ybT0icm90YXRlKDQ1KSI+PHJlY3Qgd2lkdGg9IjUwJSIgaGVpZ2h0PSI1MCUiIGZpbGw9InJnYmEoNjAsIDk2LCA2NiwgMC4wNSkiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjcGF0dGVybikiLz48L3N2Zz4=');
+    opacity: 0.5;
+    z-index: 1;
+}
+
+.downloads .container {
+    position: relative;
+    z-index: 2;
+}
+
+.downloads h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    font-weight: 400;
+    position: relative;
+    display: inline-block;
+}
+
+.downloads h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent-color);
+}
+
+.downloads p {
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--text-color);
+    line-height: 1.8;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: var(--white);
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    border: 2px solid var(--secondary-color);
+    text-transform: uppercase;
+    font-family: 'Lato', sans-serif;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--white);
+    transition: all 0.3s ease;
+    z-index: -1;
+}
+
+.btn:hover {
+    color: var(--secondary-color);
+}
+
+.btn:hover::before {
+    width: 100%;
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 2rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin: 0;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.3rem;
+    }
+    
+    .video-section h2,
+    .downloads h2 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .video-section,
+    .downloads {
+        padding: 4rem 1.5rem;
+    }
+    
+    .video-section h2,
+    .downloads h2 {
+        font-size: 2rem;
+    }
+    
+    .btn {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .video-section h2,
+    .downloads h2 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #333;
+    color: var(--light-text);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+    
+    .video-section h2,
+    .downloads h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Fancybox Customization */
+.fancybox__container {
+    --fancybox-bg: rgba(0, 0, 0, 0.9);
+}
+
+.fancybox__toolbar {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.fancybox__thumbs .carousel__slide .fancybox__thumb::after {
+    border-color: var(--primary-color);
+}
