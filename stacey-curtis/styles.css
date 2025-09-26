@@ -259,7 +259,22 @@ body {
     }
     
     .vimeo-showcase > div {
-        padding-top: 120% !important; /* Even taller aspect ratio for better mobile visibility */
+        padding-top: 140% !important; /* Tall aspect ratio for better mobile visibility */
+    }
+    
+    /* Mobile lightbox adjustments */
+    .video-lightbox {
+        padding: 0;
+    }
+    
+    .lightbox-content {
+        height: 100% !important;
+        padding-bottom: 0 !important;
+        max-width: 100%;
+    }
+    
+    .video-wrapper {
+        height: 100% !important;
     }
 }
 

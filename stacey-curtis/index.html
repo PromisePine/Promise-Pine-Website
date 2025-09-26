@@ -43,13 +43,32 @@
                     </div>
                     <iframe class="video-iframe" 
                             src="" 
-                            data-src="https://player.vimeo.com/video/1122122208?autoplay=1&muted=0&autopause=0&player_id=0&app_id=58479"
                             frameborder="0" 
-                            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-                            referrerpolicy="strict-origin-when-cross-origin"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
                             title="Stacey &amp; Curtis"
-                            allowfullscreen>
+                            allow="autoplay; fullscreen"
+                            muted
+                            playsinline>
                     </iframe>
+                </div>
+                
+                <!-- Lightbox Overlay -->
+                <div id="video-lightbox" class="video-lightbox">
+                    <div class="lightbox-content">
+                        <span class="close-lightbox">&times;</span>
+                        <div class="video-wrapper">
+                            <iframe id="lightbox-iframe" 
+                                    src="" 
+                                    frameborder="0" 
+                                    allow="autoplay; fullscreen; picture-in-picture" 
+                                    allowfullscreen
+                                    title="Stacey &amp; Curtis"
+                                    allow="autoplay; fullscreen"
+                                    playsinline>
+                            </iframe>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -96,52 +115,184 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js"></script>
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <style>
+        /* Lightbox Styles */
+        .video-lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+        
+        .video-lightbox.active {
+            display: flex;
+        }
+        
+        .lightbox-content {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            margin: 0 auto;
+            background: #000;
+        }
+        
+        .close-lightbox {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+            background: rgba(0, 0, 0, 0.7);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            padding-bottom: 4px;
+            box-sizing: border-box;
+            transition: all 0.2s ease;
+            border: none;
+            outline: none;
+        }
+        
+        .close-lightbox:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+        
+        .video-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .video-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        @media (max-width: 768px) {
+            .video-lightbox {
+                padding: 0;
+            }
+            
+            .lightbox-content {
+                height: 100% !important;
+                padding-bottom: 0 !important;
+                max-width: 100%;
+            }
+            
+            .video-wrapper {
+                height: 100% !important;
+            }
+            
+            .close-lightbox {
+                top: 10px;
+                right: 10px;
+                width: 35px;
+                height: 35px;
+                font-size: 24px;
+            }
+        }
+    </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const videoContainer = document.getElementById('video-container');
             const thumbnail = document.querySelector('.video-thumbnail');
-            const iframe = document.querySelector('.video-iframe');
-            let player;
-
+            const playButton = document.querySelector('.play-button');
+            const lightbox = document.getElementById('video-lightbox');
+            const closeButton = document.querySelector('.close-lightbox');
+            let lightboxIframe = document.getElementById('lightbox-iframe');
+            
             // Initialize video when thumbnail is clicked
-            function initVideo() {
-                if (!iframe.getAttribute('src')) {
-                    iframe.setAttribute('src', iframe.getAttribute('data-src'));
-                    player = new Vimeo.Player(iframe);
-                    
-                    player.ready().then(function() {
-                        videoContainer.classList.add('video-loaded');
-                        // Start playing the video
-                        player.play().catch(function(error) {
-                            console.error('Error playing video:', error);
-                        });
-                    }).catch(function(error) {
-                        console.error('Error with Vimeo player:', error);
-                    });
-                }
+            function initVideo(e) {
+                if (e) e.preventDefault();
+                
+                // Set the video source for lightbox
+                lightboxIframe.src = 'https://player.vimeo.com/video/1122122208?autoplay=1&muted=0&autopause=0&player_id=0&app_id=58479&background=0';
+                
+                // Show the lightbox
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+                
+                // Focus the close button for better keyboard navigation
+                closeButton.focus();
+            }
+            
+            function closeLightbox() {
+                // Pause the video
+                lightboxIframe.src = '';
+                
+                // Hide lightbox
+                lightbox.classList.remove('active');
+                document.body.style.overflow = ''; // Re-enable scrolling
+                
+                // Focus back to the play button
+                if (playButton) playButton.focus();
             }
 
-            // Click event for the video container
-            if (videoContainer) {
-                videoContainer.addEventListener('click', function(e) {
-                    // Only trigger if clicking on the container or thumbnail, not on the play button directly
-                    if (e.target === videoContainer || e.target === thumbnail || e.target.closest('.play-button')) {
-                        initVideo();
-                    }
-                });
-
-                // Add keyboard support
-                videoContainer.addEventListener('keydown', function(e) {
+            // Event listeners
+            if (thumbnail) {
+                thumbnail.addEventListener('click', initVideo);
+                thumbnail.addEventListener('keydown', function(e) {
                     if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        initVideo();
+                        initVideo(e);
                     }
                 });
             }
-
-            // Make video container focusable for keyboard navigation
-            videoContainer.setAttribute('tabindex', '0');
-
+            
+            if (playButton) {
+                playButton.addEventListener('click', initVideo);
+                playButton.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        initVideo(e);
+                    }
+                });
+            }
+            
+            if (closeButton) {
+                closeButton.addEventListener('click', closeLightbox);
+                closeButton.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        closeLightbox();
+                    }
+                });
+            }
+            
+            // Close lightbox when clicking outside the video
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+            
+            // Close on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                    closeLightbox();
+                }
+            });
+            
             // Initialize Raw Footage Carousel
             const carouselTrack = document.querySelector('.carousel-track');
             const slides = document.querySelectorAll('.carousel-slide');
