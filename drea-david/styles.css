@@ -1,0 +1,195 @@
+/* Base */
+:root {
+  --bg: #0e0e0e;
+  --text: #eaeaea;
+  --muted: #b8b8b8;
+  --accent: #c7a17a; /* warm neutral */
+  --overlay: rgba(0,0,0,0.45);
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
+}
+img { max-width: 100%; display: block; }
+ .container { width: min(1100px, 92vw); margin: 0 auto; padding: 0 1rem; }
+
+/* Hero */
+.hero { position: relative; height: min(70vh, 720px); min-height: 380px; overflow: hidden; }
+
+/* Hero slideshow */
+.hero-slideshow { position: absolute; inset: 0; }
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  transform: scale(1.05);
+}
+.hero-slide.active { opacity: 1; }
+
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.15), rgba(0,0,0,0.35)); z-index: 1; }
+
+
+/* Section */
+.section-title { font-family: "Playfair Display", Georgia, serif; font-weight: 600; margin: 4rem 0 2rem; letter-spacing: 0.3px; text-align: center; font-size: clamp(1.75rem, 3vw + 0.5rem, 2.5rem); }
+.lead { color: #d6d6d6; max-width: 65ch; margin: 0 auto; text-align: center; }
+
+/* Video */
+.video-section { margin-top: 3rem; }
+.video-frame { position: relative; width: 100%; border-radius: 16px; overflow: hidden; background: #111; box-shadow: 0 10px 30px rgba(0,0,0,0.35), 0 1px 0 rgba(255,255,255,0.03) inset; }
+.video-frame iframe { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
+.video-fallback { padding: 2rem; text-align: center; color: var(--muted); }
+
+/* Custom thumbnail with play button */
+.video-thumbnail { position: relative; width: 100%; aspect-ratio: 16 / 9; cursor: pointer; overflow: hidden; }
+.thumbnail-image { width: 100%; height: 100%; object-fit: cover; display: block; }
+.play-button {
+  position: absolute;
+  top: 62%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.95);
+  color: #111;
+  border: none;
+  border-radius: 999px;
+  padding: 0.75rem 1.5rem;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 200ms ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+.play-button:hover {
+  background: #fff;
+  transform: translate(-50%, -50%) scale(1.05);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+}
+.play-button:active {
+  transform: translate(-50%, -50%) scale(1);
+}
+.play-button svg { width: 20px; height: 20px; }
+
+/* Ensure common Vimeo oEmbed wrappers behave nicely inside the frame */
+.video-frame > div:not(.video-thumbnail) { width: 100% !important; height: auto !important; border-radius: inherit; overflow: hidden; }
+.video-frame > div iframe { border: 0; }
+
+/* Actions */
+.watch-actions { margin: 1.5rem 0 0; display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+.button { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--text); border: 1px solid #2a2a2a; border-radius: 999px; padding: 0.6rem 1.25rem; text-decoration: none; font-weight: 500; transition: all 180ms ease; cursor: pointer; font-family: inherit; font-size: inherit; }
+.button svg { flex-shrink: 0; }
+.button:hover { border-color: #3a3a3a; background: rgba(255,255,255,0.03); transform: translateY(-1px); }
+.button:active { transform: translateY(0); }
+
+/* Coming Soon Section */
+.raw-footage-section { margin-top: 5rem; }
+.raw-footage-section .section-title { font-size: clamp(1.4rem, 2.5vw + 0.4rem, 1.9rem); }
+.coming-soon-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(560px, 80%);
+  margin: 1.75rem auto;
+  border-radius: 12px;
+}
+.coming-soon-thumbnail {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.35;
+}
+.coming-soon-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.4);
+}
+.coming-soon-content {
+  text-align: center;
+  padding: 2rem;
+  z-index: 1;
+}
+.play-button-disabled {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 999px;
+  padding: 0.75rem 1.5rem;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: not-allowed;
+}
+.play-button-disabled svg { width: 20px; height: 20px; }
+
+/* About */
+.about { margin: 3rem 0 4rem; text-align: center; }
+
+/* Download Section */
+.download-section { margin: 5rem 0 4rem; text-align: center; }
+.download-section .lead { margin-bottom: 2rem; color: var(--muted); }
+.download-actions { display: flex; justify-content: center; margin-top: 2rem; }
+.download-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  background: var(--accent);
+  color: #0e0e0e;
+  border: none;
+  border-radius: 999px;
+  padding: 0.875rem 2rem;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.05rem;
+  transition: all 200ms ease;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(199, 161, 122, 0.25);
+}
+.download-button:hover {
+  background: #d4b08c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(199, 161, 122, 0.35);
+}
+.download-button:active {
+  transform: translateY(0);
+}
+.download-button svg { flex-shrink: 0; }
+
+/* Footer */
+.site-footer { border-top: 1px solid #1f1f1f; color: var(--muted); }
+.site-footer p { margin: 0; padding: 1.25rem 0; text-align: center; font-size: 0.95rem; }
+
+/* Responsive tweaks */
+@media (max-width: 640px) {
+  .video-section { margin-top: 2rem; }
+  .section-title { margin: 2.5rem 0 1.5rem; }
+  .play-button { top: 62%; padding: 0.65rem 1.25rem; font-size: 0.95rem; }
+  .hero-slide { transform: scale(1.08); }
+  .watch-actions { flex-direction: column; align-items: stretch; }
+  .button { justify-content: center; }
+  .raw-footage-section { margin-top: 3rem; }
+  .play-button-disabled { padding: 0.65rem 1.25rem; font-size: 0.95rem; }
+  .download-section { margin: 3rem 0 3rem; }
+  .download-button { padding: 0.75rem 1.75rem; font-size: 1rem; }
+}
