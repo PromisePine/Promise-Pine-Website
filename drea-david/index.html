@@ -135,6 +135,9 @@
       const vimeoUrl = 'https://vimeo.com/promisepine/drea-david';
       const oembed = `https://vimeo.com/api/oembed.json?url=${encodeURIComponent(vimeoUrl)}&dnt=1&responsive=1&byline=0&portrait=0&title=0`;
 
+      // Detect mobile device
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+
       // Create custom thumbnail with play button using local image
       const thumbnailContainer = document.createElement('div');
       thumbnailContainer.className = 'video-thumbnail';
@@ -161,10 +164,40 @@
             if (iframe) {
               iframe.setAttribute('title', 'Drea & David — Wedding Film');
               iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+              iframe.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture');
+              
               // Add autoplay parameter to start playing immediately
-              const src = iframe.getAttribute('src');
-              if (src && !src.includes('autoplay=1')) {
-                iframe.setAttribute('src', src + (src.includes('?') ? '&' : '?') + 'autoplay=1');
+              let src = iframe.getAttribute('src');
+              if (src) {
+                const separator = src.includes('?') ? '&' : '?';
+                
+                // On mobile: unmute and enable fullscreen
+                if (isMobile) {
+                  src += separator + 'autoplay=1&muted=0';
+                  
+                  // Request fullscreen on mobile
+                  iframe.addEventListener('load', function() {
+                    // Small delay to ensure video is ready
+                    setTimeout(() => {
+                      if (iframe.requestFullscreen) {
+                        iframe.requestFullscreen().catch(err => {
+                          console.log('Fullscreen request failed:', err);
+                        });
+                      } else if (iframe.webkitRequestFullscreen) {
+                        iframe.webkitRequestFullscreen();
+                      } else if (iframe.mozRequestFullScreen) {
+                        iframe.mozRequestFullScreen();
+                      } else if (iframe.msRequestFullscreen) {
+                        iframe.msRequestFullscreen();
+                      }
+                    }, 100);
+                  });
+                } else {
+                  // Desktop: just autoplay
+                  src += separator + 'autoplay=1';
+                }
+                
+                iframe.setAttribute('src', src);
               }
             }
           })
