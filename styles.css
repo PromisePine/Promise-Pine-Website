@@ -250,6 +250,15 @@ body {
     color: var(--secondary-color);
 }
 
+/* Show full contact info on desktop, hide short version */
+.contact-full {
+    display: inline;
+}
+
+.contact-short {
+    display: none;
+}
+
 /* Portfolio Section */
 .portfolio {
     padding: 6rem 3rem;
@@ -1189,11 +1198,20 @@ body {
     }
     
     .contact-info-item {
-        font-size: 0.75rem;
+        font-size: 0.85rem;
     }
     
     .contact-info-item a {
         pointer-events: all;
+    }
+    
+    /* Hide full contact info on mobile, show short version */
+    .contact-full {
+        display: none;
+    }
+    
+    .contact-short {
+        display: inline;
     }
     
     /* Navigation at the top on mobile */
