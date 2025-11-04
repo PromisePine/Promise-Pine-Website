@@ -1,4 +1,18 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Handle special offer button click
+    const specialOfferBtn = document.querySelector('a[href="#contact"]');
+    if (specialOfferBtn && specialOfferBtn.textContent.includes('Book This Special Offer')) {
+        specialOfferBtn.addEventListener('click', function(e) {
+            const messageField = document.querySelector('textarea[name="message"]');
+            if (messageField) {
+                messageField.value = "I'm interested in the Last Minute Fall and Winter Weddings special offer! Could you please send me more information?";
+                // Smooth scroll to the contact form
+                e.preventDefault();
+                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+
     // Mobile menu toggle
     const navToggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.nav-links');
@@ -81,4 +95,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     window.addEventListener('scroll', highlightNavigation);
+    
+    // Reviews Read More/Less functionality
+    const readMoreButtons = document.querySelectorAll('.read-more-btn');
+    
+    readMoreButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const reviewCard = this.closest('.review-card');
+            reviewCard.classList.toggle('expanded');
+            
+            if (reviewCard.classList.contains('expanded')) {
+                this.textContent = 'Read Less';
+            } else {
+                this.textContent = 'Read More';
+            }
+        });
+    });
 });

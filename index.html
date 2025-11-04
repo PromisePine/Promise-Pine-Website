@@ -18,20 +18,20 @@
     <!-- Hero Section -->
     <header class="hero">
         <div class="hero-overlay"></div>
-        <div class="hero-video-container" style="background-image: url('PP Website Load.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-            <div style="padding:56.25% 0 0 0;position:relative;">
-                <iframe 
-                    src="https://player.vimeo.com/video/1118904818?background=1&autopause=0&loop=1&autoplay=1&muted=1&controls=0&title=0&byline=0&portrait=0" 
-                    frameborder="0" 
-                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-                    style="position:absolute;top:0;left:0;width:100%;height:100%;" 
-                    title="Weddings Hero"
-                    webkitallowfullscreen
-                    mozallowfullscreen
-                    allowfullscreen
-                ></iframe>
-            </div>
-            <script src="https://player.vimeo.com/api/player.js"></script>
+        <!-- Placeholder Image -->
+        <div class="hero-placeholder" id="heroPlaceholder" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; background-image: url('PP Website Load.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
+        <!-- Video Container -->
+        <div class="hero-video-container" id="heroVideoContainer" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.5s ease; z-index: 1;">
+            <iframe 
+                id="heroVimeoPlayer"
+                src="https://player.vimeo.com/video/1118904818?h=3cb30b67b3&background=1&autopause=0&loop=1&autoplay=1&muted=1&controls=0&title=0&byline=0&portrait=0" 
+                frameborder="0" 
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                title="Weddings Hero"
+                webkitallowfullscreen
+                mozallowfullscreen
+                allowfullscreen
+            ></iframe>
         </div>
         <div class="hero-content">
             <h1 class="hero-title">Promise Pine</h1>
@@ -56,9 +56,21 @@
             <li><a href="#home" class="nav-link active">Home</a></li>
             <li><a href="#about" class="nav-link">About</a></li>
             <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+            <li><a href="#reviews" class="nav-link">Reviews</a></li>
+            <li><a href="#pricing" class="nav-link">Pricing</a></li>
             <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
     </nav>
+
+    <!-- Contact Info Bar -->
+    <div class="contact-info-bar">
+        <div class="contact-info-item">
+            <a href="tel:7193321001">(719) 332-1001</a>
+        </div>
+        <div class="contact-info-item">
+            <a href="mailto:matthew@promisepine.com">matthew@promisepine.com</a>
+        </div>
+    </div>
 
     <!-- Main Content -->
     <main>
@@ -66,12 +78,24 @@
         <section id="about" class="about">
             <div class="container">
                 <h2 class="section-title">About</h2>
+                
+                <!-- Promise Pine Introduction -->
                 <div class="about-content">
                     <div class="about-text">
-                        <p>Welcome, my name's Matthew! I am the owner and videographer of Promise Pine, a Colorado Springs, Colorado-based and beyond, wedding videography company. I understand the importance of a couple's wedding day. I craft wedding films that tell each love story in an elegant and dreamy manner, a memento of light, emotions, and meaning. I will strive to capture your day naturally and in a beautiful keepsake film.</p>
+                        <p>Promise Pine is a Colorado Springs based wedding videography company, capturing love stories across Colorado and beyond. We believe your wedding film should feel timeless — a beautiful reflection of light, emotion, and meaning. Each film is crafted with care, blending cinematic storytelling and authentic moments to preserve the heart of your day. At Promise Pine, we promise a keepsake you'll return to for years; a memory of elegance, warmth, and love.</p>
                     </div>
                     <div class="about-image">
                         <img src="PP Logo.png" alt="Promise Pine Logo" class="about-logo">
+                    </div>
+                </div>
+
+                <!-- Matthew Introduction -->
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="About Me.jpeg" alt="Matthew - Filmmaker" class="about-logo">
+                    </div>
+                    <div class="about-text">
+                        <p>Hi, I'm Matthew, the filmmaker behind Promise Pine. I've been creating films since I was eight years old. What started as homemade movies with friends and family slowly grew into a lifelong passion for storytelling. Growing up in Colorado, I developed a deep love for nature, light, and the quiet beauty found in ordinary moments. Those same inspirations now guide my work as I capture couples' stories — honest, artful, and full of feeling.</p>
                     </div>
                 </div>
             </div>
@@ -81,45 +105,125 @@
         <section id="portfolio" class="portfolio">
             <h2>Portfolio</h2>
             <div class="portfolio-container">
+                <!-- Drea & David - LARGE -->
+                <div class="portfolio-item portfolio-item-large">
+                    <div class="video-lightbox">
+                        <div class="video-thumbnail" data-video-url="https://vimeo.com/promisepine/drea-david">
+                            <div class="video-preview" style="background-image: url(&quot;Thumbnails/Drea & David.jpeg&quot;);"></div>
+                        </div>
+                    </div>
+                    <div class="video-title">
+                        <h3>Drea & David</h3>
+                    </div>
+                </div>
+                
+                <!-- Hayley & Tony - small -->
                 <div class="portfolio-item">
                     <div class="video-lightbox">
-                        <div class="video-thumbnail" data-video-id="764368341">
-                            <div class="video-preview" style="background-image: url('https://vumbnail.com/764368341.jpg');"></div>
+                        <div class="video-thumbnail" data-video-url="https://vimeo.com/promisepine/hayley-tony">
+                            <div class="video-preview" style="background-image: url(&quot;Thumbnails/Hayley & Tony.jpeg&quot;);"></div>
                         </div>
                     </div>
                     <div class="video-title">
                         <h3>Hayley & Tony</h3>
                     </div>
                 </div>
+                
+                <!-- Dillon & Maria - small -->
                 <div class="portfolio-item">
                     <div class="video-lightbox">
-                        <div class="video-thumbnail" data-video-id="620087889">
-                            <div class="video-preview" style="background-image: url('https://vumbnail.com/620087889.jpg');"></div>
+                        <div class="video-thumbnail" data-video-url="https://vimeo.com/promisepine/dillon-maria">
+                            <div class="video-preview" style="background-image: url(&quot;Thumbnails/Dillon & Maria.jpeg&quot;);"></div>
                         </div>
                     </div>
                     <div class="video-title">
-                        <h3>Sarah & Brennen</h3>
+                        <h3>Dillon & Maria</h3>
                     </div>
                 </div>
-                <div class="portfolio-item">
-                    <div class="video-lightbox">
-                        <div class="video-thumbnail" data-video-id="591884117">
-                            <div class="video-preview" style="background-image: url('https://vumbnail.com/591884117.jpg');"></div>
+            </div>
+            
+            <!-- Portfolio CTA Buttons -->
+            <div class="portfolio-cta">
+                <a href="https://vimeo.com/promisepine?fl=pp&fe=sh" target="_blank" class="cta-button portfolio-button">Watch More Videos</a>
+                <a href="https://www.instagram.com/promisepine/" target="_blank" class="cta-button portfolio-button">View on Instagram</a>
+            </div>
+        </section>
+
+        <!-- Kind Words / Reviews Section -->
+        <section id="reviews" class="reviews">
+            <div class="container">
+                <h2 class="section-title">Kind Words</h2>
+                <div class="reviews-grid">
+                    
+                    <!-- Review 1 - Dillon M -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-author">
+                                <h4>Dillon M.</h4>
+                                <div class="review-stars">★★★★★</div>
+                            </div>
+                        </div>
+                        <div class="review-text">
+                            <p class="review-preview">We scrambled to last minute find a videographer within our budget. Promise Pine was a lifesaver!</p>
+                            <p class="review-full">We found out a few weeks before our wedding that several important family members could not make it. Matthew was our videographer and not only did he say he would produce full edited videos of our ceremony and speeches, he also offered to create a 6-8 minute wedding film encapsulating the entire day. He was always displaying excitement and positivity about the wedding which was a breath of fresh air from the seriousness or stress that wedding planning can often bring out in people. During the entire process from electronic communication to in person the day of the wedding, Matthew was professional, polite, and complimentary. He never felt like he was obtrusive so we were able to enjoy our day without hinderance, and he was still ready to be where he needed to be. Exactly one month after the wedding we received all our videos. We were FLOORED. The ceremony and speeches were clean and clear, and the wedding film was AMAZING. First of all, he extended it to 10 minutes for free - he wasn't adding in extra fluff but elements that we thought really fit the video. Also, he incorporated aspects of the wedding that were most important to us, and even modeled it after movie genres and songs that we liked making it feel really personal and like a whole cinematic experience. I had a friend that was so in love with the video that even though she's not even dating anyone right now, she said she needed to have Matthew as her videographer lol! We weren't planning on having anything special for videos, but we are really happy that these are the videos we get to watch for years to come. The wedding film Matthew pieced together we will especially treasure and we are just really grateful for Promise Pine and their work.</p>
+                        </div>
+                        <button class="read-more-btn">Read More</button>
+                    </div>
+
+                    <!-- Review 2 - Linda P -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-author">
+                                <h4>Linda P.</h4>
+                                <div class="review-stars">★★★★★</div>
+                            </div>
+                        </div>
+                        <div class="review-text">
+                            <p class="review-preview">We are so impressed and pleased with your work! I give you 5 out of 5 stars, 2 thumbs up!</p>
+                            <p class="review-full">Matthew, Greg and I just watched the video of the ceremony. It felt like we were reliving that beautiful day again when we watched it. We both even teared up a little. You did such a fabulous job with the sound, the cinematography and your presence. You were never in the way (at least for me) and you were professional and kind. Other people who have been able to watch the videos also commented on how well done they were. Thank you again, Matthew! I don't think we could have hired a better videographer.</p>
+                        </div>
+                        <button class="read-more-btn">Read More</button>
+                    </div>
+
+                    <!-- Review 3 - Sarah -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-author">
+                                <h4>Sarah</h4>
+                                <div class="review-stars">★★★★★</div>
+                            </div>
+                        </div>
+                        <div class="review-text">
+                            <p class="review-preview">Matthew did a wonderful job capturing our special day!</p>
+                            <p class="review-full">He was able to keep up with the busy pace of the wedding events without a hitch! The end result was a video that we will cherish forever. I am so grateful that we decided to have our wedding filmed! I would recommend him to anyone I know in the future!</p>
+                        </div>
+                        <button class="read-more-btn">Read More</button>
+                    </div>
+
+                    <!-- Review 4 - Hayley -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-author">
+                                <h4>Hayley</h4>
+                                <div class="review-stars">★★★★★</div>
+                            </div>
+                        </div>
+                        <div class="review-text">
+                            <p class="review-preview">Matt did a great job of delivering our wedding video, was professional, kind and was high value. Did a great job. Would highly recommend.</p>
                         </div>
                     </div>
-                    <div class="video-title">
-                        <h3>Georgie & Micah</h3>
-                    </div>
+
                 </div>
             </div>
         </section>
 
-        <!-- Promotion Section -->
-        <section class="promotion">
+        <!-- Pricing and Deals Section -->
+        <section id="pricing" class="pricing">
             <div class="container">
-                <div class="promotion-content">
-                    <div class="promotion-text">
-                        <h2 class="section-title">Last Minute Fall and Winter Weddings</h2>
+                <h2 class="section-title">Pricing and Deals</h2>
+                <div class="pricing-content">
+                    <div class="pricing-text">
+                        <h3 class="pricing-package-title">Last Minute Fall and Winter Weddings</h3>
                         <p class="promotion-subtitle">Special Offer: $1,400</p>
                         <p class="promotion-dates">Available for weddings from September 2025 to February 2026</p>
                         <p>Perfect for couples who haven't booked a videographer yet! This exclusive package includes:</p>
@@ -134,8 +238,19 @@
                             <a href="#contact" class="cta-button">Book This Special Offer</a>
                         </div>
                     </div>
-                    <div class="promotion-image">
-                        <img src="PP Fall Special.jpg" alt="Fall and Winter Wedding Special" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    <div class="pricing-collage">
+                        <div class="collage-item collage-large">
+                            <img src="Fall Special/Fall Special 1.jpeg" alt="Fall Wedding 1">
+                        </div>
+                        <div class="collage-item">
+                            <img src="Fall Special/Fall Special 2.jpeg" alt="Fall Wedding 2">
+                        </div>
+                        <div class="collage-item">
+                            <img src="Fall Special/Fall Special 3.jpeg" alt="Fall Wedding 3">
+                        </div>
+                        <div class="collage-item">
+                            <img src="Fall Special/Fall Special 4.jpeg" alt="Fall Wedding 4">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -213,6 +328,66 @@
         </div>
     </div>
 
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script>
+        // Hero Video Loop Control
+        (function() {
+            const placeholder = document.getElementById('heroPlaceholder');
+            const videoContainer = document.getElementById('heroVideoContainer');
+            const iframe = document.getElementById('heroVimeoPlayer');
+            
+            // Initialize Vimeo Player
+            const player = new Vimeo.Player(iframe);
+            let loopCount = 0;
+            const maxLoops = 3;
+            let lastTime = 0;
+            let videoDuration = 0;
+            
+            // Get video duration
+            player.getDuration().then(function(duration) {
+                videoDuration = duration;
+            });
+            
+            // Show video once it's loaded and ready
+            player.on('loaded', function() {
+                videoContainer.style.opacity = '1';
+                placeholder.style.display = 'none';
+            });
+            
+            // Track video time to detect loops
+            player.on('timeupdate', function(data) {
+                const currentTime = data.seconds;
+                
+                // Detect loop: when time jumps back to beginning
+                if (lastTime > videoDuration * 0.9 && currentTime < 1) {
+                    loopCount++;
+                    console.log('Loop detected:', loopCount);
+                    
+                    if (loopCount >= maxLoops) {
+                        // Stop the video and show placeholder
+                        player.pause();
+                        player.setCurrentTime(0);
+                        
+                        setTimeout(() => {
+                            videoContainer.style.opacity = '0';
+                            setTimeout(() => {
+                                placeholder.style.display = 'block';
+                            }, 500);
+                        }, 100);
+                    }
+                }
+                
+                lastTime = currentTime;
+            });
+            
+            // Fallback: If video fails to load, keep placeholder visible
+            player.on('error', function(error) {
+                console.log('Vimeo player error:', error);
+                videoContainer.style.opacity = '0';
+                placeholder.style.display = 'block';
+            });
+        })();
+    </script>
     <script src="script.js"></script>
     <script src="lightbox.js"></script>
 </body>
