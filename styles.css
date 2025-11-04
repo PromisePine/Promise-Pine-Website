@@ -188,6 +188,8 @@ body {
     z-index: 1000;
     padding: 1rem 0;
     border-bottom: 1px solid rgba(199, 161, 122, 0.2);
+    border-top: none;
+    margin-top: 0;
 }
 
 .nav-logo {
@@ -232,6 +234,8 @@ body {
     align-items: center;
     gap: 1.5rem;
     flex-wrap: wrap;
+    height: 40px;
+    border-bottom: none;
 }
 
 .contact-info-item {
@@ -298,13 +302,30 @@ body {
 .portfolio-cta {
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 1.5rem;
     margin-top: 4rem;
     flex-wrap: wrap;
 }
 
 .portfolio-button {
-    min-width: 200px;
+    padding: 0.75rem 2rem;
+    background: transparent;
+    color: var(--secondary-color);
+    border: 2px solid var(--secondary-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: none;
+    min-width: 140px;
+}
+
+.portfolio-button:hover {
+    background: var(--secondary-color);
+    color: var(--dark-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(199, 161, 122, 0.4);
 }
 
 .video-lightbox {
