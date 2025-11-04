@@ -60,11 +60,53 @@ document.addEventListener('DOMContentLoaded', function() {
         userInteracted = false; // Reset interaction flag
     }
 
+    // Resolve a Vimeo page URL to numeric video ID via oEmbed
+    async function resolveVimeoIdFromUrl(videoPageUrl) {
+        try {
+            console.log('Resolving video URL:', videoPageUrl);
+            const oembedUrl = `https://vimeo.com/api/oembed.json?url=${encodeURIComponent(videoPageUrl)}`;
+            console.log('oEmbed URL:', oembedUrl);
+            
+            const res = await fetch(oembedUrl);
+            console.log('Response status:', res.status);
+            
+            if (!res.ok) {
+                const errorText = await res.text();
+                console.error('oEmbed error response:', errorText);
+                throw new Error(`oEmbed request failed: ${res.status}`);
+            }
+            
+            const data = await res.json();
+            console.log('oEmbed response data:', data);
+            
+            if (data.video_id) {
+                console.log('Resolved video ID:', data.video_id);
+                return String(data.video_id);
+            } else {
+                console.error('No video_id in response');
+                return null;
+            }
+        } catch (e) {
+            console.error('Failed to resolve Vimeo ID from URL:', e);
+            return null;
+        }
+    }
+
     // Add click event to each video thumbnail
     videoThumbnails.forEach(thumbnail => {
-        thumbnail.addEventListener('click', function() {
-            const videoId = this.getAttribute('data-video-id');
-            openLightbox(videoId);
+        thumbnail.addEventListener('click', async function() {
+            let videoId = this.getAttribute('data-video-id');
+            const videoUrl = this.getAttribute('data-video-url');
+
+            if (!videoId && videoUrl) {
+                videoId = await resolveVimeoIdFromUrl(videoUrl);
+            }
+
+            if (videoId) {
+                openLightbox(videoId);
+            } else {
+                console.warn('No video ID or resolvable URL found on thumbnail.');
+            }
         });
     });
 

@@ -376,20 +376,14 @@ body {
 .video-title {
     margin-top: 1.2rem;
     text-align: center;
-    padding: 0.5rem 0;
-    width: 100%;
 }
 
 .video-title h3 {
-    font-size: 1.2rem;
-    font-family: 'Playfair Display', serif;
-    text-align: center;
-    margin: 0;
-    letter-spacing: 1px;
-    color: var(--text-color);
-    font-weight: 500;
-    position: relative;
-    display: inline-block;
+font-size: 1.3rem;
+color: var(--primary-color);
+font-family: 'Playfair Display', serif;
+text-align: center;
+margin: 0;
 }
 
 .video-title h3::after {
@@ -445,6 +439,15 @@ body {
     display: flex;
     flex-direction: column;
     cursor: pointer;
+}
+
+#lightboxIframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
 }
 
 .close-lightbox {
@@ -1264,6 +1267,10 @@ body {
     .nav-link {
         padding: 0.75rem 1.5rem;
         text-align: center;
+    }
+    
+    .nav-link:hover, .nav-link.active {
+        border-bottom: none;
     }
     
     .nav-toggle {

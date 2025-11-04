@@ -117,7 +117,7 @@
                 <!-- Drea & David - LARGE -->
                 <div class="portfolio-item portfolio-item-large">
                     <div class="video-lightbox">
-                        <div class="video-thumbnail" data-video-url="https://vimeo.com/promisepine/drea-david">
+                        <div class="video-thumbnail" data-video-url="https://vimeo.com/promisepine/drea-david" data-video-id="">
                             <div class="video-preview" style="background-image: url(&quot;Thumbnails/Drea & David.jpeg&quot;);"></div>
                         </div>
                     </div>
@@ -129,7 +129,7 @@
                 <!-- Hayley & Tony - small -->
                 <div class="portfolio-item">
                     <div class="video-lightbox">
-                        <div class="video-thumbnail" data-video-url="https://vimeo.com/promisepine/hayley-tony">
+                        <div class="video-thumbnail" data-video-url="https://vimeo.com/promisepine/hayley-tony" data-video-id="">
                             <div class="video-preview" style="background-image: url(&quot;Thumbnails/Hayley & Tony.jpeg&quot;);"></div>
                         </div>
                     </div>
@@ -141,7 +141,7 @@
                 <!-- Dillon & Maria - small -->
                 <div class="portfolio-item">
                     <div class="video-lightbox">
-                        <div class="video-thumbnail" data-video-url="https://vimeo.com/promisepine/dillon-maria">
+                        <div class="video-thumbnail" data-video-url="https://vimeo.com/promisepine/dillon-maria" data-video-id="">
                             <div class="video-preview" style="background-image: url(&quot;Thumbnails/Dillon & Maria.jpeg&quot;);"></div>
                         </div>
                     </div>
@@ -397,6 +397,15 @@
             });
         })();
     </script>
+    
+    <!-- Video Lightbox Modal -->
+    <div id="videoLightbox" class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <div class="lightbox-content">
+            <iframe id="lightboxIframe" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+    
     <script src="script.js"></script>
     <script src="lightbox.js"></script>
 </body>
