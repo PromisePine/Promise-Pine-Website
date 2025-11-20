@@ -25,6 +25,7 @@
         <div class="video-player-wrapper" id="videoPlayerWrapper">
           <!-- Background Preview Video (looping) -->
           <div class="preview-container" id="previewContainer">
+            <img src="Foliage Large.jpeg" alt="Wedding preview" class="placeholder-image" id="placeholderImage" />
             <div id="backgroundVideo" class="background-video"></div>
             <div class="preview-overlay"></div>
             
@@ -54,7 +55,7 @@
         
         <!-- Video Controls Bar -->
         <div class="video-controls" id="videoControls">
-          <div class="control-group">
+          <div class="control-group control-group-left">
             <button class="control-button" id="backButton" title="Back to preview">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="19" y1="12" x2="5" y2="12"></line>
@@ -63,37 +64,53 @@
             </button>
           </div>
           
-          <div class="control-group control-group-center">
-            <a class="control-button" href="https://vimeo.com/promisepine/courtney-derek" target="_blank" rel="noopener" title="Open in Vimeo">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                <polyline points="15 3 21 3 21 9"></polyline>
-                <line x1="10" y1="14" x2="21" y2="3"></line>
-              </svg>
-            </a>
-            <button class="control-button" id="fullscreenBtn" title="Fullscreen">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
-              </svg>
-            </button>
-            <button class="control-button" id="copyLinkBtn" title="Copy link">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-              </svg>
-            </button>
-            <button class="control-button" id="shareBtn" title="Share">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="18" cy="5" r="3"></circle>
-                <circle cx="6" cy="12" r="3"></circle>
-                <circle cx="18" cy="19" r="3"></circle>
-                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-              </svg>
-            </button>
+          <div class="control-group-wrapper">
+            <div class="control-group control-group-center">
+              <button class="control-button" id="playPauseBtn" title="Play/Pause">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="play-svg">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pause-svg" style="display: none;">
+                  <rect x="6" y="4" width="4" height="16"></rect>
+                  <rect x="14" y="4" width="4" height="16"></rect>
+                </svg>
+              </button>
+              <button class="control-button" id="fullscreenBtn" title="Fullscreen">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                </svg>
+              </button>
+            </div>
+            
+            <div class="control-divider"></div>
+            
+            <div class="control-group control-group-center">
+              <button class="control-button" id="openLinkBtn" title="Open in Vimeo">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </button>
+              <button class="control-button" id="copyLinkBtn" title="Copy link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                </svg>
+              </button>
+              <button class="control-button" id="shareBtn" title="Share">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="18" cy="5" r="3"></circle>
+                  <circle cx="6" cy="12" r="3"></circle>
+                  <circle cx="18" cy="19" r="3"></circle>
+                  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                  <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                </svg>
+              </button>
+            </div>
           </div>
           
-          <div class="control-group">
+          <div class="control-group control-group-right">
             <a href="https://www.instagram.com/promisepine/" target="_blank" rel="noopener" class="instagram-badge">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
@@ -167,6 +184,9 @@
     let backgroundPlayer = null;
     let mainPlayer = null;
     let isMainVideoPlaying = false;
+    
+    // Detect mobile device
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
 
     // Initialize background looping video
     function initBackgroundVideo() {
@@ -191,6 +211,17 @@
         backgroundPlayer.setCurrentTime(30).catch(function(error) {
           console.log('Error setting time:', error);
         });
+        
+        // Hide placeholder image once video is loaded and ready
+        backgroundPlayer.on('loaded', function() {
+          const placeholder = document.getElementById('placeholderImage');
+          if (placeholder) {
+            placeholder.style.opacity = '0';
+            setTimeout(() => {
+              placeholder.style.display = 'none';
+            }, 500);
+          }
+        });
       });
     }
 
@@ -199,7 +230,7 @@
       const options = {
         url: vimeoUrl,
         background: false,
-        muted: false,
+        muted: false, // Unmuted by default on all devices
         loop: false,
         controls: true,
         autopause: true,
@@ -212,10 +243,29 @@
 
       mainPlayer = new Vimeo.Player('mainVideo', options);
       
+      // Ensure unmuted on mobile
+      if (isMobile) {
+        mainPlayer.setVolume(1);
+      }
+      
       // Add event listeners
       mainPlayer.on('ended', function() {
         // Optionally return to preview when video ends
         // backToPreview();
+      });
+      
+      // Set up play/pause button listeners
+      const playSvg = document.querySelector('.play-svg');
+      const pauseSvg = document.querySelector('.pause-svg');
+      
+      mainPlayer.on('play', function() {
+        playSvg.style.display = 'none';
+        pauseSvg.style.display = 'block';
+      });
+      
+      mainPlayer.on('pause', function() {
+        playSvg.style.display = 'block';
+        pauseSvg.style.display = 'none';
       });
     }
 
@@ -255,6 +305,11 @@
             mainPlayer.play().catch(function(error) {
               console.log('Play error:', error);
             });
+            // Set initial button state to pause
+            const playSvg = document.querySelector('.play-svg');
+            const pauseSvg = document.querySelector('.pause-svg');
+            playSvg.style.display = 'none';
+            pauseSvg.style.display = 'block';
           }
         }, 50);
       }, 500);
@@ -286,6 +341,12 @@
           scrollIndicator.style.opacity = '1';
           isMainVideoPlaying = false;
           
+          // Reset play/pause button to play icon
+          const playSvg = document.querySelector('.play-svg');
+          const pauseSvg = document.querySelector('.pause-svg');
+          playSvg.style.display = 'block';
+          pauseSvg.style.display = 'none';
+          
           // Resume background video
           if (backgroundPlayer) {
             backgroundPlayer.play();
@@ -303,32 +364,45 @@
     });
     document.getElementById('backButton').addEventListener('click', backToPreview);
 
-    // Fullscreen functionality
+    // Play/Pause functionality
+    document.getElementById('playPauseBtn').addEventListener('click', function() {
+      if (mainPlayer) {
+        mainPlayer.getPaused().then(function(paused) {
+          if (paused) {
+            mainPlayer.play();
+          } else {
+            mainPlayer.pause();
+          }
+        });
+      }
+    });
+
+    // Open in Vimeo functionality
+    document.getElementById('openLinkBtn').addEventListener('click', function() {
+      window.open('https://vimeo.com/promisepine/courtney-derek', '_blank', 'noopener,noreferrer');
+    });
+
+    // Fullscreen functionality - Use Vimeo's native fullscreen
     document.getElementById('fullscreenBtn').addEventListener('click', function() {
-      const videoWrapper = document.getElementById('videoPlayerWrapper');
-      
-      if (!document.fullscreenElement) {
-        // Enter fullscreen
-        if (videoWrapper.requestFullscreen) {
-          videoWrapper.requestFullscreen();
-        } else if (videoWrapper.webkitRequestFullscreen) {
-          videoWrapper.webkitRequestFullscreen();
-        } else if (videoWrapper.mozRequestFullScreen) {
-          videoWrapper.mozRequestFullScreen();
-        } else if (videoWrapper.msRequestFullscreen) {
-          videoWrapper.msRequestFullscreen();
-        }
-      } else {
-        // Exit fullscreen
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
-        } else if (document.webkitExitFullscreen) {
-          document.webkitExitFullscreen();
-        } else if (document.mozCancelFullScreen) {
-          document.mozCancelFullScreen();
-        } else if (document.msExitFullscreen) {
-          document.msExitFullscreen();
-        }
+      if (mainPlayer) {
+        mainPlayer.requestFullscreen().then(function() {
+          console.log('Entered fullscreen');
+        }).catch(function(error) {
+          console.log('Fullscreen error:', error);
+          // Fallback to iframe fullscreen
+          const iframe = document.querySelector('#mainVideo iframe');
+          if (iframe) {
+            if (iframe.requestFullscreen) {
+              iframe.requestFullscreen();
+            } else if (iframe.webkitRequestFullscreen) {
+              iframe.webkitRequestFullscreen();
+            } else if (iframe.mozRequestFullScreen) {
+              iframe.mozRequestFullScreen();
+            } else if (iframe.msRequestFullscreen) {
+              iframe.msRequestFullscreen();
+            }
+          }
+        });
       }
     });
 
