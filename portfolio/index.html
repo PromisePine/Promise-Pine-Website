@@ -162,20 +162,27 @@
 
         .video-display-block iframe {
             position: absolute;
-            top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
-            width: 177.78vh;
-            height: 100%;
-            min-width: 100%;
-            min-height: 100%;
+            transform: translateX(-50%);
+            width: 177.78vh; /* 16:9 aspect ratio based on viewport height */
+            min-width: 100vw; /* Ensure at least full viewport width */
+            height: 200%; /* Make iframe twice as tall to have room to shift */
+            pointer-events: none;
         }
-        
-        @media (min-aspect-ratio: 16/9) {
-            .video-display-block iframe {
-                width: 100%;
-                height: 56.25vw;
-            }
+
+        /* Drone Production - show CENTER (middle portion) */
+        .video-display-block:nth-child(1) iframe {
+            top: -50%; /* Show middle part */
+        }
+
+        /* Wedding Films - show UPPER AREA (heads visible) */
+        .video-display-block:nth-child(2) iframe {
+            top: -30%; /* Show upper-middle, people's heads visible */
+        }
+
+        /* Promos - show TOP (upper torso/face area) */
+        .video-display-block:nth-child(3) iframe {
+            top: -10%; /* Show near the top */
         }
 
         .video-display-title {
@@ -441,6 +448,7 @@
             object-fit: cover;
             display: block;
             transition: transform 0.5s ease;
+            object-position: center top;
         }
 
         .photo-item:hover img {
@@ -504,18 +512,22 @@
             padding: 20px;
             user-select: none;
             transition: color 0.3s ease;
+            z-index: 1002;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
         }
 
         .lightbox-nav:hover {
             color: #ccc;
+            background: rgba(0, 0, 0, 0.5);
         }
 
         .lightbox-prev {
-            left: 20px;
+            left: 10px;
         }
 
         .lightbox-next {
-            right: 20px;
+            right: 10px;
         }
 
         /* Rates & Services Section */
@@ -707,7 +719,7 @@
         }
 
         .contact-form-container {
-            max-width: 700px;
+            max-width: 500px;
             margin: 0 auto;
         }
 
@@ -1109,10 +1121,10 @@
     <!-- Bio Section -->
     <section class="bio-section" id="about">
         <div class="bio-text">
-            <h2>About Matthew</h2>
-            <p>Matthew Long is a Colorado-based filmmaker and photographer specializing in cinematic storytelling through video, drone, and photo production. With a passion for capturing authentic moments and breathtaking landscapes, Matthew brings a unique perspective to every project.</p>
-            <p>Based in the Pikes Peak region, Matthew has worked with couples, brands, and organizations to create compelling visual narratives that resonate. From wedding highlights to aerial cinematography, each project is approached with creativity, technical precision, and a commitment to excellence.</p>
-            <p>When not behind the camera, you'll find Matthew exploring the Colorado outdoors, seeking new perspectives and inspiration for his craft.</p>
+            <h2>About Me</h2>
+            <p>I'm a Colorado-based filmmaker and photographer specializing in cinematic storytelling through video, drone, and photo production. With a passion for capturing authentic moments and breathtaking landscapes, I bring a unique perspective to every project.</p>
+            <p>Based in the Pikes Peak region, I've worked with couples, brands, and organizations to create compelling visual narratives that resonate. From wedding highlights to aerial cinematography, I approach each project with creativity, technical precision, and a commitment to excellence.</p>
+            <p>When not behind the camera, you'll find me exploring the Colorado outdoors, seeking new perspectives and inspiration for my craft.</p>
         </div>
         <div class="bio-image">
             <img src="Headshot.jpeg" alt="Matthew Long">
@@ -1138,7 +1150,7 @@
                     frameborder="0" 
                     allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
                     referrerpolicy="strict-origin-when-cross-origin"
-                    title="Drone Production">
+                    allowfullscreen>
                 </iframe>
                 <div class="video-display-title">
                     <h3>Drone Production</h3>
@@ -1152,7 +1164,7 @@
                     frameborder="0" 
                     allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
                     referrerpolicy="strict-origin-when-cross-origin"
-                    title="Wedding Films">
+                    allowfullscreen>
                 </iframe>
                 <div class="video-display-title">
                     <h3>Wedding Films</h3>
@@ -1166,7 +1178,7 @@
                     frameborder="0" 
                     allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
                     referrerpolicy="strict-origin-when-cross-origin"
-                    title="Promos">
+                    allowfullscreen>
                 </iframe>
                 <div class="video-display-title">
                     <h3>Promos</h3>
@@ -1183,13 +1195,13 @@
             <div class="work-grid">
                 <!-- Wedding: Dillon & Maria -->
                 <div class="work-item" onclick="openVideo('https://vimeo.com/1117159225')">
-                    <img class="work-thumbnail" src="https://vumbnail.com/1117159225.jpg" alt="Dillon & Maria">
+                    <img class="work-thumbnail" src="Dillon & Maria.jpeg" alt="Dillon & Maria">
                     <div class="play-button-overlay"></div>
                 </div>
 
                 <!-- Wedding: Drea & David -->
                 <div class="work-item" onclick="openVideo('https://vimeo.com/1131806323')">
-                    <img class="work-thumbnail" src="https://vumbnail.com/1131806323.jpg" alt="Drea & David">
+                    <img class="work-thumbnail" src="Drea & David.jpeg" alt="Drea & David">
                     <div class="play-button-overlay"></div>
                 </div>
 
@@ -1238,7 +1250,7 @@
     <section class="rates-section" id="rates">
         <div class="rates-hero">
             <h2 class="rates-title">Rates & Services</h2>
-            <p class="rates-subtitle">Clear, simple pricing designed for events, tourism, and brand content.</p>
+            <p class="rates-subtitle">Easy pricing for your needs</p>
         </div>
 
         <div class="rates-container">
@@ -1452,21 +1464,17 @@
             portraits: {
                 title: 'Portraits',
                 photos: [
-                    'Photos/Portraits/IMG_7365 Large.jpeg',
-                    'Photos/Portraits/_DSC6285 Large.jpeg',
-                    'Photos/Portraits/IMG_7431 Large.jpeg',
-                    'Photos/Portraits/_DSC6355 Large.jpeg',
+                    'Photos/Portraits/DSC6355 Large.jpeg',
+                    'Photos/Portraits/DSC6357 Large.jpeg',
+                    'Photos/Portraits/DSC6398 Large.jpeg',
+                    'Photos/Portraits/DSC6459 Large.jpeg',
+                    'Photos/Portraits/DSC6504 Large.jpeg',
+                    'Photos/Portraits/DSC6599 Large.jpeg',
+                    'Photos/Portraits/DSC6613 Large.jpeg',
                     'Photos/Portraits/IMG_7455 Large.jpeg',
-                    'Photos/Portraits/_DSC6357 Large.jpeg',
                     'Photos/Portraits/IMG_7502 Large.jpeg',
-                    'Photos/Portraits/_DSC6397 Large.jpeg',
                     'Photos/Portraits/IMG_7547 Large.jpeg',
-                    'Photos/Portraits/_DSC6398 Large.jpeg',
-                    'Photos/Portraits/Kevin Head Large.jpeg',
-                    'Photos/Portraits/_DSC6459 Large.jpeg',
-                    'Photos/Portraits/_DSC6504 Large.jpeg',
-                    'Photos/Portraits/_DSC6599 Large.jpeg',
-                    'Photos/Portraits/_DSC6613 Large.jpeg'
+                    'Photos/Portraits/Kevin Head Large.jpeg'
                 ]
             },
             candid: {
