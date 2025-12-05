@@ -31,20 +31,52 @@
         .site-header {
             background: #1a1a1a;
             color: #ffffff;
-            padding: 2rem 0;
-            text-align: center;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .logo-link {
+            text-decoration: none;
+            color: inherit;
+            transition: opacity 0.3s ease;
+        }
+
+        .logo-link:hover {
+            opacity: 0.8;
         }
 
         .site-header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            letter-spacing: 1px;
+            margin: 0;
+        }
+
+        .header-contact {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .contact-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: #ccc;
         }
 
         /* Hero Section */
         .hero-section {
-            padding: 4rem 2rem;
+            padding: 6rem 2rem 4rem 2rem;
             text-align: center;
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
         }
@@ -823,14 +855,32 @@
         }
 
         .footer-social a:hover {
-            opacity: 1;
-            transform: translateY(-3px);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .footer-contact {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .footer-contact-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-contact-link:hover {
+            color: #ccc;
         }
 
         .footer-copyright {
-            font-size: 0.95rem;
-            color: #adb5bd;
-            margin-top: 1.5rem;
+            font-size: 0.875rem;
+            color: #999;
+            margin-top: 1rem;
             padding-top: 1.5rem;
             border-top: 1px solid rgba(255,255,255,0.1);
         }
@@ -1103,7 +1153,13 @@
 <body>
     <!-- Site Header -->
     <header class="site-header">
-        <h1>Promise Pine</h1>
+        <a href="https://promisepine.com" class="logo-link" target="_blank" rel="noopener noreferrer">
+            <h1>Promise Pine</h1>
+        </a>
+        <div class="header-contact">
+            <a href="tel:719-332-1001" class="contact-link">(719) 332-1001</a>
+            <a href="mailto:matthew@promisepine.com" class="contact-link">matthew@promisepine.com</a>
+        </div>
     </header>
 
     <!-- Hero Section -->
@@ -1674,6 +1730,11 @@
     <footer class="site-footer">
         <div class="footer-content">
             <p class="footer-tagline">Photo • Video • Drone</p>
+            
+            <div class="footer-contact">
+                <a href="tel:719-332-1001" class="footer-contact-link">(719) 332-1001</a>
+                <a href="mailto:matthew@promisepine.com" class="footer-contact-link">matthew@promisepine.com</a>
+            </div>
             
             <div class="footer-social">
                 <a href="https://www.instagram.com/promisepine/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
