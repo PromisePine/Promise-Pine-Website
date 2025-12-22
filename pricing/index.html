@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise Pine - Wedding Videography Pricing</title>
+    <meta name="description" content="Promise Pine wedding videography packages and pricing">
+    <link rel="icon" type="image/png" href="../PP Favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../divider.css">
+    <style>
+        body {
+            background: #000;
+        }
+
+        .video-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .video-bg iframe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 56.25vw;
+            min-height: 100vh;
+            min-width: 177.78vh;
+            transform: translate(-50%, -50%);
+            border: 0;
+        }
+
+        .video-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            background: radial-gradient(900px 450px at 50% 25%, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.62)), rgba(0, 0, 0, 0.22);
+            pointer-events: none;
+        }
+
+        .page {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+        }
+
+        .simple-header {
+            position: sticky;
+            top: 0;
+            z-index: 5;
+            padding: 1rem 1.25rem;
+            background: rgba(0, 0, 0, 0.70);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(199, 161, 122, 0.22);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            min-width: 0;
+        }
+
+        .brand-link {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            text-decoration: none;
+            color: #ffffff !important;
+            min-width: 0;
+        }
+
+        .brand-logo {
+            width: 44px;
+            height: 44px;
+            object-fit: contain;
+            border-radius: 10px;
+            border: 1px solid rgba(199, 161, 122, 0.25);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
+            background: rgba(0, 0, 0, 0.15);
+        }
+
+        .brand-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            font-weight: 700;
+            line-height: 1.1;
+            color: var(--secondary-color) !important;
+            text-shadow: 0 12px 30px rgba(0, 0, 0, 0.85);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .header-contact {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .header-contact a {
+            color: rgba(232, 232, 232, 0.95);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.45rem 0.75rem;
+            border-radius: 999px;
+            border: 1px solid rgba(199, 161, 122, 0.25);
+            background: rgba(0, 0, 0, 0.25);
+        }
+
+        .header-contact a i {
+            color: var(--secondary-color);
+        }
+
+        .header-contact a:hover {
+            color: var(--white);
+            border-color: rgba(199, 161, 122, 0.55);
+        }
+
+        .pricing-page {
+            color: var(--white);
+            padding: 4rem 1.25rem 5rem;
+        }
+
+        .pricing-page .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        .pricing-page .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            color: var(--white) !important;
+            font-size: 2.7rem;
+            margin-bottom: 0.75rem;
+            letter-spacing: 1px;
+            text-shadow: 0 14px 40px rgba(0, 0, 0, 0.85);
+        }
+
+        body .pricing-page h2.section-title {
+            color: #ffffff !important;
+            text-shadow: 0 18px 55px rgba(0, 0, 0, 0.95) !important;
+        }
+
+        .pricing-page .section-title::after {
+            content: '';
+            display: block;
+            width: 88px;
+            height: 3px;
+            border-radius: 999px;
+            background: var(--secondary-color);
+            margin: 0.9rem auto 0;
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.55);
+        }
+
+        .pricing-page .section-subtitle {
+            text-align: center;
+            max-width: 850px;
+            margin: 0 auto 3rem;
+            color: rgba(255, 255, 255, 0.92) !important;
+            font-size: 1.05rem;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.80);
+        }
+
+        .pricing-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .package-card {
+            background: rgba(10, 10, 10, 0.72);
+            border-radius: 14px;
+            border: 1px solid rgba(199, 161, 122, 0.28);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+            backdrop-filter: blur(12px);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .package-card.popular {
+            border: 2px solid rgba(199, 161, 122, 0.75);
+            box-shadow: 0 22px 60px rgba(199, 161, 122, 0.22);
+            transform: translateY(-6px);
+        }
+
+        .package-header {
+            padding: 1.6rem 1.6rem 1.2rem;
+            background: linear-gradient(180deg, rgba(45, 90, 61, 0.16), rgba(0, 0, 0, 0));
+            border-bottom: 1px solid rgba(199, 161, 122, 0.18);
+        }
+
+        .package-name {
+            font-family: 'Playfair Display', serif;
+            color: rgba(255, 255, 255, 0.98) !important;
+            font-size: 1.6rem;
+            margin: 0;
+            letter-spacing: 0.4px;
+            text-shadow: 0 10px 26px rgba(0, 0, 0, 0.75);
+        }
+
+        .package-badge {
+            display: inline-block;
+            margin-top: 0.6rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 999px;
+            background: rgba(199, 161, 122, 0.22);
+            border: 1px solid rgba(199, 161, 122, 0.45);
+            color: rgba(255, 255, 255, 0.92);
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .package-price {
+            margin-top: 0.8rem;
+            font-size: 1.15rem;
+            color: var(--secondary-color) !important;
+            font-weight: 600;
+            text-shadow: 0 12px 30px rgba(0, 0, 0, 0.85);
+        }
+
+        .package-card,
+        .package-card * {
+            color: rgba(255, 255, 255, 0.92);
+        }
+
+        .package-card .package-price {
+            color: var(--secondary-color) !important;
+        }
+
+        .inquire-btn {
+            width: 100%;
+            text-align: center;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            appearance: none;
+        }
+
+        .package-card button.cta-button {
+            background-color: var(--secondary-color) !important;
+            color: var(--black) !important;
+            border: 2px solid var(--secondary-color) !important;
+        }
+
+        .package-card button.cta-button:hover {
+            background-color: var(--accent-color) !important;
+            border-color: var(--accent-color) !important;
+            color: var(--black) !important;
+        }
+
+        .inquiry-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .inquiry-modal[aria-hidden="false"] {
+            display: flex;
+        }
+
+        .inquiry-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.70);
+            backdrop-filter: blur(6px);
+        }
+
+        .inquiry-dialog {
+            position: relative;
+            width: min(720px, 100%);
+            border-radius: 16px;
+            background: rgba(10, 10, 10, 0.92);
+            border: 1px solid rgba(199, 161, 122, 0.35);
+            box-shadow: 0 22px 70px rgba(0, 0, 0, 0.70);
+            overflow: hidden;
+            max-height: calc(100vh - 48px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .inquiry-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 18px 20px;
+            border-bottom: 1px solid rgba(199, 161, 122, 0.22);
+            background: linear-gradient(180deg, rgba(45, 90, 61, 0.18), rgba(0, 0, 0, 0));
+        }
+
+        .inquiry-title {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            letter-spacing: 0.5px;
+            color: rgba(255, 255, 255, 0.96);
+        }
+
+        .inquiry-close {
+            appearance: none;
+            border: 1px solid rgba(199, 161, 122, 0.35);
+            background: rgba(0, 0, 0, 0.25);
+            color: rgba(255, 255, 255, 0.92);
+            width: 40px;
+            height: 40px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 22px;
+            line-height: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .inquiry-close:hover {
+            border-color: rgba(199, 161, 122, 0.65);
+        }
+
+        .inquiry-body {
+            padding: 18px 20px 20px;
+            color: rgba(255, 255, 255, 0.92);
+            overflow: auto;
+        }
+
+        .inquiry-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 18px;
+        }
+
+        .inquiry-field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            min-width: 0;
+        }
+
+        .inquiry-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.88);
+        }
+
+        .inquiry-input,
+        .inquiry-textarea,
+        .inquiry-select {
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            padding: 0.9rem 0.95rem;
+            border-radius: 12px;
+            border: 1px solid rgba(199, 161, 122, 0.28);
+            background: rgba(255, 255, 255, 0.06);
+            color: rgba(255, 255, 255, 0.95);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.98rem;
+            box-shadow: none;
+            box-sizing: border-box;
+        }
+
+        .inquiry-input:focus,
+        .inquiry-textarea:focus,
+        .inquiry-select:focus {
+            outline: none;
+            border-color: rgba(199, 161, 122, 0.75);
+            box-shadow: 0 0 0 3px rgba(199, 161, 122, 0.18);
+        }
+
+        .inquiry-textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .inquiry-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 14px;
+            flex-wrap: wrap;
+        }
+
+        .inquiry-actions .cta-button {
+            margin-left: auto;
+        }
+
+        .inquiry-status {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.88);
+            min-height: 1.2em;
+        }
+
+        @media (max-width: 720px) {
+            .inquiry-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .inquiry-body {
+                padding: 16px;
+            }
+        }
+
+        .package-body {
+            padding: 1.3rem 1.6rem 1.6rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            flex-grow: 1;
+        }
+
+        .package-description {
+            color: rgba(255, 255, 255, 0.90) !important;
+            font-size: 0.98rem;
+        }
+
+        .package-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .package-features li {
+            display: flex;
+            gap: 0.6rem;
+            align-items: flex-start;
+            color: rgba(255, 255, 255, 0.92) !important;
+            font-size: 0.95rem;
+        }
+
+        .package-features li::before {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--secondary-color);
+            margin-top: 0.1rem;
+        }
+
+        .addons {
+            margin-top: 0.2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(199, 161, 122, 0.2);
+        }
+
+        .addons-title {
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.95) !important;
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+        }
+
+        .addons-list {
+            margin: 0;
+            padding-left: 1rem;
+            color: rgba(255, 255, 255, 0.88) !important;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .package-footer {
+            padding: 0 1.6rem 1.6rem;
+        }
+
+        .package-footer .cta-button {
+            width: 100%;
+            text-align: center;
+        }
+
+        .note {
+            max-width: 1100px;
+            margin: 2.5rem auto 0;
+            padding: 1.2rem 1.3rem;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(199, 161, 122, 0.28);
+            color: rgba(255, 255, 255, 0.90) !important;
+            backdrop-filter: blur(10px);
+        }
+
+        .note strong {
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        @media (max-width: 1024px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .package-card.popular {
+                transform: none;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .brand-title {
+                font-size: 1.25rem;
+            }
+
+            .header-contact a {
+                font-size: 0.9rem;
+                padding: 0.4rem 0.65rem;
+            }
+
+            .pricing-page .section-title {
+                font-size: 2.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="video-bg" aria-hidden="true">
+        <iframe
+            id="heroVimeoPlayer"
+            src="https://player.vimeo.com/video/1143608026?h=e68ecc03aa&background=1&autopause=0&loop=1&autoplay=1&muted=1&controls=0&title=0&byline=0&portrait=0"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+            title="Promise Pine Background"
+        ></iframe>
+    </div>
+    <div class="video-overlay" aria-hidden="true"></div>
+
+    <div class="page">
+        <header class="simple-header">
+            <div class="header-inner">
+                <div class="brand">
+                    <a class="brand-link" href="https://promisepine.com" aria-label="Promise Pine Home">
+                        <img class="brand-logo" src="PP Logo.png" alt="Promise Pine Logo">
+                        <span class="brand-title">Promise Pine</span>
+                    </a>
+                </div>
+                <div class="header-contact">
+                    <a href="tel:7193321001"><i class="fas fa-phone"></i><span>(719) 332-1001</span></a>
+                    <a href="mailto:matthew@promisepine.com"><i class="fas fa-envelope"></i><span>matthew@promisepine.com</span></a>
+                </div>
+            </div>
+        </header>
+
+        <main>
+        <section id="packages" class="pricing-page">
+            <div class="container">
+                <h2 class="section-title">Wedding Videography Packages</h2>
+                <p class="section-subtitle">Simple, story-first collections built to preserve the moments that matter most — with optional add-ons available to tailor coverage to your day.</p>
+
+                <div class="pricing-grid">
+                    <article class="package-card">
+                        <div class="package-header">
+                            <h3 class="package-name">Essentials Collection</h3>
+                            <div class="package-price">Starting at $1,350</div>
+                        </div>
+                        <div class="package-body">
+                            <p class="package-description">Perfect for couples who want a beautiful, cinematic keepsake of their day without extra complexity.</p>
+                            <ul class="package-features">
+                                <li>Up to 8 hours of wedding day coverage</li>
+                                <li>Single-camera coverage</li>
+                                <li>Drone footage (when permitted by venue &amp; weather)</li>
+                                <li>Personalized online gallery</li>
+                                <li>4–8 minute cinematic highlight film</li>
+                            </ul>
+                            <div class="addons">
+                                <div class="addons-title">Optional add-ons available:</div>
+                                <ul class="addons-list">
+                                    <li>Additional coverage hours</li>
+                                    <li>Ceremony or speech edits</li>
+                                    <li>RAW footage</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="package-footer">
+                            <button type="button" class="cta-button inquire-btn" data-package="essentials">Inquire About Essentials</button>
+                        </div>
+                    </article>
+
+                    <article class="package-card popular">
+                        <div class="package-header">
+                            <h3 class="package-name">Signature Collection</h3>
+                            <div class="package-badge">Most Popular</div>
+                            <div class="package-price">Starting at $1,615</div>
+                        </div>
+                        <div class="package-body">
+                            <p class="package-description">A balanced blend of storytelling and documentation — ideal for couples who want to relive the full experience.</p>
+                            <ul class="package-features">
+                                <li>Up to 8 hours of wedding day coverage</li>
+                                <li>Multi-camera ceremony &amp; speeches</li>
+                                <li>Drone footage (when permitted)</li>
+                                <li>Personalized online gallery</li>
+                                <li>6–10 minute cinematic highlight film</li>
+                                <li>RAW footage archive</li>
+                            </ul>
+                            <div class="addons">
+                                <div class="addons-title">Optional add-ons available:</div>
+                                <ul class="addons-list">
+                                    <li>Additional coverage hours</li>
+                                    <li>Polished standalone edits (ceremony, speeches, first look)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="package-footer">
+                            <button type="button" class="cta-button inquire-btn" data-package="signature">Inquire About Signature</button>
+                        </div>
+                    </article>
+
+                    <article class="package-card">
+                        <div class="package-header">
+                            <h3 class="package-name">Heirloom Collection</h3>
+                            <div class="package-price">Starting at $1,850</div>
+                        </div>
+                        <div class="package-body">
+                            <p class="package-description">Designed for couples who want their wedding preserved in its fullest, most intentional form.</p>
+                            <ul class="package-features">
+                                <li>Up to 8 hours of wedding day coverage</li>
+                                <li>Multi-camera ceremony &amp; speeches</li>
+                                <li>Drone footage (when permitted)</li>
+                                <li>Personalized online gallery</li>
+                                <li>10–14 minute cinematic feature film</li>
+                                <li>Full documentary film cut</li>
+                                <li>RAW footage archive</li>
+                                <li>Polished, standalone films of ceremony, speeches &amp; first look</li>
+                            </ul>
+                        </div>
+                        <div class="package-footer">
+                            <button type="button" class="cta-button inquire-btn" data-package="heirloom">Inquire About Heirloom</button>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="note">
+                    <strong>Heirloom note:</strong> This collection offers the most complete and timeless preservation of your wedding day.
+                </div>
+            </div>
+        </section>
+        </main>
+    </div>
+
+    <div class="inquiry-modal" id="inquiryModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="inquiryTitle">
+        <div class="inquiry-backdrop" data-close="true"></div>
+        <div class="inquiry-dialog">
+            <div class="inquiry-header">
+                <h3 class="inquiry-title" id="inquiryTitle">Inquire</h3>
+                <button type="button" class="inquiry-close" aria-label="Close" data-close="true">×</button>
+            </div>
+            <div class="inquiry-body">
+                <form id="inquiryForm" action="https://formspree.io/f/mpwlzbld" method="POST">
+                    <input type="hidden" name="_subject" id="inquirySubject" value="New inquiry from Promise Pine pricing">
+                    <input type="hidden" name="package" id="inquiryPackage" value="">
+
+                    <div class="inquiry-grid">
+                        <div class="inquiry-field">
+                            <label class="inquiry-label" for="inquiryName">Name</label>
+                            <input class="inquiry-input" id="inquiryName" name="name" type="text" autocomplete="name" required>
+                        </div>
+                        <div class="inquiry-field">
+                            <label class="inquiry-label" for="inquiryEmail">Email</label>
+                            <input class="inquiry-input" id="inquiryEmail" name="email" type="email" autocomplete="email" required>
+                        </div>
+                        <div class="inquiry-field">
+                            <label class="inquiry-label" for="inquiryPhone">Phone (optional)</label>
+                            <input class="inquiry-input" id="inquiryPhone" name="phone" type="tel" autocomplete="tel">
+                        </div>
+                        <div class="inquiry-field">
+                            <label class="inquiry-label" for="inquiryDate">Wedding date (optional)</label>
+                            <input class="inquiry-input" id="inquiryDate" name="wedding_date" type="text" placeholder="MM/DD/YYYY or Month Year">
+                        </div>
+                    </div>
+
+                    <div class="inquiry-field" style="margin-top: 12px;">
+                        <label class="inquiry-label" for="inquiryMessage">Message</label>
+                        <textarea class="inquiry-textarea" id="inquiryMessage" name="message" required></textarea>
+                    </div>
+
+                    <div class="inquiry-actions">
+                        <div class="inquiry-status" id="inquiryStatus" aria-live="polite"></div>
+                        <button type="submit" class="cta-button" id="inquirySubmit">Send Inquiry</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Promise Pine</h3>
+                <p>Capturing love stories since 2025</p>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:7193321001" class="contact-link">(719) 332-1001</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:matthew@promisepine.com" class="contact-link">matthew@promisepine.com</a>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/promisepine/" target="_blank" rel="noopener noreferrer" class="social-link" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://vimeo.com/promisepine" target="_blank" rel="noopener noreferrer" class="social-link" title="Vimeo">
+                        <i class="fab fa-vimeo-v"></i>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=61578366600307" target="_blank" rel="noopener noreferrer" class="social-link" title="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.theknot.com/marketplace/promise-pine-colorado-springs-co-2095933" target="_blank" rel="noopener noreferrer" class="social-link" title="The Knot">
+                        <i class="fas fa-ring"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Promise Pine. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script>
+        (function() {
+            const iframe = document.getElementById('heroVimeoPlayer');
+
+            const player = new Vimeo.Player(iframe);
+
+            player.on('loaded', function() {
+                player.setVolume(0);
+            });
+
+            player.on('error', function() {
+                document.body.style.background = '#000';
+            });
+        })();
+    </script>
+
+    <script>
+        (function() {
+            const modal = document.getElementById('inquiryModal');
+            const form = document.getElementById('inquiryForm');
+            const titleEl = document.getElementById('inquiryTitle');
+            const subjectEl = document.getElementById('inquirySubject');
+            const packageEl = document.getElementById('inquiryPackage');
+            const messageEl = document.getElementById('inquiryMessage');
+            const statusEl = document.getElementById('inquiryStatus');
+            const submitEl = document.getElementById('inquirySubmit');
+            const nameEl = document.getElementById('inquiryName');
+
+            const presets = {
+                essentials: {
+                    title: 'Essentials Collection Inquiry',
+                    subject: 'Essentials Collection Inquiry — Promise Pine',
+                    message: "Hi Matthew,\n\nI'm interested in your Essentials Collection and would love to check availability.\n\nWedding date (if known):\nVenue / city:\nHow you found Promise Pine:\n\nThank you!"
+                },
+                signature: {
+                    title: 'Signature Collection Inquiry',
+                    subject: 'Signature Collection Inquiry — Promise Pine',
+                    message: "Hi Matthew,\n\nI'm interested in your Signature Collection and would love to learn what the next steps are.\n\nWedding date (if known):\nVenue / city:\nAnything you'd like us to focus on (vows, speeches, etc.):\n\nThank you!"
+                },
+                heirloom: {
+                    title: 'Heirloom Collection Inquiry',
+                    subject: 'Heirloom Collection Inquiry — Promise Pine',
+                    message: "Hi Matthew,\n\nI'm interested in your Heirloom Collection and would love to talk about coverage and deliverables.\n\nWedding date (if known):\nVenue / city:\nTimeline notes (if any):\n\nThank you!"
+                }
+            };
+
+            function openModal(pkgKey) {
+                const preset = presets[pkgKey] || presets.essentials;
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+
+                titleEl.textContent = preset.title;
+                subjectEl.value = preset.subject;
+                packageEl.value = pkgKey;
+                if (!messageEl.value || messageEl.value.trim().length < 3) {
+                    messageEl.value = preset.message;
+                }
+                statusEl.textContent = '';
+                submitEl.disabled = false;
+                submitEl.textContent = 'Send Inquiry';
+
+                setTimeout(() => {
+                    nameEl.focus();
+                }, 0);
+            }
+
+            function closeModal() {
+                modal.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+                statusEl.textContent = '';
+            }
+
+            document.addEventListener('click', (e) => {
+                const inquire = e.target.closest('[data-package]');
+                if (inquire) {
+                    e.preventDefault();
+                    const key = inquire.getAttribute('data-package');
+                    openModal(key);
+                    return;
+                }
+
+                const closeTarget = e.target.closest('[data-close="true"]');
+                if (closeTarget && modal.getAttribute('aria-hidden') === 'false') {
+                    e.preventDefault();
+                    closeModal();
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') {
+                    closeModal();
+                }
+            });
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                statusEl.textContent = 'Sending…';
+                submitEl.disabled = true;
+
+                try {
+                    const formData = new FormData(form);
+                    const res = await fetch(form.action, {
+                        method: 'POST',
+                        headers: { 'Accept': 'application/json' },
+                        body: formData
+                    });
+
+                    if (!res.ok) {
+                        throw new Error('Request failed');
+                    }
+
+                    statusEl.textContent = 'Sent! I’ll get back to you soon.';
+                    submitEl.textContent = 'Sent';
+                    form.reset();
+                    setTimeout(() => {
+                        closeModal();
+                    }, 900);
+                } catch (err) {
+                    statusEl.textContent = 'Sorry — something went wrong. Please try again or email matthew@promisepine.com.';
+                    submitEl.disabled = false;
+                }
+            });
+        })();
+    </script>
+ </body>
+ </html>
