@@ -347,13 +347,29 @@
             transform: scale(1.05);
         }
 
+        .raw-footage-play-overlay {
+            cursor: pointer;
+        }
+
+        .raw-footage-iframe {
+            display: none;
+        }
+
+        .raw-footage-thumbnail.playing img,
+        .raw-footage-thumbnail.playing .raw-footage-play-overlay {
+            display: none;
+        }
+
+        .raw-footage-thumbnail.playing .raw-footage-iframe {
+            display: block;
+        }
+
         .coming-soon-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(45, 90, 61, 0.7) 0%, rgba(26, 61, 42, 0.8) 100%);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -377,6 +393,36 @@
             font-weight: 300;
             font-family: 'Georgia', serif;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Play button styling */
+        .play-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #2d5a3d;
+            border: none;
+            border-radius: 50px;
+            padding: 16px 32px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .play-button:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: scale(1.05);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.4);
+        }
+
+        .play-button svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
         }
 
         /* Action Buttons Section */
@@ -848,12 +894,24 @@
             <h2 class="raw-footage-title">RAW Footage</h2>
             <p class="raw-footage-subtitle">The complete unedited moments from your special day</p>
             
-            <div class="raw-footage-thumbnail">
+            <div class="raw-footage-thumbnail" id="rawFootagePlayer">
                 <img src="RAW Footage Large.jpeg" alt="RAW Footage Thumbnail">
-                <div class="coming-soon-overlay">
-                    <h3 class="coming-soon-text">Coming Soon</h3>
-                    <p class="coming-soon-subtext">Full footage will be available shortly</p>
+                <div class="coming-soon-overlay raw-footage-play-overlay" role="button" tabindex="0" aria-label="Play RAW Footage">
+                    <button class="play-button">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                        Play
+                    </button>
                 </div>
+                <iframe
+                    class="raw-footage-iframe"
+                    data-src="https://player.vimeo.com/video/1147759774?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                    frameborder="0"
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    style="position:absolute;top:0;left:0;width:100%;height:100%;"
+                    title="RAW Footage HD"></iframe>
             </div>
         </div>
     </section>
@@ -1042,6 +1100,40 @@
                 }, 300);
             }, 3000);
         }
+
+        (function initRawFootagePlayer() {
+            const player = document.getElementById('rawFootagePlayer');
+            if (!player) return;
+
+            const overlay = player.querySelector('.raw-footage-play-overlay');
+            const playButton = player.querySelector('.play-button');
+            const iframe = player.querySelector('.raw-footage-iframe');
+            if (!overlay || !iframe) return;
+
+            const play = () => {
+                if (!iframe.getAttribute('src')) {
+                    const baseSrc = iframe.getAttribute('data-src');
+                    iframe.setAttribute('src', `${baseSrc}&autoplay=1`);
+                }
+                player.classList.add('playing');
+            };
+
+            // Handle clicks on both the overlay and the play button
+            overlay.addEventListener('click', play);
+            if (playButton) {
+                playButton.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Prevent double-firing
+                    play();
+                });
+            }
+            
+            overlay.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    play();
+                }
+            });
+        })();
     </script>
 </body>
 </html>
