@@ -100,6 +100,15 @@
           Download from OneDrive
         </a>
       </div>
+      <div class="review-actions" style="margin-top: 2rem; text-align: center;">
+        <p class="lead" style="margin-bottom: 1rem; color: var(--muted);">Enjoyed our work? Leave us a review!</p>
+        <a class="review-button" href="https://theknot.com/review-wedding-vendors/2095933" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          Leave a Review on The Knot
+        </a>
+      </div>
     </section>
   </main>
 
@@ -129,15 +138,14 @@
     // Custom thumbnail with play button - loads player on click
     (function initCustomPlayer() {
       const target = document.getElementById('videoFrame');
-      const vimeoUrl = 'https://vimeo.com/promisepine/drea-david';
-      const oembed = `https://vimeo.com/api/oembed.json?url=${encodeURIComponent(vimeoUrl)}&dnt=1&responsive=1&byline=0&portrait=0&title=0`;
-
+      
       // Detect mobile device
       const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
 
       // Create custom thumbnail with play button using local image
       const thumbnailContainer = document.createElement('div');
       thumbnailContainer.className = 'video-thumbnail';
+      thumbnailContainer.style.cssText = 'position: relative; width: 100%; aspect-ratio: 3996/2160; cursor: pointer; overflow: hidden;';
       thumbnailContainer.innerHTML = `
         <img src="Thumbnail.jpeg" alt="Drea & David Wedding Film Thumbnail" class="thumbnail-image" />
         <button class="play-button" aria-label="Play wedding film">
@@ -150,57 +158,10 @@
       
       target.appendChild(thumbnailContainer);
       
-      // Load player on click
+      // Load player on click - use direct embed for better mobile compatibility
       thumbnailContainer.addEventListener('click', function() {
-        // Fetch embed code when user clicks
-        fetch(oembed)
-          .then(r => r.ok ? r.json() : Promise.reject(new Error('Failed to load video')))
-          .then(data => {
-            target.innerHTML = data.html;
-            const iframe = target.querySelector('iframe');
-            if (iframe) {
-              iframe.setAttribute('title', 'Drea & David — Wedding Film');
-              iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
-              iframe.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture');
-              
-              // Add autoplay parameter to start playing immediately
-              let src = iframe.getAttribute('src');
-              if (src) {
-                const separator = src.includes('?') ? '&' : '?';
-                
-                // On mobile: unmute and enable fullscreen
-                if (isMobile) {
-                  src += separator + 'autoplay=1&muted=0';
-                  
-                  // Request fullscreen on mobile
-                  iframe.addEventListener('load', function() {
-                    // Small delay to ensure video is ready
-                    setTimeout(() => {
-                      if (iframe.requestFullscreen) {
-                        iframe.requestFullscreen().catch(err => {
-                          console.log('Fullscreen request failed:', err);
-                        });
-                      } else if (iframe.webkitRequestFullscreen) {
-                        iframe.webkitRequestFullscreen();
-                      } else if (iframe.mozRequestFullScreen) {
-                        iframe.mozRequestFullScreen();
-                      } else if (iframe.msRequestFullscreen) {
-                        iframe.msRequestFullscreen();
-                      }
-                    }, 100);
-                  });
-                } else {
-                  // Desktop: just autoplay
-                  src += separator + 'autoplay=1';
-                }
-                
-                iframe.setAttribute('src', src);
-              }
-            }
-          })
-          .catch(() => {
-            target.innerHTML = '<div class="video-fallback">Unable to load the video. <a href="https://vimeo.com/promisepine/drea-david" target="_blank" rel="noopener">Watch on Vimeo</a>.</div>';
-          });
+        const autoplayParam = isMobile ? '&autoplay=1&muted=1' : '&autoplay=1';
+        target.innerHTML = '<div style="padding:54.05% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1131806323?badge=0&autopause=0&player_id=0&app_id=58479' + autoplayParam + '" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Drea &amp; David"></iframe></div><script src="https://player.vimeo.com/api/player.js"><\/script>';
       });
     })();
 
@@ -246,9 +207,13 @@
     (function initDocumentaryPlayer() {
       const target = document.getElementById('documentaryVideoFrame');
       
+      // Detect mobile device
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+      
       // Create custom thumbnail with play button using documentary thumbnail image
       const thumbnailContainer = document.createElement('div');
       thumbnailContainer.className = 'video-thumbnail';
+      thumbnailContainer.style.cssText = 'position: relative; width: 100%; aspect-ratio: 3840/2560; cursor: pointer; overflow: hidden;';
       thumbnailContainer.innerHTML = `
         <img src="Documentary Thumbnail.jpeg" alt="Drea & David Documentary Thumbnail" class="thumbnail-image" />
         <button class="play-button" aria-label="Play documentary film">
@@ -261,9 +226,10 @@
       
       target.appendChild(thumbnailContainer);
       
-      // Load player on click - use exact embed code provided
+      // Load player on click - use direct embed for better mobile compatibility
       thumbnailContainer.addEventListener('click', function() {
-        target.innerHTML = '<div style="padding:66.67% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1151744339?h=9dbb57bdca&badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Drea &amp; David Documentary"></iframe></div><script src="https://player.vimeo.com/api/player.js"><\/script>';
+        const autoplayParam = isMobile ? '&autoplay=1&muted=1' : '&autoplay=1';
+        target.innerHTML = '<div style="padding:66.67% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1151744339?h=9dbb57bdca&badge=0&autopause=0&player_id=0&app_id=58479' + autoplayParam + '" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Drea &amp; David Documentary"></iframe></div><script src="https://player.vimeo.com/api/player.js"><\/script>';
       });
     })();
   </script>
