@@ -26,6 +26,10 @@
       <div class="hero-slide" style="background-image: url('Images/Wedding Party.jpeg');"></div>
     </div>
     <div class="hero-overlay"></div>
+    <div class="wedding-date">
+      <a href="https://www.promisepine.com" class="brand-link">Promise Pine</a>
+      <div class="date-text">September 27, 2025</div>
+    </div>
   </header>
 
   <main class="container" role="main">
@@ -73,20 +77,13 @@
     </section>
 
     <section class="video-section raw-footage-section">
-      <h2 class="section-title">Raw Footage & Documentary Film</h2>
+      <h2 class="section-title">Documentary Film</h2>
       
-      <div class="video-frame coming-soon-frame">
-        <img src="./Dinner.jpeg" alt="Raw footage preview" class="coming-soon-thumbnail" />
-        <div class="coming-soon-overlay">
-          <div class="coming-soon-content">
-            <button class="play-button-disabled" disabled aria-label="Video coming soon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-              <span>Coming Soon</span>
-            </button>
-          </div>
-        </div>
+      <div class="video-frame" id="documentaryVideoFrame" aria-label="Vimeo documentary video player">
+        <noscript>
+          <p>To watch this documentary, please enable JavaScript or open it directly on Vimeo:</p>
+          <p><a class="button" href="https://vimeo.com/1151744339" target="_blank" rel="noopener">Open on Vimeo</a></p>
+        </noscript>
       </div>
     </section>
 
@@ -244,6 +241,31 @@
         });
       }
     });
+
+    // Documentary video custom thumbnail with play button
+    (function initDocumentaryPlayer() {
+      const target = document.getElementById('documentaryVideoFrame');
+      
+      // Create custom thumbnail with play button using documentary thumbnail image
+      const thumbnailContainer = document.createElement('div');
+      thumbnailContainer.className = 'video-thumbnail';
+      thumbnailContainer.innerHTML = `
+        <img src="Documentary Thumbnail.jpeg" alt="Drea & David Documentary Thumbnail" class="thumbnail-image" />
+        <button class="play-button" aria-label="Play documentary film">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+          <span>Play</span>
+        </button>
+      `;
+      
+      target.appendChild(thumbnailContainer);
+      
+      // Load player on click - use exact embed code provided
+      thumbnailContainer.addEventListener('click', function() {
+        target.innerHTML = '<div style="padding:66.67% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1151744339?h=9dbb57bdca&badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Drea &amp; David Documentary"></iframe></div><script src="https://player.vimeo.com/api/player.js"><\/script>';
+      });
+    })();
   </script>
 </body>
 </html>
