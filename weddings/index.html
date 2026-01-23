@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise Pine - Wedding Videography</title>
+    <meta name="description" content="Promise Pine - Capturing your wedding story with cinematic excellence">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="PP Favicon.png">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="divider.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <!-- Placeholder Image -->
+        <div class="hero-placeholder" id="heroPlaceholder" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; background-image: url('PP Website Load.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
+        <!-- Video Container -->
+        <div class="hero-video-container" id="heroVideoContainer" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.5s ease; z-index: 1;">
+            <iframe 
+                id="heroVimeoPlayer"
+                src="https://player.vimeo.com/video/1118904818?h=3cb30b67b3&background=1&autopause=0&loop=1&autoplay=1&muted=1&controls=0&title=0&byline=0&portrait=0" 
+                frameborder="0" 
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                title="Weddings Hero"
+                webkitallowfullscreen
+                mozallowfullscreen
+                allowfullscreen
+            ></iframe>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">Promise Pine</h1>
+            <p class="hero-subtitle">Cinematic Wedding Stories</p>
+            <a href="#contact" class="cta-button">Tell Your Wedding Story</a>
+        </div>
+    </header>
+
+    <!-- Mountain Shape Divider -->
+    <div class="mountain-divider">
+        <img src="mountain-divider.svg" alt="Mountain divider" class="mountain-svg">
+    </div>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-toggle" id="navToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="https://promisepine.com" class="nav-link active">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#portfolio" class="nav-link">Watch Films</a></li>
+            <li><a href="#reviews" class="nav-link">Reviews</a></li>
+            <li><a href="#pricing" class="nav-link">Pricing</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="nav-logo">
+            <img src="PP Logo.png" alt="Promise Pine Logo">
+        </div>
+    </nav>
+
+    <!-- Contact Info Bar -->
+    <div class="contact-info-bar">
+        <div class="contact-info-item">
+            <a href="tel:7193321001">
+                <span class="contact-full"><i class="fas fa-phone"></i> (719) 332-1001</span>
+                <span class="contact-short"><i class="fas fa-phone"></i> Call</span>
+            </a>
+        </div>
+        <div class="contact-info-item">
+            <a href="mailto:matthew@promisepine.com">
+                <span class="contact-full"><i class="fas fa-envelope"></i> matthew@promisepine.com</span>
+                <span class="contact-short"><i class="fas fa-envelope"></i> Email</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="about-subtitle">Crafted quietly, intentionally, honestly</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Promise Pine wedding films are filmed quietly, allowing the day to unfold naturally without disruption. Every film is crafted with intention, centered on the couple and the moments that matter most to them. The result is an honest, cinematic story that reflects who you are and how it truly felt to be there.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="About Weddings.jpeg" alt="Promise Pine Wedding Films" class="about-logo">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="portfolio">
+            <h2>Watch Films</h2>
+            <div class="portfolio-container">
+                <!-- Drea & David - LARGE -->
+                <div class="portfolio-item portfolio-item-large">
+                    <div class="video-lightbox">
+                        <div class="video-thumbnail" data-video-url="https://vimeo.com/promisepine/drea-david" data-video-id="">
+                            <div class="video-preview" style="background-image: url(&quot;Thumbnails/Drea & David.jpeg&quot;);"></div>
+                        </div>
+                    </div>
+                    <div class="video-title">
+                        <h3>Drea & David</h3>
+                    </div>
+                </div>
+                
+                <!-- Hayley & Tony - small -->
+                <div class="portfolio-item">
+                    <div class="video-lightbox">
+                        <div class="video-thumbnail" data-video-url="https://vimeo.com/promisepine/hayley-tony" data-video-id="">
+                            <div class="video-preview" style="background-image: url(&quot;Thumbnails/Hayley & Tony.jpeg&quot;);"></div>
+                        </div>
+                    </div>
+                    <div class="video-title">
+                        <h3>Hayley & Tony</h3>
+                    </div>
+                </div>
+                
+                <!-- Dillon & Maria - small -->
+                <div class="portfolio-item">
+                    <div class="video-lightbox">
+                        <div class="video-thumbnail" data-video-url="https://vimeo.com/promisepine/dillon-maria" data-video-id="">
+                            <div class="video-preview" style="background-image: url(&quot;Thumbnails/Dillon & Maria.jpeg&quot;);"></div>
+                        </div>
+                    </div>
+                    <div class="video-title">
+                        <h3>Dillon & Maria</h3>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Portfolio CTA Buttons -->
+            <div class="portfolio-cta">
+                <a href="https://vimeo.com/promisepine?fl=pp&fe=sh" target="_blank" class="cta-button portfolio-button">See More</a>
+                <a href="https://www.instagram.com/promisepine/" target="_blank" class="cta-button portfolio-button">Reels</a>
+            </div>
+        </section>
+
+        <!-- Kind Words / Reviews Section -->
+        <section id="reviews" class="reviews">
+            <div class="container">
+                <h2 class="section-title">Kind Words</h2>
+                <div class="reviews-grid">
+                    
+                    <!-- Review 1 - Dillon M -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-author">
+                                <h4>Dillon M.</h4>
+                                <div class="review-stars">★★★★★</div>
+                            </div>
+                        </div>
+                        <div class="review-text">
+                            <p class="review-preview">We scrambled to last minute find a videographer within our budget. Promise Pine was a lifesaver!</p>
+                            <p class="review-full">We found out a few weeks before our wedding that several important family members could not make it. Matthew was our videographer and not only did he say he would produce full edited videos of our ceremony and speeches, he also offered to create a 6-8 minute wedding film encapsulating the entire day. He was always displaying excitement and positivity about the wedding which was a breath of fresh air from the seriousness or stress that wedding planning can often bring out in people. During the entire process from electronic communication to in person the day of the wedding, Matthew was professional, polite, and complimentary. He never felt like he was obtrusive so we were able to enjoy our day without hinderance, and he was still ready to be where he needed to be. Exactly one month after the wedding we received all our videos. We were FLOORED. The ceremony and speeches were clean and clear, and the wedding film was AMAZING. First of all, he extended it to 10 minutes for free - he wasn't adding in extra fluff but elements that we thought really fit the video. Also, he incorporated aspects of the wedding that were most important to us, and even modeled it after movie genres and songs that we liked making it feel really personal and like a whole cinematic experience. I had a friend that was so in love with the video that even though she's not even dating anyone right now, she said she needed to have Matthew as her videographer lol! We weren't planning on having anything special for videos, but we are really happy that these are the videos we get to watch for years to come. The wedding film Matthew pieced together we will especially treasure and we are just really grateful for Promise Pine and their work.</p>
+                        </div>
+                        <button class="read-more-btn">Read More</button>
+                    </div>
+
+                    <!-- Review 2 - Linda P -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-author">
+                                <h4>Linda P.</h4>
+                                <div class="review-stars">★★★★★</div>
+                            </div>
+                        </div>
+                        <div class="review-text">
+                            <p class="review-preview">We are so impressed and pleased with your work! I give you 5 out of 5 stars, 2 thumbs up!</p>
+                            <p class="review-full">Matthew, Greg and I just watched the video of the ceremony. It felt like we were reliving that beautiful day again when we watched it. We both even teared up a little. You did such a fabulous job with the sound, the cinematography and your presence. You were never in the way (at least for me) and you were professional and kind. Other people who have been able to watch the videos also commented on how well done they were. Thank you again, Matthew! I don't think we could have hired a better videographer.</p>
+                        </div>
+                        <button class="read-more-btn">Read More</button>
+                    </div>
+
+                    <!-- Review 3 - Sarah -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-author">
+                                <h4>Sarah</h4>
+                                <div class="review-stars">★★★★★</div>
+                            </div>
+                        </div>
+                        <div class="review-text">
+                            <p class="review-preview">Matthew did a wonderful job capturing our special day!</p>
+                            <p class="review-full">He was able to keep up with the busy pace of the wedding events without a hitch! The end result was a video that we will cherish forever. I am so grateful that we decided to have our wedding filmed! I would recommend him to anyone I know in the future!</p>
+                        </div>
+                        <button class="read-more-btn">Read More</button>
+                    </div>
+
+                    <!-- Review 4 - Hayley -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-author">
+                                <h4>Hayley</h4>
+                                <div class="review-stars">★★★★★</div>
+                            </div>
+                        </div>
+                        <div class="review-text">
+                            <p class="review-preview">Matt did a great job of delivering our wedding video, was professional, kind and was high value. Did a great job. Would highly recommend.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="pricing">
+            <div class="container">
+                <h2 class="section-title">Wedding Videography Packages</h2>
+                <p class="section-subtitle">Simple, story-first collections built to preserve the moments that matter most — with optional add-ons available to tailor coverage to your day.</p>
+
+                <div class="pricing-grid">
+                    <article class="package-card">
+                        <div class="package-header">
+                            <h3 class="package-name">Essentials Collection</h3>
+                            <div class="package-price">Starting at $1,350</div>
+                        </div>
+                        <div class="package-body">
+                            <p class="package-description">Perfect for couples who want a beautiful, cinematic keepsake of their day without extra complexity.</p>
+                            <ul class="package-features">
+                                <li>Up to 8 hours of wedding day coverage</li>
+                                <li>Single-camera coverage</li>
+                                <li>Drone footage (when permitted by venue & weather)</li>
+                                <li>Personalized online gallery</li>
+                                <li>4–8 minute cinematic highlight film</li>
+                            </ul>
+                            <div class="addons">
+                                <div class="addons-title">Optional add-ons available:</div>
+                                <ul class="addons-list">
+                                    <li>Additional coverage hours</li>
+                                    <li>Ceremony or speech edits</li>
+                                    <li>RAW footage</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="package-footer">
+                            <button type="button" class="cta-button inquire-btn" data-package="essentials">Inquire About Essentials</button>
+                        </div>
+                    </article>
+
+                    <article class="package-card popular">
+                        <div class="package-header">
+                            <h3 class="package-name">Signature Collection</h3>
+                            <div class="package-badge">Most Popular</div>
+                            <div class="package-price">Starting at $1,615</div>
+                        </div>
+                        <div class="package-body">
+                            <p class="package-description">A balanced blend of storytelling and documentation — ideal for couples who want to relive the full experience.</p>
+                            <ul class="package-features">
+                                <li>Up to 8 hours of wedding day coverage</li>
+                                <li>Multi-camera ceremony & speeches</li>
+                                <li>Drone footage (when permitted)</li>
+                                <li>Personalized online gallery</li>
+                                <li>6–10 minute cinematic highlight film</li>
+                                <li>RAW footage archive</li>
+                            </ul>
+                            <div class="addons">
+                                <div class="addons-title">Optional add-ons available:</div>
+                                <ul class="addons-list">
+                                    <li>Additional coverage hours</li>
+                                    <li>Polished standalone edits (ceremony, speeches, first look)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="package-footer">
+                            <button type="button" class="cta-button inquire-btn" data-package="signature">Inquire About Signature</button>
+                        </div>
+                    </article>
+
+                    <article class="package-card">
+                        <div class="package-header">
+                            <h3 class="package-name">Heirloom Collection</h3>
+                            <div class="package-price">Starting at $1,850</div>
+                        </div>
+                        <div class="package-body">
+                            <p class="package-description">Designed for couples who want their wedding preserved in its fullest, most intentional form.</p>
+                            <ul class="package-features">
+                                <li>Up to 8 hours of wedding day coverage</li>
+                                <li>Multi-camera ceremony & speeches</li>
+                                <li>Drone footage (when permitted)</li>
+                                <li>Personalized online gallery</li>
+                                <li>10–14 minute cinematic feature film</li>
+                                <li>Full documentary film cut</li>
+                                <li>RAW footage archive</li>
+                                <li>Polished, standalone films of ceremony, speeches & first look</li>
+                            </ul>
+                        </div>
+                        <div class="package-footer">
+                            <button type="button" class="cta-button inquire-btn" data-package="heirloom">Inquire About Heirloom</button>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="note">
+                    <strong>Heirloom note:</strong> This collection offers the most complete and timeless preservation of your wedding day.
+                </div>
+
+                <!-- Inquiry Modal -->
+                <div class="inquiry-modal" id="inquiryModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="inquiryTitle">
+                    <div class="inquiry-backdrop" data-close="true"></div>
+                    <div class="inquiry-dialog">
+                        <div class="inquiry-header">
+                            <h3 class="inquiry-title" id="inquiryTitle">Inquire</h3>
+                            <button type="button" class="inquiry-close" aria-label="Close" data-close="true">×</button>
+                        </div>
+                        <div class="inquiry-body">
+                            <form id="inquiryForm" action="https://formspree.io/f/mpwlzbld" method="POST">
+                                <input type="hidden" name="_subject" id="inquirySubject" value="New inquiry from Promise Pine pricing">
+                                <input type="hidden" name="package" id="inquiryPackage" value="">
+
+                                <div class="inquiry-grid">
+                                    <div class="inquiry-field">
+                                        <label class="inquiry-label" for="inquiryName">Name</label>
+                                        <input class="inquiry-input" id="inquiryName" name="name" type="text" autocomplete="name" required>
+                                    </div>
+                                    <div class="inquiry-field">
+                                        <label class="inquiry-label" for="inquiryEmail">Email</label>
+                                        <input class="inquiry-input" id="inquiryEmail" name="email" type="email" autocomplete="email" required>
+                                    </div>
+                                    <div class="inquiry-field">
+                                        <label class="inquiry-label" for="inquiryPhone">Phone (optional)</label>
+                                        <input class="inquiry-input" id="inquiryPhone" name="phone" type="tel" autocomplete="tel">
+                                    </div>
+                                    <div class="inquiry-field">
+                                        <label class="inquiry-label" for="inquiryDate">Wedding date (optional)</label>
+                                        <input class="inquiry-input" id="inquiryDate" name="wedding_date" type="text" placeholder="MM/DD/YYYY or Month Year">
+                                    </div>
+                                </div>
+
+                                <div class="inquiry-field" style="margin-top: 12px;">
+                                    <label class="inquiry-label" for="inquiryMessage">Message</label>
+                                    <textarea class="inquiry-textarea" id="inquiryMessage" name="message" required></textarea>
+                                </div>
+
+                                <div class="inquiry-actions">
+                                    <div class="inquiry-status" id="inquiryStatus" aria-live="polite"></div>
+                                    <button type="submit" class="cta-button" id="inquirySubmit">Send Inquiry</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <h2>Get in Touch</h2>
+            <div class="contact-content">
+                <form id="contactForm" action="https://formspree.io/f/mpwlzbld" method="POST" class="contact-form">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <input type="tel" name="phone" placeholder="Your Phone Number (optional)" pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number">
+                    <textarea name="message" placeholder="Your Message" required></textarea>
+                    <!-- Add a hidden input for the _subject parameter if you want to customize the email subject -->
+                    <input type="hidden" name="_subject" value="New message from Promise Pine website">
+                    <!-- Add a honeypot field to help prevent spam -->
+                    <input type="text" name="_gotcha" style="display:none">
+                    <!-- Add a thank you page redirect after submission (optional) -->
+                    <input type="hidden" name="_next" value="/thank-you.html">
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Promise Pine</h3>
+                <p>Capturing love stories since 2025</p>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:7193321001" class="contact-link">(719) 332-1001</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:matthew@promisepine.com" class="contact-link">matthew@promisepine.com</a>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/promisepine/" target="_blank" rel="noopener noreferrer" class="social-link" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://vimeo.com/promisepine" target="_blank" rel="noopener noreferrer" class="social-link" title="Vimeo">
+                        <i class="fab fa-vimeo-v"></i>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=61578366600307" target="_blank" rel="noopener noreferrer" class="social-link" title="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.theknot.com/marketplace/promise-pine-colorado-springs-co-2095933" target="_blank" rel="noopener noreferrer" class="social-link" title="The Knot">
+                        <i class="fas fa-ring"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Promise Pine. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Lightbox for Portfolio Videos -->
+    <div id="videoLightbox" class="lightbox">
+        <div class="lightbox-content">
+            <div class="video-container">
+                <iframe id="lightboxIframe" src="" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <span class="close-lightbox">&times;</span>
+        </div>
+    </div>
+
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script>
+        // Hero Video Loop Control
+        (function() {
+            const placeholder = document.getElementById('heroPlaceholder');
+            const videoContainer = document.getElementById('heroVideoContainer');
+            const iframe = document.getElementById('heroVimeoPlayer');
+            
+            // Initialize Vimeo Player
+            const player = new Vimeo.Player(iframe);
+            let loopCount = 0;
+            const maxLoops = 3;
+            let lastTime = 0;
+            let videoDuration = 0;
+            
+            // Get video duration
+            player.getDuration().then(function(duration) {
+                videoDuration = duration;
+            });
+            
+            // Show video once it's loaded and ready
+            player.on('loaded', function() {
+                videoContainer.style.opacity = '1';
+                placeholder.style.display = 'none';
+            });
+            
+            // Track video time to detect loops
+            player.on('timeupdate', function(data) {
+                const currentTime = data.seconds;
+                
+                // Detect loop: when time jumps back to beginning
+                if (lastTime > videoDuration * 0.9 && currentTime < 1) {
+                    loopCount++;
+                    console.log('Loop detected:', loopCount);
+                    
+                    if (loopCount >= maxLoops) {
+                        // Stop the video and show placeholder
+                        player.pause();
+                        player.setCurrentTime(0);
+                        
+                        setTimeout(() => {
+                            videoContainer.style.opacity = '0';
+                            setTimeout(() => {
+                                placeholder.style.display = 'block';
+                            }, 500);
+                        }, 100);
+                    }
+                }
+                
+                lastTime = currentTime;
+            });
+            
+            // Fallback: If video fails to load, keep placeholder visible
+            player.on('error', function(error) {
+                console.log('Vimeo player error:', error);
+                videoContainer.style.opacity = '0';
+                placeholder.style.display = 'block';
+            });
+        })();
+    </script>
+    
+    <!-- Video Lightbox Modal -->
+    <div id="videoLightbox" class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <div class="lightbox-content">
+            <iframe id="lightboxIframe" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+    <script src="lightbox.js"></script>
+    
+    <script>
+        (function() {
+            const modal = document.getElementById('inquiryModal');
+            const form = document.getElementById('inquiryForm');
+            const titleEl = document.getElementById('inquiryTitle');
+            const subjectEl = document.getElementById('inquirySubject');
+            const packageEl = document.getElementById('inquiryPackage');
+            const messageEl = document.getElementById('inquiryMessage');
+            const statusEl = document.getElementById('inquiryStatus');
+            const submitEl = document.getElementById('inquirySubmit');
+            const nameEl = document.getElementById('inquiryName');
+
+            const presets = {
+                essentials: {
+                    title: 'Essentials Collection Inquiry',
+                    subject: 'Essentials Collection Inquiry — Promise Pine',
+                    message: "Hi Matthew,\n\nI'm interested in your Essentials Collection and would love to check availability.\n\nWedding date (if known):\nVenue / city:\nHow you found Promise Pine:\n\nThank you!"
+                },
+                signature: {
+                    title: 'Signature Collection Inquiry',
+                    subject: 'Signature Collection Inquiry — Promise Pine',
+                    message: "Hi Matthew,\n\nI'm interested in your Signature Collection and would love to learn what the next steps are.\n\nWedding date (if known):\nVenue / city:\nAnything you'd like us to focus on (vows, speeches, etc.):\n\nThank you!"
+                },
+                heirloom: {
+                    title: 'Heirloom Collection Inquiry',
+                    subject: 'Heirloom Collection Inquiry — Promise Pine',
+                    message: "Hi Matthew,\n\nI'm interested in your Heirloom Collection and would love to talk about coverage and deliverables.\n\nWedding date (if known):\nVenue / city:\nTimeline notes (if any):\n\nThank you!"
+                }
+            };
+
+            function openModal(pkgKey) {
+                const preset = presets[pkgKey] || presets.essentials;
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+
+                titleEl.textContent = preset.title;
+                subjectEl.value = preset.subject;
+                packageEl.value = pkgKey;
+                if (!messageEl.value || messageEl.value.trim().length < 3) {
+                    messageEl.value = preset.message;
+                }
+                statusEl.textContent = '';
+                submitEl.disabled = false;
+                submitEl.textContent = 'Send Inquiry';
+
+                setTimeout(() => {
+                    nameEl.focus();
+                }, 0);
+            }
+
+            function closeModal() {
+                modal.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+                statusEl.textContent = '';
+            }
+
+            document.addEventListener('click', (e) => {
+                const inquire = e.target.closest('[data-package]');
+                if (inquire) {
+                    e.preventDefault();
+                    const key = inquire.getAttribute('data-package');
+                    openModal(key);
+                    return;
+                }
+
+                const closeTarget = e.target.closest('[data-close="true"]');
+                if (closeTarget && modal.getAttribute('aria-hidden') === 'false') {
+                    e.preventDefault();
+                    closeModal();
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') {
+                    closeModal();
+                }
+            });
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                submitEl.disabled = true;
+                submitEl.textContent = 'Sending...';
+                statusEl.textContent = '';
+
+                const formData = new FormData(form);
+                
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        statusEl.textContent = 'Thank you! Your inquiry has been sent.';
+                        form.reset();
+                        setTimeout(() => {
+                            closeModal();
+                        }, 2000);
+                    } else {
+                        throw new Error('Form submission failed');
+                    }
+                })
+                .catch(error => {
+                    statusEl.textContent = 'Sorry, there was an error. Please try again.';
+                    submitEl.disabled = false;
+                    submitEl.textContent = 'Send Inquiry';
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
