@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise Pine Drone Services - Professional Aerial Photography & Videography</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .pricing-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .section-padding {
+            padding: 80px 0;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-black">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect bg-gray-800 bg-opacity-20 backdrop-blur-md border-b border-gray-700 border-opacity-30">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-white font-bold text-xl">
+                    <a href="https://www.promisepine.com" class="flex items-center text-white hover:text-purple-200 transition">
+                        <i class="fas fa-drone mr-2"></i>Promise Pine
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#home" class="text-white hover:text-purple-200 transition">Home</a>
+                    <a href="#about" class="text-white hover:text-purple-200 transition">About</a>
+                    <a href="#documentation" class="text-white hover:text-purple-200 transition">Capture</a>
+                    <a href="#marketing" class="text-white hover:text-purple-200 transition">Marketing</a>
+                    <a href="#cinematography" class="text-white hover:text-purple-200 transition">Cinematography</a>
+                    <a href="#contact" class="text-white hover:text-purple-200 transition">Contact</a>
+                </div>
+                <button class="md:hidden text-white">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative w-full" style="padding-top: 56.25%;">
+        <div class="absolute inset-0">
+            <iframe src="https://player.vimeo.com/video/1143636865?h=ea66f5cbaa&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;controls=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Drone Highlight"></iframe>
+        </div>
+        <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center">
+            <div class="text-center text-white animate-fade-in-up px-6">
+                <h1 class="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-4">Promise Pine Drone Services</h1>
+                <p class="text-sm sm:text-base md:text-xl mb-4 md:mb-6 max-w-2xl mx-auto">
+                    Professional aerial photography and videography services for all your needs
+                </p>
+                <div class="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto">
+                    <a href="#documentation" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold transition transform hover:scale-105 text-sm sm:text-base">
+                        Our Services
+                    </a>
+                    <a href="#contact" class="border-2 border-white text-white hover:bg-white hover:text-purple-600 px-6 py-3 rounded-lg font-semibold transition text-sm sm:text-base">
+                        Get Quote
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold text-gray-800 mb-6 text-center">About Promise Pine</h2>
+                <p class="text-gray-600 mb-12 leading-relaxed text-center text-lg">
+                    Promise Pine Drone Services is your premier provider of professional aerial photography and videography. 
+                    We specialize in capturing stunning aerial footage for documentation, marketing, and cinematography needs.
+                </p>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <i class="fas fa-check-circle text-green-500 text-3xl mb-4"></i>
+                        <h3 class="font-semibold text-gray-800 mb-2">FAA Certified</h3>
+                        <p class="text-gray-600">Fully licensed and compliant with all aviation regulations</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-shield-alt text-blue-500 text-3xl mb-4"></i>
+                        <h3 class="font-semibold text-gray-800 mb-2">Fully Insured</h3>
+                        <p class="text-gray-600">Comprehensive insurance coverage for complete peace of mind</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-camera text-purple-500 text-3xl mb-4"></i>
+                        <h3 class="font-semibold text-gray-800 mb-2">Professional Equipment</h3>
+                        <p class="text-gray-600">State-of-the-art drones and 4K camera technology</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="py-16 bg-gradient-to-br from-gray-50 to-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Services</h2>
+                <p class="text-lg text-gray-600">Professional aerial solutions tailored to your needs</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Aerial Capture -->
+                <a href="#documentation" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden">
+                    <div class="bg-gradient-to-br from-purple-500 to-purple-600 p-8 text-center">
+                        <i class="fas fa-camera text-white text-5xl mb-3"></i>
+                        <h3 class="text-2xl font-bold text-white">Aerial Capture</h3>
+                    </div>
+                    <div class="p-6 text-center">
+                        <p class="text-gray-600 mb-3">Quick turnaround documentation</p>
+                        <p class="text-2xl font-bold text-purple-600">$250</p>
+                    </div>
+                </a>
+                
+                <!-- Aerial Marketing -->
+                <a href="#marketing" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden">
+                    <div class="bg-gradient-to-br from-blue-500 to-blue-600 p-8 text-center">
+                        <i class="fas fa-bullhorn text-white text-5xl mb-3"></i>
+                        <h3 class="text-2xl font-bold text-white">Aerial Marketing</h3>
+                    </div>
+                    <div class="p-6 text-center">
+                        <p class="text-gray-600 mb-3">Professional marketing content</p>
+                        <p class="text-2xl font-bold text-blue-600">$350</p>
+                    </div>
+                </a>
+                
+                <!-- Aerial Cinematography -->
+                <a href="#cinematography" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden">
+                    <div class="bg-gradient-to-br from-green-500 to-green-600 p-8 text-center">
+                        <i class="fas fa-film text-white text-5xl mb-3"></i>
+                        <h3 class="text-2xl font-bold text-white">Aerial Cinematography</h3>
+                    </div>
+                    <div class="p-6 text-center">
+                        <p class="text-gray-600 mb-3">Cinematic storytelling</p>
+                        <p class="text-2xl font-bold text-green-600">Custom Quote</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Aerial Capture Section -->
+    <section id="documentation" class="bg-white">
+        <!-- Hero Video with Title Overlay -->
+        <div class="relative w-full" style="padding:26.04% 0 0 0;">
+            <iframe src="https://player.vimeo.com/video/1158942448?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;controls=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Real Estate"></iframe>
+            <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                <div class="text-center text-white px-6">
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Aerial Capture</h2>
+                    <p class="text-lg md:text-xl">
+                        Roofing • Construction • Real estate reference • Site checks • Progress updates
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Service Details -->
+        <div class="container mx-auto px-6 py-16">
+            <div class="max-w-5xl mx-auto">
+                <!-- Description -->
+                <div class="text-center mb-12">
+                    <p class="text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
+                        Need quick turnaround drone capture for your business or listing? Our efficient aerial documentation 
+                        service delivers professional footage and images fast, perfect for time-sensitive projects and property assessments.
+                    </p>
+                </div>
+
+                <!-- Service Highlights -->
+                <div class="grid md:grid-cols-3 gap-8 mb-12">
+                    <div class="text-center">
+                        <div class="text-purple-600 text-4xl mb-3">
+                            <i class="fas fa-plane"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-800 mb-2">Efficient Flying</h4>
+                        <p class="text-gray-600">Safe and professional aerial operations</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-blue-600 text-4xl mb-3">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-800 mb-2">Safety First</h4>
+                        <p class="text-gray-600">FAA certified and fully insured pilots</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-green-600 text-4xl mb-3">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-800 mb-2">Fast Delivery</h4>
+                        <p class="text-gray-600">Quick turnaround on all projects</p>
+                    </div>
+                </div>
+
+                <!-- Pricing -->
+                <div class="bg-gray-50 rounded-xl p-6 border border-gray-200">
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Pricing</h3>
+                        <p class="text-gray-600">Professional aerial documentation</p>
+                    </div>
+                    
+                    <div class="max-w-md mx-auto">
+                        <div class="flex items-center justify-center mb-4">
+                            <div class="text-4xl font-bold text-purple-600">$250</div>
+                            <span class="text-gray-600 ml-2">per property or site</span>
+                        </div>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center text-sm">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span class="text-gray-700">8-12 professional video clips</span>
+                            </li>
+                            <li class="flex items-center text-sm">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span class="text-gray-700">25 high-resolution images</span>
+                            </li>
+                            <li class="flex items-center text-sm">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span class="text-gray-700">Fast delivery turnaround</span>
+                            </li>
+                        </ul>
+                        <div class="flex gap-3">
+                            <a href="#contact" class="flex-1 bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-lg font-semibold transition text-center text-sm">
+                                Book Now
+                            </a>
+                            <a href="#contact" class="flex-1 border-2 border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white py-2 px-4 rounded-lg font-semibold transition text-center text-sm">
+                                Get Quote
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Aerial Marketing Section -->
+    <section id="marketing" class="bg-white">
+        <!-- Hero Video with Title Overlay -->
+        <div class="relative w-full" style="padding:26.04% 0 0 0;">
+            <iframe src="https://player.vimeo.com/video/1158942460?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;controls=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Scenic - Tourism - Lifestyle"></iframe>
+            <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                <div class="text-center text-white px-6">
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Aerial Marketing</h2>
+                    <p class="text-lg md:text-xl">
+                        Real estate listings • Roofing websites • Business promos • Social ads
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Service Details -->
+        <div class="container mx-auto px-6 py-16">
+            <div class="max-w-5xl mx-auto">
+                <!-- Description -->
+                <div class="text-center mb-12">
+                    <p class="text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
+                        Elevate your brand with stunning aerial marketing content. Perfect for real estate listings, tourism promotions, 
+                        lifestyle campaigns, and commercial advertising. Create compelling visual narratives that capture attention 
+                        and showcase your unique perspective from above.
+                    </p>
+                </div>
+
+                <!-- Service Highlights -->
+                <div class="grid md:grid-cols-3 gap-8 mb-12">
+                    <div class="text-center">
+                        <div class="text-purple-600 text-4xl mb-3">
+                            <i class="fas fa-images"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-800 mb-2">Beautiful Images</h4>
+                        <p class="text-gray-600">Stunning aerial visuals that captivate</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-blue-600 text-4xl mb-3">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-800 mb-2">High Resolution</h4>
+                        <p class="text-gray-600">4K quality for maximum impact</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-green-600 text-4xl mb-3">
+                            <i class="fas fa-film"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-800 mb-2">Professional Editing</h4>
+                        <p class="text-gray-600">Polished, market-ready content</p>
+                    </div>
+                </div>
+
+                <!-- Pricing -->
+                <div class="bg-gray-50 rounded-xl p-6 border border-gray-200">
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Pricing</h3>
+                        <p class="text-gray-600">Professional aerial marketing content</p>
+                    </div>
+                    
+                    <div class="max-w-md mx-auto">
+                        <div class="flex items-center justify-center mb-4">
+                            <div class="text-4xl font-bold text-purple-600">$350</div>
+                            <span class="text-gray-600 ml-2">per project</span>
+                        </div>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center text-sm">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span class="text-gray-700">60-90 second edited highlight video</span>
+                            </li>
+                            <li class="flex items-center text-sm">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span class="text-gray-700">Social-friendly delivery formats</span>
+                            </li>
+                            <li class="flex items-center text-sm">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span class="text-gray-700">Raw footage included</span>
+                            </li>
+                        </ul>
+                        <div class="flex gap-3">
+                            <a href="#contact" class="flex-1 bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-lg font-semibold transition text-center text-sm">
+                                Book Now
+                            </a>
+                            <a href="#contact" class="flex-1 border-2 border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white py-2 px-4 rounded-lg font-semibold transition text-center text-sm">
+                                Get Quote
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Aerial Cinematography Section -->
+    <section id="cinematography" class="bg-white">
+        <!-- Hero Video with Title Overlay -->
+        <div class="relative w-full" style="padding:26.04% 0 0 0;">
+            <iframe src="https://player.vimeo.com/video/1158942421?h=81f696c1cf&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;controls=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Film & Music Video"></iframe>
+            <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                <div class="text-center text-white px-6">
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Aerial Cinematography</h2>
+                    <p class="text-lg md:text-xl">
+                        Events • Weddings • Films • Music videos • Creative projects
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Service Details -->
+        <div class="container mx-auto px-6 py-16">
+            <div class="max-w-5xl mx-auto">
+                <!-- Description -->
+                <div class="text-center mb-12">
+                    <p class="text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
+                        Cinematic aerial footage for film productions, music videos, and creative projects. Our experienced pilots 
+                        and cinematographers capture breathtaking aerial sequences with smooth, dynamic camera movements. 
+                        Perfect for establishing shots, action sequences, and artistic visual storytelling.
+                    </p>
+                </div>
+
+                <!-- Service Highlights -->
+                <div class="grid md:grid-cols-3 gap-8 mb-12">
+                    <div class="text-center">
+                        <div class="text-purple-600 text-4xl mb-3">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-800 mb-2">Cinematic Quality</h4>
+                        <p class="text-gray-600">Professional-grade aerial cinematography</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-blue-600 text-4xl mb-3">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-800 mb-2">Creative Vision</h4>
+                        <p class="text-gray-600">Artistic storytelling from above</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-green-600 text-4xl mb-3">
+                            <i class="fas fa-magic"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-800 mb-2">Dynamic Movement</h4>
+                        <p class="text-gray-600">Smooth, professional camera work</p>
+                    </div>
+                </div>
+
+                <!-- Pricing -->
+                <div class="bg-gray-50 rounded-xl p-6 border border-gray-200">
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Pricing</h3>
+                        <p class="text-gray-600">Professional aerial cinematography services</p>
+                    </div>
+                    
+                    <div class="max-w-md mx-auto">
+                        <div class="flex items-center justify-center mb-4">
+                            <div class="text-4xl font-bold text-purple-600">$150</div>
+                            <span class="text-gray-600 ml-2">per hour</span>
+                        </div>
+                        <p class="text-center text-gray-600 mb-6">
+                            Or contact us for a custom quote tailored to your project needs
+                        </p>
+                        <div class="flex gap-3">
+                            <a href="#contact" class="flex-1 bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-lg font-semibold transition text-center text-sm">
+                                Book Now
+                            </a>
+                            <a href="#contact" class="flex-1 border-2 border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white py-2 px-4 rounded-lg font-semibold transition text-center text-sm">
+                                Get Custom Quote
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding bg-gradient-to-br from-gray-50 to-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Get Your Free Quote</h2>
+                <p class="text-xl text-gray-600">Ready to elevate your project with stunning aerial footage?</p>
+            </div>
+            
+            <div class="max-w-2xl mx-auto">
+                <div class="bg-white p-8 rounded-2xl shadow-lg">
+                    <form action="https://formspree.io/f/mpwlzbld" method="POST" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Name</label>
+                                <input type="text" name="name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-200 transition" placeholder="Your Name">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Email</label>
+                                <input type="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-200 transition" placeholder="your@email.com">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-2">Phone</label>
+                            <input type="tel" name="phone" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-200 transition" placeholder="(555) 123-4567">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-2">Service Type</label>
+                            <select name="service" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-200 transition">
+                                <option value="">Select a service</option>
+                                <option value="Aerial Capture - $250">Aerial Capture - $250</option>
+                                <option value="Aerial Marketing - $350">Aerial Marketing - $350</option>
+                                <option value="Aerial Cinematography - $150/hr">Aerial Cinematography - $150/hr</option>
+                                <option value="Custom Project">Custom Project</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-2">Project Details</label>
+                            <textarea name="message" rows="4" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-200 transition" placeholder="Tell us about your project..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white py-4 rounded-lg font-semibold transition transform hover:scale-105 shadow-lg">
+                            Request Free Quote
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-drone mr-2 text-2xl"></i>
+                        <span class="font-bold text-xl">Promise Pine</span>
+                    </div>
+                    <p class="text-gray-400">Professional drone services for all your aerial photography and videography needs.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#documentation" class="hover:text-white transition">Aerial Capture</a></li>
+                        <li><a href="#marketing" class="hover:text-white transition">Aerial Marketing</a></li>
+                        <li><a href="#cinematography" class="hover:text-white transition">Aerial Cinematography</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="https://www.promisepine.com" class="hover:text-white transition">Home</a></li>
+                        <li><a href="https://www.promisepine.com" class="hover:text-white transition">About Us</a></li>
+                        <li><a href="https://www.promisepine.com/weddings" class="hover:text-white transition">Weddings</a></li>
+                        <li><a href="https://www.promisepine.com/drone" class="hover:text-white transition">Drone</a></li>
+                        <li><a href="https://www.promisepine.com" class="hover:text-white transition">Promos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2"></i>
+                            <a href="tel:7193321001" class="hover:text-white transition">(719) 332-1001</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <a href="mailto:matthew@promisepine.com" class="hover:text-white transition">matthew@promisepine.com</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            <span>Serving Colorado</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 Promise Pine Drone Services. All rights reserved. FAA Certified & Fully Insured.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.querySelector('button.md\\:hidden');
+        const mobileMenu = document.querySelector('.hidden.md\\:flex');
+        
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                // Toggle mobile menu (implementation depends on your preferred approach)
+                console.log('Mobile menu toggled');
+            });
+        }
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your inquiry! We will contact you within 24 hours.');
+        });
+    </script>
+</body>
+</html>
