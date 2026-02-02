@@ -3,20 +3,789 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Promise Pine - Wedding Videography</title>
-    <meta name="description" content="Promise Pine - Capturing your wedding story with cinematic excellence">
-    <!-- Favicon -->
+    <title>Promise Pine - Cinematic Wedding & Drone Filmmaking</title>
+    <meta name="description" content="Promise Pine - Capturing your story with cinematic excellence">
     <link rel="icon" type="image/png" href="PP Favicon.png">
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="divider.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2d5a3d;     /* Deep Forest Green */
+            --secondary-color: #c7a17a;   /* Warm Gold */
+            --accent-color: #d4af8c;      /* Light Gold */
+            --text-color: #e8e8e8;        /* Light gray text */
+            --text-dark: #2c2c2c;         /* Dark text for light backgrounds */
+            --light-color: #0a0a0a;       /* Almost black */
+            --light-bg: #f8f6f2;          /* Warm beige for light sections */
+            --dark-bg: #000000;           /* Pure black */
+            --card-bg: #1a1a1a;           /* Dark card background */
+            --white: #ffffff;
+            --black: #000000;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--dark-bg);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: calc(100vh - 80px); /* Full viewport minus nav height */
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000; /* Fallback background */
+            margin-top: 80px; /* Nav height */
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 1;
+        }
+
+        .hero-video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .hero-video-container iframe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 56.25vw; /* 16:9 aspect ratio based on width */
+            min-height: 100%;
+            min-width: 177.78vh; /* 16:9 aspect ratio based on height */
+            transform: translate(-50%, -50%);
+            border: none;
+            pointer-events: auto;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 2;
+            color: var(--white);
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+            color: var(--white);
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            color: var(--white);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--secondary-color);
+            color: var(--black);
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: 2px solid var(--secondary-color);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(199, 161, 122, 0.3);
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button:hover {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(199, 161, 122, 0.4);
+        }
+
+        /* Navigation */
+        .main-nav {
+            position: fixed;
+            top: 40px;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(199, 161, 122, 0.2);
+            border-top: none;
+            margin-top: 0;
+        }
+
+        .nav-logo {
+            display: none;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--secondary-color);
+        }
+
+        /* Contact Info Bar */
+        .contact-info-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1001;
+            padding: 0.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            height: 40px;
+            border-bottom: none;
+        }
+
+        .contact-info-item {
+            font-size: 0.85rem;
+        }
+
+        .contact-info-item a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        .contact-info-item a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Show full contact info on desktop, hide short version */
+        .contact-full {
+            display: inline;
+        }
+
+        .contact-short {
+            display: none;
+        }
+
+        .contact-info-item i {
+            color: #999;
+            margin-right: 0.4rem;
+            font-size: 0.85em;
+            opacity: 0.8;
+        }
+
+        .contact-info-item:hover i {
+            color: var(--secondary-color);
+            opacity: 1;
+        }
+
+        /* Service Sections - Mockup Style */
+        .service-section {
+            margin-bottom: 0;
+            position: relative;
+        }
+
+        .service-hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 700px;
+            overflow: hidden;
+        }
+
+        .service-video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .service-video-container iframe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 56.25vw;
+            min-width: 177.78vh;
+            min-height: 100vh;
+            transform: translate(-50%, -50%);
+            border: none;
+            pointer-events: none;
+        }
+
+        .service-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            z-index: 2;
+        }
+
+        /* Title centered over video */
+        .service-title-overlay {
+            position: absolute;
+            top: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            color: var(--white);
+            text-align: center;
+            width: 100%;
+        }
+
+        .service-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+            letter-spacing: 1px;
+            margin: 0;
+            color: var(--white);
+        }
+
+        /* Content box with description centered below title */
+        .service-content-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 500px;
+            z-index: 3;
+            text-align: center;
+        }
+
+        .service-description-box {
+            margin-bottom: 2rem;
+        }
+
+        .service-description-box p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.4;
+            color: var(--white);
+            margin: 0;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+        }
+
+        .service-button-box {
+            text-align: center;
+        }
+
+        .learn-more-btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 50px;
+            padding: 1rem 2.5rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(45, 90, 61, 0.3);
+            border: 2px solid var(--primary-color);
+        }
+
+        .learn-more-btn:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(199, 161, 122, 0.4);
+        }
+
+        /* Dark green bottom section */
+        .service-bottom-section {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 6rem;
+            background: linear-gradient(to bottom, var(--primary-color), #1a3d2a);
+            z-index: 2;
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 2rem;
+            background: var(--light-bg);
+            border-top: 1px solid rgba(199, 161, 122, 0.2);
+            border-bottom: 1px solid rgba(199, 161, 122, 0.2);
+        }
+
+        .about .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .about h2.section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
+        }
+
+        .about-content {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .about-content:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Reverse layout for alternating content blocks */
+        .about-content-reverse {
+            flex-direction: row-reverse;
+        }
+
+        .about-text {
+            flex: 2;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--text-dark);
+        }
+
+        .about-content:not(.about-content-reverse) .about-text p {
+            padding-right: 2rem;
+        }
+
+        .about-content-reverse .about-text p {
+            padding-left: 2rem;
+        }
+
+        .about-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .about-logo {
+            max-width: 100%;
+            max-height: 200px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(199, 161, 122, 0.3);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 2rem;
+            background-color: var(--light-bg);
+            border-top: 1px solid rgba(199, 161, 122, 0.2);
+        }
+
+        .contact h2 {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(199, 161, 122, 0.25);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 1rem;
+            border: 1px solid rgba(199, 161, 122, 0.35);
+            border-radius: 8px;
+            font-size: 1rem;
+            background: var(--light-bg);
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            background: var(--white);
+            box-shadow: 0 0 0 3px rgba(199, 161, 122, 0.15);
+        }
+
+        .submit-button {
+            background-color: var(--secondary-color);
+            color: var(--black);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(199, 161, 122, 0.3);
+        }
+
+        .submit-button:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(199, 161, 122, 0.4);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--black);
+            color: var(--text-color);
+            padding: 3rem 2rem 1rem;
+            border-top: 1px solid rgba(199, 161, 122, 0.2);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .contact-item i {
+            margin-right: 0.75rem;
+            color: var(--secondary-color);
+            width: 20px;
+            text-align: center;
+        }
+
+        .contact-link {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: var(--secondary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+            margin: 0 0.5rem;
+        }
+
+        .social-link:hover {
+            color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            /* General Adjustments */
+            body {
+                font-size: 16px;
+                line-height: 1.6;
+            }
+            
+            /* Hero Section Mobile */
+            .hero {
+                height: calc(100vh - 70px);
+                margin-top: 70px;
+            }
+            
+            /* Show contact info bar on mobile with new layout */
+            .contact-info-bar {
+                display: flex !important;
+                position: fixed;
+                top: 23px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: auto;
+                padding: 0;
+                gap: 1.5rem;
+                z-index: 1001;
+                background: transparent;
+                border: none;
+                pointer-events: all;
+                flex-direction: row;
+                align-items: center;
+                height: auto;
+            }
+            
+            .contact-info-item {
+                font-size: 0.85rem;
+            }
+            
+            .contact-info-item a {
+                pointer-events: all;
+            }
+            
+            /* Hide full contact info on mobile, show short version */
+            .contact-full {
+                display: none;
+            }
+            
+            .contact-short {
+                display: inline;
+            }
+            
+            /* Navigation at the top on mobile */
+            .main-nav {
+                top: 0;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0.6rem 1rem;
+                height: 70px;
+            }
+            
+            .nav-toggle {
+                order: 1;
+                margin-right: auto;
+            }
+            
+            /* Show and style logo on mobile */
+            .nav-logo {
+                display: block;
+                order: 3;
+                margin-left: auto;
+            }
+            
+            .nav-logo img {
+                height: 45px;
+                width: auto;
+                object-fit: contain;
+                border-radius: 4px;
+            }
+            
+            /* Navigation */
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.98);
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+                border-bottom: 1px solid rgba(199, 161, 122, 0.2);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-link {
+                padding: 0.75rem 1.5rem;
+                text-align: center;
+            }
+            
+            .nav-link:hover, .nav-link.active {
+                border-bottom: none;
+            }
+            
+            .nav-toggle {
+                display: block;
+                cursor: pointer;
+                padding: 0.5rem;
+                z-index: 1000;
+            }
+            
+            .nav-toggle span {
+                display: block;
+                width: 25px;
+                height: 3px;
+                background: var(--text-color);
+                margin: 5px 0;
+                transition: 0.3s;
+            }
+            
+            /* Hero Text */
+            .hero-title {
+                font-size: 2.5rem;
+                padding: 0 1rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+                padding: 0 1rem;
+            }
+            
+            .cta-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+            
+            /* Service Sections Mobile - Mockup Style */
+            .service-hero {
+                height: 80vh;
+                min-height: 600px;
+            }
+            
+            .service-video-container iframe {
+                width: 100vw;
+                height: 56.25vw;
+                min-width: 177.78vh;
+                min-height: 80vh;
+            }
+            
+            .service-title-overlay {
+                top: 2rem;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 3;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .service-title {
+                font-size: 2.5rem;
+            }
+            
+            .service-content-box {
+                top: 50%;
+                width: 95%;
+                max-width: 400px;
+            }
+            
+            .service-description-box {
+                margin-bottom: 1.5rem;
+            }
+            
+            .service-description-box p {
+                font-size: 1.5rem;
+                line-height: 1.3;
+            }
+            
+            .learn-more-btn {
+                padding: 0.875rem 2rem;
+                font-size: 0.95rem;
+            }
+            
+            .service-bottom-section {
+                height: 4rem;
+            }
+            
+            /* About Section */
+            .about-content {
+                flex-direction: column;
+                gap: 1.5rem;
+                margin-bottom: 3rem;
+            }
+            
+            /* Ensure text comes before image on mobile */
+            .about-text {
+                order: 1;
+            }
+            
+            .about-image {
+                order: 2;
+                margin-top: 1rem;
+            }
+            
+            .about-text p {
+                padding-right: 0 !important;
+                padding-left: 0 !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Hero Section -->
-    <header class="hero">
+    <header id="home" class="hero">
         <div class="hero-overlay"></div>
         <!-- Placeholder Image -->
         <div class="hero-placeholder" id="heroPlaceholder" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; background-image: url('PP Website Load.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
@@ -24,10 +793,10 @@
         <div class="hero-video-container" id="heroVideoContainer" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.5s ease; z-index: 1;">
             <iframe 
                 id="heroVimeoPlayer"
-                src="https://player.vimeo.com/video/1118904818?h=3cb30b67b3&background=1&autopause=0&loop=1&autoplay=1&muted=1&controls=0&title=0&byline=0&portrait=0" 
+                src="https://player.vimeo.com/video/1161164502?h=9bf5a7a875&background=1&autopause=0&loop=1&autoplay=1&muted=1&controls=0&title=0&byline=0&portrait=0&badge=0" 
                 frameborder="0" 
                 allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-                title="Weddings Hero"
+                title="Website Hero Feb 2026"
                 webkitallowfullscreen
                 mozallowfullscreen
                 allowfullscreen
@@ -35,15 +804,10 @@
         </div>
         <div class="hero-content">
             <h1 class="hero-title">Promise Pine</h1>
-            <p class="hero-subtitle">Cinematic Wedding Stories</p>
-            <a href="#contact" class="cta-button">Tell Your Wedding Story</a>
+            <p class="hero-subtitle">Cinematic Storytelling</p>
+            <a href="#contact" class="cta-button">Tell Your Story</a>
         </div>
     </header>
-
-    <!-- Mountain Shape Divider -->
-    <div class="mountain-divider">
-        <img src="mountain-divider.svg" alt="Mountain divider" class="mountain-svg">
-    </div>
 
     <!-- Navigation -->
     <nav class="main-nav">
@@ -55,9 +819,9 @@
         <ul class="nav-links">
             <li><a href="#home" class="nav-link active">Home</a></li>
             <li><a href="#about" class="nav-link">About</a></li>
-            <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-            <li><a href="#reviews" class="nav-link">Reviews</a></li>
-            <li><a href="#pricing" class="nav-link">Pricing</a></li>
+            <li><a href="#wedding-films" class="nav-link">Weddings</a></li>
+            <li><a href="#drone-production" class="nav-link">Drone</a></li>
+            <li><a href="#promos-documentaries" class="nav-link">Promos</a></li>
             <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
         <div class="nav-logo">
@@ -91,7 +855,7 @@
                 <!-- Promise Pine Introduction -->
                 <div class="about-content">
                     <div class="about-text">
-                        <p>Promise Pine is a Colorado Springs based wedding videography company, capturing love stories across Colorado and beyond. We believe your wedding film should feel timeless — a beautiful reflection of light, emotion, and meaning. Each film is crafted with care, blending cinematic storytelling and authentic moments to preserve the heart of your day. At Promise Pine, we promise a keepsake you'll return to for years; a memory of elegance, warmth, and love.</p>
+                        <p>Promise Pine is a Colorado Springs based videography company, capturing stories across Colorado and beyond. We specialize in creating timeless visual content — from intimate wedding films to breathtaking aerial drone footage and compelling promotional documentaries. Each project is crafted with cinematic excellence, blending technical expertise with authentic storytelling to preserve the heart of your message. At Promise Pine, we promise visual content that resonates — whether it's your wedding day, your business story, or your organization's mission.</p>
                     </div>
                     <div class="about-image">
                         <img src="PP Logo.png" alt="Promise Pine Logo" class="about-logo">
@@ -104,185 +868,128 @@
                         <img src="About Me.jpeg" alt="Matthew - Filmmaker" class="about-logo">
                     </div>
                     <div class="about-text">
-                        <p>Hi, I'm Matthew, the filmmaker behind Promise Pine. I've been creating films since I was eight years old. What started as homemade movies with friends and family slowly grew into a lifelong passion for storytelling. Growing up in Colorado, I developed a deep love for nature, light, and the quiet beauty found in ordinary moments. Those same inspirations now guide my work as I capture couples' stories — honest, artful, and full of feeling.</p>
+                        <p>Hi, I'm Matthew, the filmmaker behind Promise Pine. I've been creating films since I was eight years old. What started as homemade movies with friends and family slowly grew into a lifelong passion for storytelling. Growing up in Colorado, I developed a deep love for nature, light, and the quiet beauty found in ordinary moments. Those same inspirations now guide my work as I capture diverse stories — from wedding celebrations to business promotions and documentary projects — each approached with honesty, artistry, and emotional connection.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Portfolio Section -->
-        <section id="portfolio" class="portfolio">
-            <h2>Portfolio</h2>
-            <div class="portfolio-container">
-                <!-- Drea & David - LARGE -->
-                <div class="portfolio-item portfolio-item-large">
-                    <div class="video-lightbox">
-                        <div class="video-thumbnail" data-video-url="https://vimeo.com/promisepine/drea-david" data-video-id="">
-                            <div class="video-preview" style="background-image: url(&quot;Thumbnails/Drea & David.jpeg&quot;);"></div>
-                        </div>
-                    </div>
-                    <div class="video-title">
-                        <h3>Drea & David</h3>
-                    </div>
+        <!-- Wedding Films Section -->
+        <section id="wedding-films" class="service-section">
+            <div class="service-hero">
+                <div class="service-video-container">
+                    <iframe src="https://player.vimeo.com/video/1143608026?h=e68ecc03aa&badge=0&autopause=0&player_id=0&app_id=58479&background=1&muted=1&loop=1" 
+                            frameborder="0" 
+                            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            title="Wedding Highlight">
+                    </iframe>
+                </div>
+                <div class="service-overlay"></div>
+                
+                <!-- Title positioned top left over video -->
+                <div class="service-title-overlay">
+                    <h2 class="service-title">Wedding Films</h2>
                 </div>
                 
-                <!-- Hayley & Tony - small -->
-                <div class="portfolio-item">
-                    <div class="video-lightbox">
-                        <div class="video-thumbnail" data-video-url="https://vimeo.com/promisepine/hayley-tony" data-video-id="">
-                            <div class="video-preview" style="background-image: url(&quot;Thumbnails/Hayley & Tony.jpeg&quot;);"></div>
-                        </div>
+                <!-- Content box with description and button -->
+                <div class="service-content-box">
+                    <div class="service-description-box">
+                        <p>Filmed quietly. Crafted with intention. Told honestly.</p>
                     </div>
-                    <div class="video-title">
-                        <h3>Hayley & Tony</h3>
-                    </div>
-                </div>
-                
-                <!-- Dillon & Maria - small -->
-                <div class="portfolio-item">
-                    <div class="video-lightbox">
-                        <div class="video-thumbnail" data-video-url="https://vimeo.com/promisepine/dillon-maria" data-video-id="">
-                            <div class="video-preview" style="background-image: url(&quot;Thumbnails/Dillon & Maria.jpeg&quot;);"></div>
-                        </div>
-                    </div>
-                    <div class="video-title">
-                        <h3>Dillon & Maria</h3>
+                    <div class="service-button-box">
+                        <a href="#contact" class="learn-more-btn">View Wedding Films</a>
                     </div>
                 </div>
             </div>
             
-            <!-- Portfolio CTA Buttons -->
-            <div class="portfolio-cta">
-                <a href="https://vimeo.com/promisepine?fl=pp&fe=sh" target="_blank" class="cta-button portfolio-button">See More</a>
-                <a href="https://www.instagram.com/promisepine/" target="_blank" class="cta-button portfolio-button">Reels</a>
-            </div>
+            <!-- Dark green bottom section -->
+            <div class="service-bottom-section"></div>
         </section>
 
-        <!-- Kind Words / Reviews Section -->
-        <section id="reviews" class="reviews">
-            <div class="container">
-                <h2 class="section-title">Kind Words</h2>
-                <div class="reviews-grid">
-                    
-                    <!-- Review 1 - Dillon M -->
-                    <div class="review-card">
-                        <div class="review-header">
-                            <div class="review-author">
-                                <h4>Dillon M.</h4>
-                                <div class="review-stars">★★★★★</div>
-                            </div>
-                        </div>
-                        <div class="review-text">
-                            <p class="review-preview">We scrambled to last minute find a videographer within our budget. Promise Pine was a lifesaver!</p>
-                            <p class="review-full">We found out a few weeks before our wedding that several important family members could not make it. Matthew was our videographer and not only did he say he would produce full edited videos of our ceremony and speeches, he also offered to create a 6-8 minute wedding film encapsulating the entire day. He was always displaying excitement and positivity about the wedding which was a breath of fresh air from the seriousness or stress that wedding planning can often bring out in people. During the entire process from electronic communication to in person the day of the wedding, Matthew was professional, polite, and complimentary. He never felt like he was obtrusive so we were able to enjoy our day without hinderance, and he was still ready to be where he needed to be. Exactly one month after the wedding we received all our videos. We were FLOORED. The ceremony and speeches were clean and clear, and the wedding film was AMAZING. First of all, he extended it to 10 minutes for free - he wasn't adding in extra fluff but elements that we thought really fit the video. Also, he incorporated aspects of the wedding that were most important to us, and even modeled it after movie genres and songs that we liked making it feel really personal and like a whole cinematic experience. I had a friend that was so in love with the video that even though she's not even dating anyone right now, she said she needed to have Matthew as her videographer lol! We weren't planning on having anything special for videos, but we are really happy that these are the videos we get to watch for years to come. The wedding film Matthew pieced together we will especially treasure and we are just really grateful for Promise Pine and their work.</p>
-                        </div>
-                        <button class="read-more-btn">Read More</button>
-                    </div>
-
-                    <!-- Review 2 - Linda P -->
-                    <div class="review-card">
-                        <div class="review-header">
-                            <div class="review-author">
-                                <h4>Linda P.</h4>
-                                <div class="review-stars">★★★★★</div>
-                            </div>
-                        </div>
-                        <div class="review-text">
-                            <p class="review-preview">We are so impressed and pleased with your work! I give you 5 out of 5 stars, 2 thumbs up!</p>
-                            <p class="review-full">Matthew, Greg and I just watched the video of the ceremony. It felt like we were reliving that beautiful day again when we watched it. We both even teared up a little. You did such a fabulous job with the sound, the cinematography and your presence. You were never in the way (at least for me) and you were professional and kind. Other people who have been able to watch the videos also commented on how well done they were. Thank you again, Matthew! I don't think we could have hired a better videographer.</p>
-                        </div>
-                        <button class="read-more-btn">Read More</button>
-                    </div>
-
-                    <!-- Review 3 - Sarah -->
-                    <div class="review-card">
-                        <div class="review-header">
-                            <div class="review-author">
-                                <h4>Sarah</h4>
-                                <div class="review-stars">★★★★★</div>
-                            </div>
-                        </div>
-                        <div class="review-text">
-                            <p class="review-preview">Matthew did a wonderful job capturing our special day!</p>
-                            <p class="review-full">He was able to keep up with the busy pace of the wedding events without a hitch! The end result was a video that we will cherish forever. I am so grateful that we decided to have our wedding filmed! I would recommend him to anyone I know in the future!</p>
-                        </div>
-                        <button class="read-more-btn">Read More</button>
-                    </div>
-
-                    <!-- Review 4 - Hayley -->
-                    <div class="review-card">
-                        <div class="review-header">
-                            <div class="review-author">
-                                <h4>Hayley</h4>
-                                <div class="review-stars">★★★★★</div>
-                            </div>
-                        </div>
-                        <div class="review-text">
-                            <p class="review-preview">Matt did a great job of delivering our wedding video, was professional, kind and was high value. Did a great job. Would highly recommend.</p>
-                        </div>
-                    </div>
-
+        <!-- Drone Production Section -->
+        <section id="drone-production" class="service-section">
+            <div class="service-hero">
+                <div class="service-video-container">
+                    <iframe src="https://player.vimeo.com/video/1143636865?h=ea66f5cbaa&badge=0&autopause=0&player_id=0&app_id=58479&background=1&muted=1&loop=1" 
+                            frameborder="0" 
+                            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            title="Drone Highlight">
+                    </iframe>
                 </div>
-            </div>
-        </section>
-
-        <!-- Pricing and Deals Section -->
-        <section id="pricing" class="pricing">
-            <div class="container">
-                <h2 class="section-title">Pricing and Deals</h2>
-                <div class="pricing-content">
-                    <div class="pricing-text">
-                        <h3 class="pricing-package-title">Last Minute Fall and Winter Weddings</h3>
-                        <p class="promotion-subtitle">Special Offer: $1,400</p>
-                        <p class="promotion-dates">Available for weddings from September 2025 to February 2026</p>
-                        <p>Perfect for couples who haven't booked a videographer yet! This exclusive package includes:</p>
-                        <ul class="promotion-features">
-                            <li>Full-day event coverage</li>
-                            <li>Drone footage and multi-cam setup</li>
-                            <li>A 6–12 minute wedding highlight film</li>
-                            <li>Full raw footage archive</li>
-                            <li>A personalized website for easy viewing and downloading</li>
-                        </ul>
-                        <div class="cta-container">
-                            <a href="#contact" class="cta-button">Book This Special Offer</a>
-                        </div>
+                <div class="service-overlay"></div>
+                
+                <!-- Title positioned top left over video -->
+                <div class="service-title-overlay">
+                    <h2 class="service-title">Drone Production</h2>
+                </div>
+                
+                <!-- Content box with description -->
+                <div class="service-content-box">
+                    <div class="service-description-box">
+                        <p>Cinematic aerial footage that adds movement, scale, and perspective.</p>
                     </div>
-                    <div class="pricing-collage">
-                        <div class="collage-item collage-large">
-                            <img src="Fall Special/Fall Special 1.jpeg" alt="Fall Wedding 1">
-                        </div>
-                        <div class="collage-item">
-                            <img src="Fall Special/Fall Special 2.jpeg" alt="Fall Wedding 2">
-                        </div>
-                        <div class="collage-item">
-                            <img src="Fall Special/Fall Special 3.jpeg" alt="Fall Wedding 3">
-                        </div>
-                        <div class="collage-item">
-                            <img src="Fall Special/Fall Special 4.jpeg" alt="Fall Wedding 4">
-                        </div>
+                    <div class="service-button-box">
+                        <a href="https://www.promisepine.com/drone" class="learn-more-btn">View Drone Services</a>
                     </div>
                 </div>
             </div>
+            
+            <!-- Dark green bottom section -->
+            <div class="service-bottom-section"></div>
+        </section>
+
+        <!-- Promos & Documentaries Section -->
+        <section id="promos-documentaries" class="service-section">
+            <div class="service-hero">
+                <div class="service-video-container">
+                    <iframe src="https://player.vimeo.com/video/1143640042?h=fae35a71a4&badge=0&autopause=0&player_id=0&app_id=58479&background=1&muted=1&loop=1" 
+                            frameborder="0" 
+                            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            title="Promo Highlight">
+                    </iframe>
+                </div>
+                <div class="service-overlay"></div>
+                
+                <!-- Title positioned top left over video -->
+                <div class="service-title-overlay">
+                    <h2 class="service-title">Promos & Documentaries</h2>
+                </div>
+                
+                <!-- Content box with description -->
+                <div class="service-content-box">
+                    <div class="service-description-box">
+                        <p>Cinematic promo films designed to connect, inform, and inspire.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Dark green bottom section -->
+            <div class="service-bottom-section"></div>
         </section>
 
         <!-- Contact Section -->
         <section id="contact" class="contact">
-            <h2>Get in Touch</h2>
-            <div class="contact-content">
-                <form id="contactForm" action="https://formspree.io/f/mpwlzbld" method="POST" class="contact-form">
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Your Email" required>
-                    <input type="tel" name="phone" placeholder="Your Phone Number (optional)" pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number">
-                    <textarea name="message" placeholder="Your Message" required></textarea>
-                    <!-- Add a hidden input for the _subject parameter if you want to customize the email subject -->
-                    <input type="hidden" name="_subject" value="New message from Promise Pine website">
-                    <!-- Add a honeypot field to help prevent spam -->
-                    <input type="text" name="_gotcha" style="display:none">
-                    <!-- Add a thank you page redirect after submission (optional) -->
-                    <input type="hidden" name="_next" value="/thank-you.html">
-                    <button type="submit" class="submit-button">Send Message</button>
-                </form>
-            </div>
+            <h2>Get In Touch</h2>
+            <form class="contact-form" action="https://formspree.io/f/mpwlzbld" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="tel" name="phone" placeholder="Your Phone Number (optional)" pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number">
+                <select name="service" style="width: 100%; padding: 1rem; border: 1px solid rgba(199, 161, 122, 0.35); border-radius: 8px; font-size: 1rem; background: var(--light-bg); color: var(--text-dark);">
+                    <option value="">Select a service</option>
+                    <option value="wedding">Wedding Films</option>
+                    <option value="drone">Drone Production</option>
+                    <option value="promo">Promos & Documentaries</option>
+                    <option value="other">Other</option>
+                </select>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <input type="hidden" name="_subject" value="New message from Promise Pine website">
+                <input type="text" name="_gotcha" style="display:none">
+                <input type="hidden" name="_next" value="/thank-you.html">
+                <button type="submit" class="submit-button">Send Message</button>
+            </form>
         </section>
     </main>
 
@@ -291,7 +998,7 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Promise Pine</h3>
-                <p>Capturing love stories since 2025</p>
+                <p>Capturing stories since 2025</p>
             </div>
             <div class="footer-section">
                 <h3>Connect</h3>
@@ -320,73 +1027,65 @@
                     </a>
                 </div>
             </div>
-
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Promise Pine. All rights reserved.</p>
+            <p>&copy; 2026 Promise Pine. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Lightbox for Portfolio Videos -->
-    <div id="videoLightbox" class="lightbox">
-        <div class="lightbox-content">
-            <div class="video-container">
-                <iframe id="lightboxIframe" src="" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <span class="close-lightbox">&times;</span>
-        </div>
-    </div>
-
     <script src="https://player.vimeo.com/api/player.js"></script>
     <script>
-        // Hero Video Loop Control
+        // Navigation Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const navToggle = document.getElementById('navToggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (navToggle && navLinks) {
+                navToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    
+                    // Animate hamburger menu
+                    const spans = navToggle.querySelectorAll('span');
+                    if (navLinks.classList.contains('active')) {
+                        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                        spans[1].style.opacity = '0';
+                        spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                    } else {
+                        spans[0].style.transform = 'none';
+                        spans[1].style.opacity = '1';
+                        spans[2].style.transform = 'none';
+                    }
+                });
+                
+                // Close mobile menu when clicking on a link
+                const links = navLinks.querySelectorAll('.nav-link');
+                links.forEach(link => {
+                    link.addEventListener('click', () => {
+                        navLinks.classList.remove('active');
+                        const spans = navToggle.querySelectorAll('span');
+                        spans[0].style.transform = 'none';
+                        spans[1].style.opacity = '1';
+                        spans[2].style.transform = 'none';
+                    });
+                });
+            }
+        });
+
+        // Hero Video Loop Control - Infinite Loop
         (function() {
             const placeholder = document.getElementById('heroPlaceholder');
             const videoContainer = document.getElementById('heroVideoContainer');
             const iframe = document.getElementById('heroVimeoPlayer');
             
+            if (!iframe) return;
+            
             // Initialize Vimeo Player
             const player = new Vimeo.Player(iframe);
-            let loopCount = 0;
-            const maxLoops = 3;
-            let lastTime = 0;
-            let videoDuration = 0;
-            
-            // Get video duration
-            player.getDuration().then(function(duration) {
-                videoDuration = duration;
-            });
             
             // Show video once it's loaded and ready
             player.on('loaded', function() {
                 videoContainer.style.opacity = '1';
                 placeholder.style.display = 'none';
-            });
-            
-            // Track video time to detect loops
-            player.on('timeupdate', function(data) {
-                const currentTime = data.seconds;
-                
-                // Detect loop: when time jumps back to beginning
-                if (lastTime > videoDuration * 0.9 && currentTime < 1) {
-                    loopCount++;
-                    console.log('Loop detected:', loopCount);
-                    
-                    if (loopCount >= maxLoops) {
-                        // Stop the video and show placeholder
-                        player.pause();
-                        player.setCurrentTime(0);
-                        
-                        setTimeout(() => {
-                            videoContainer.style.opacity = '0';
-                            setTimeout(() => {
-                                placeholder.style.display = 'block';
-                            }, 500);
-                        }, 100);
-                    }
-                }
-                
-                lastTime = currentTime;
             });
             
             // Fallback: If video fails to load, keep placeholder visible
@@ -396,17 +1095,68 @@
                 placeholder.style.display = 'block';
             });
         })();
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Contact Form functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('.contact-form');
+            const submitBtn = document.querySelector('.submit-button');
+            
+            if (form) {
+                form.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    // Disable submit button
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Sending...';
+                    
+                    try {
+                        const formData = new FormData(form);
+                        const response = await fetch(form.action, {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        });
+                        
+                        if (response.ok) {
+                            // Success
+                            alert('Thank you for your message! We\'ll get back to you soon.');
+                            form.reset();
+                        } else {
+                            // Error
+                            const data = await response.json();
+                            if (data.errors) {
+                                alert(data.errors.map(err => err.message).join(', '));
+                            } else {
+                                alert('Oops! There was a problem sending your message. Please try again.');
+                            }
+                        }
+                    } catch (error) {
+                        // Network error
+                        alert('Oops! There was a problem sending your message. Please try again.');
+                    } finally {
+                        // Re-enable submit button
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Send Message';
+                    }
+                });
+            }
+        });
     </script>
-    
-    <!-- Video Lightbox Modal -->
-    <div id="videoLightbox" class="lightbox">
-        <span class="close-lightbox">&times;</span>
-        <div class="lightbox-content">
-            <iframe id="lightboxIframe" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-        </div>
-    </div>
-    
-    <script src="script.js"></script>
-    <script src="lightbox.js"></script>
 </body>
 </html>
