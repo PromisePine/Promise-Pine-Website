@@ -524,7 +524,8 @@
         }
 
         .contact-form input,
-        .contact-form textarea {
+        .contact-form textarea,
+        .contact-form select {
             padding: 1rem;
             border: 1px solid rgba(199, 161, 122, 0.35);
             border-radius: 8px;
@@ -532,14 +533,30 @@
             background: var(--light-bg);
             color: var(--text-dark);
             transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
         }
 
         .contact-form input:focus,
-        .contact-form textarea:focus {
+        .contact-form textarea:focus,
+        .contact-form select:focus {
             outline: none;
             border-color: var(--secondary-color);
             background: var(--white);
             box-shadow: 0 0 0 3px rgba(199, 161, 122, 0.15);
+        }
+
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .contact-form select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%232c2c2c' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
         }
 
         .submit-button {
@@ -561,6 +578,26 @@
         .submit-button:hover {
             transform: translateY(-3px) scale(1.02);
             box-shadow: 0 10px 30px rgba(199, 161, 122, 0.6);
+        }
+
+        .submit-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Footer Bottom */
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(199, 161, 122, 0.2);
+        }
+
+        .footer-bottom p {
+            color: var(--text-color);
+            font-size: 0.9rem;
+            opacity: 0.8;
         }
 
         /* Footer */
@@ -1030,18 +1067,18 @@
         <!-- Contact Section -->
         <section id="contact" class="contact">
             <h2>Get In Touch</h2>
-            <form class="contact-form" action="https://formspree.io/f/mpwlzbld" method="POST">
+            <form class="contact-form" action="https://formspree.io/f/xykdavyq" method="POST">
                 <input type="text" name="name" placeholder="Your Name" required>
                 <input type="email" name="email" placeholder="Your Email" required>
-                <input type="tel" name="phone" placeholder="Your Phone Number (optional)" pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number">
-                <select name="service" style="width: 100%; padding: 1rem; border: 1px solid rgba(199, 161, 122, 0.35); border-radius: 8px; font-size: 1rem; background: var(--light-bg); color: var(--text-dark);">
-                    <option value="">Select a service</option>
+                <input type="tel" name="phone" placeholder="Your Phone Number (optional)" pattern="[0-9]{3}[\s.-]?[0-9]{3}[\s.-]?[0-9]{4}" title="Please enter a valid phone number (e.g., 719-332-1001)">
+                <select name="service" required>
+                    <option value="">Select a service *</option>
                     <option value="wedding">Wedding Films</option>
                     <option value="drone">Drone Production</option>
                     <option value="promo">Promos & Documentaries</option>
                     <option value="other">Other</option>
                 </select>
-                <textarea name="message" placeholder="Your Message" required></textarea>
+                <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
                 <input type="hidden" name="_subject" value="New message from Promise Pine website">
                 <input type="text" name="_gotcha" style="display:none">
                 <input type="hidden" name="_next" value="/thank-you.html">
