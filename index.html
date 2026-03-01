@@ -8,6 +8,7 @@
     <link rel="icon" type="image/png" href="PP Favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://www.google.com/recaptcha/api.js?render=6Lflf3wsAAAAAD0HbMUJM4PT1TaUevZZx_XIN2tl"></script>
     <style>
         * {
             margin: 0;
@@ -1081,7 +1082,7 @@
                 <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
                 <input type="hidden" name="_subject" value="New message from Promise Pine website">
                 <input type="text" name="_gotcha" style="display:none">
-                <input type="hidden" name="_next" value="/thank-you.html">
+                <input type="hidden" name="g-recaptcha-response" id="recaptchaResponse">
                 <button type="submit" class="submit-button">Send Message</button>
             </form>
         </section>
@@ -1204,7 +1205,7 @@
             });
         });
 
-        // Contact Form functionality
+        // Contact Form with reCAPTCHA v3
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.querySelector('.contact-form');
             const submitBtn = document.querySelector('.submit-button');
@@ -1218,6 +1219,13 @@
                     submitBtn.textContent = 'Sending...';
                     
                     try {
+                        // Get reCAPTCHA token
+                        const token = await grecaptcha.execute('6Lflf3wsAAAAAD0HbMUJM4PT1TaUevZZx_XIN2tl', {action: 'submit'});
+                        
+                        // Add token to hidden field
+                        document.getElementById('recaptchaResponse').value = token;
+                        
+                        // Submit form
                         const formData = new FormData(form);
                         const response = await fetch(form.action, {
                             method: 'POST',
@@ -1228,8 +1236,8 @@
                         });
                         
                         if (response.ok) {
-                            // Success
-                            alert('Thank you for your message! We\'ll get back to you soon.');
+                            // Success - show message and reset form
+                            alert('Thank you for reaching out! Promise Pine will get back to you soon.');
                             form.reset();
                         } else {
                             // Error
@@ -1241,7 +1249,8 @@
                             }
                         }
                     } catch (error) {
-                        // Network error
+                        // Network or reCAPTCHA error
+                        console.error('Form submission error:', error);
                         alert('Oops! There was a problem sending your message. Please try again.');
                     } finally {
                         // Re-enable submit button
