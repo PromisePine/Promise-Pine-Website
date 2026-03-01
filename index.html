@@ -587,6 +587,31 @@
             transform: none;
         }
 
+        /* Hide reCAPTCHA badge */
+        .grecaptcha-badge {
+            visibility: hidden;
+        }
+
+        /* reCAPTCHA privacy notice */
+        .recaptcha-notice {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 1rem;
+            line-height: 1.5;
+        }
+
+        .recaptcha-notice a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .recaptcha-notice a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
         /* Footer Bottom */
         .footer-bottom {
             text-align: center;
@@ -1084,6 +1109,11 @@
                 <input type="text" name="_gotcha" style="display:none">
                 <input type="hidden" name="g-recaptcha-response" id="recaptchaResponse">
                 <button type="submit" class="submit-button">Send Message</button>
+                <p class="recaptcha-notice">
+                    This site is protected by reCAPTCHA and the Google
+                    <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and
+                    <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a> apply.
+                </p>
             </form>
         </section>
     </main>
