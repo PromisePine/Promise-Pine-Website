@@ -913,15 +913,15 @@ body .pricing h2.section-title {
 
 .inquiry-actions {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: 12px;
     margin-top: 14px;
-    flex-wrap: wrap;
 }
 
 .inquiry-actions .cta-button {
-    margin-left: auto;
+    margin: 0 auto;
 }
 
 .inquiry-status {
@@ -1477,6 +1477,7 @@ body .pricing h2.section-title {
     background: var(--light-bg);
     color: var(--text-dark);
     transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
 }
 
 .contact-form input:focus,
@@ -1485,6 +1486,11 @@ body .pricing h2.section-title {
     border-color: var(--secondary-color);
     background: var(--white);
     box-shadow: 0 0 0 3px rgba(199, 161, 122, 0.15);
+}
+
+.contact-form textarea {
+    min-height: 150px;
+    resize: vertical;
 }
 
 .submit-button {
@@ -1506,6 +1512,37 @@ body .pricing h2.section-title {
     background-color: var(--accent-color);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(199, 161, 122, 0.4);
+}
+
+.submit-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Hide reCAPTCHA badge */
+.grecaptcha-badge {
+    visibility: hidden;
+}
+
+/* reCAPTCHA privacy notice */
+.recaptcha-notice {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 1rem;
+    line-height: 1.5;
+}
+
+.recaptcha-notice a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.recaptcha-notice a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
 }
 
 /* Footer */

@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://www.google.com/recaptcha/api.js?render=6Lflf3wsAAAAAD0HbMUJM4PT1TaUevZZx_XIN2tl"></script>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="divider.css">
 </head>
@@ -106,7 +107,7 @@
                 <div class="portfolio-item portfolio-item-large">
                     <div class="video-lightbox">
                         <div class="video-thumbnail" data-video-url="https://vimeo.com/promisepine/drea-david" data-video-id="">
-                            <div class="video-preview" style="background-image: url(&quot;Drea & David.jpeg&quot;);"></div>
+                            <div class="video-preview" style="background-image: url(&quot;Thumbnails/Drea & David.jpeg&quot;);"></div>
                         </div>
                     </div>
                     <div class="video-title">
@@ -118,7 +119,7 @@
                 <div class="portfolio-item">
                     <div class="video-lightbox">
                         <div class="video-thumbnail" data-video-url="https://vimeo.com/promisepine/hayley-tony" data-video-id="">
-                            <div class="video-preview" style="background-image: url(&quot;Hayley & Tony.jpeg&quot;);"></div>
+                            <div class="video-preview" style="background-image: url(&quot;Thumbnails/Hayley & Tony.jpeg&quot;);"></div>
                         </div>
                     </div>
                     <div class="video-title">
@@ -130,7 +131,7 @@
                 <div class="portfolio-item">
                     <div class="video-lightbox">
                         <div class="video-thumbnail" data-video-url="https://vimeo.com/promisepine/dillon-maria" data-video-id="">
-                            <div class="video-preview" style="background-image: url(&quot;Dillon & Maria.jpeg&quot;);"></div>
+                            <div class="video-preview" style="background-image: url(&quot;Thumbnails/Dillon & Maria.jpeg&quot;);"></div>
                         </div>
                     </div>
                     <div class="video-title">
@@ -343,10 +344,18 @@
                                     <textarea class="inquiry-textarea" id="inquiryMessage" name="message" required></textarea>
                                 </div>
 
+                                <input type="text" name="_gotcha" style="display:none">
+                                <input type="hidden" name="g-recaptcha-response" id="inquiryRecaptchaResponse">
+
                                 <div class="inquiry-actions">
                                     <div class="inquiry-status" id="inquiryStatus" aria-live="polite"></div>
                                     <button type="submit" class="cta-button" id="inquirySubmit">Send Inquiry</button>
                                 </div>
+                                <p class="recaptcha-notice" style="margin-top: 1rem;">
+                                    This site is protected by reCAPTCHA and the Google
+                                    <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and
+                                    <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a> apply.
+                                </p>
                             </form>
                         </div>
                     </div>
@@ -361,15 +370,19 @@
                 <form id="contactForm" action="https://formspree.io/f/mpwlzbld" method="POST" class="contact-form">
                     <input type="text" name="name" placeholder="Your Name" required>
                     <input type="email" name="email" placeholder="Your Email" required>
-                    <input type="tel" name="phone" placeholder="Your Phone Number (optional)" pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number">
-                    <textarea name="message" placeholder="Your Message" required></textarea>
-                    <!-- Add a hidden input for the _subject parameter if you want to customize the email subject -->
-                    <input type="hidden" name="_subject" value="New message from Promise Pine website">
-                    <!-- Add a honeypot field to help prevent spam -->
+                    <input type="tel" name="phone" placeholder="Your Phone Number (optional)" pattern="[0-9]{3}[\s.-]?[0-9]{3}[\s.-]?[0-9]{4}" title="Please enter a valid phone number (e.g., 719-332-1001)">
+                    <input type="text" name="wedding_date" placeholder="Wedding Date (optional)" title="e.g., June 15, 2026 or 06/15/2026">
+                    <input type="text" name="venue_city" placeholder="Venue/City (optional)" title="e.g., Garden of the Gods, Colorado Springs">
+                    <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
+                    <input type="hidden" name="_subject" value="New wedding inquiry from Promise Pine website">
                     <input type="text" name="_gotcha" style="display:none">
-                    <!-- Add a thank you page redirect after submission (optional) -->
-                    <input type="hidden" name="_next" value="/thank-you.html">
+                    <input type="hidden" name="g-recaptcha-response" id="recaptchaResponse">
                     <button type="submit" class="submit-button">Send Message</button>
+                    <p class="recaptcha-notice">
+                        This site is protected by reCAPTCHA and the Google
+                        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and
+                        <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a> apply.
+                    </p>
                 </form>
             </div>
         </section>
@@ -499,6 +512,64 @@
     <script src="lightbox.js"></script>
     
     <script>
+        // Contact Form with reCAPTCHA v3
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            const submitBtn = contactForm ? contactForm.querySelector('.submit-button') : null;
+            
+            if (contactForm && submitBtn) {
+                contactForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    // Disable submit button
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Sending...';
+                    
+                    try {
+                        // Get reCAPTCHA token
+                        const token = await grecaptcha.execute('6Lflf3wsAAAAAD0HbMUJM4PT1TaUevZZx_XIN2tl', {action: 'submit'});
+                        
+                        // Add token to hidden field
+                        document.getElementById('recaptchaResponse').value = token;
+                        
+                        // Submit form
+                        const formData = new FormData(contactForm);
+                        const response = await fetch(contactForm.action, {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        });
+                        
+                        if (response.ok) {
+                            // Success - show message and reset form
+                            alert('Thank you for reaching out! Promise Pine will get back to you soon.');
+                            contactForm.reset();
+                        } else {
+                            // Error
+                            const data = await response.json();
+                            if (data.errors) {
+                                alert(data.errors.map(err => err.message).join(', '));
+                            } else {
+                                alert('Oops! There was a problem sending your message. Please try again.');
+                            }
+                        }
+                    } catch (error) {
+                        // Network or reCAPTCHA error
+                        console.error('Form submission error:', error);
+                        alert('Oops! There was a problem sending your message. Please try again.');
+                    } finally {
+                        // Re-enable submit button
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Send Message';
+                    }
+                });
+            }
+        });
+    </script>
+    
+    <script>
         (function() {
             const modal = document.getElementById('inquiryModal');
             const form = document.getElementById('inquiryForm');
@@ -576,38 +647,57 @@
                 }
             });
 
-            form.addEventListener('submit', (e) => {
+            form.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 
                 submitEl.disabled = true;
                 submitEl.textContent = 'Sending...';
                 statusEl.textContent = '';
 
-                const formData = new FormData(form);
-                
-                fetch(form.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                })
-                .then(response => {
+                try {
+                    // Get reCAPTCHA token
+                    const token = await grecaptcha.execute('6Lflf3wsAAAAAD0HbMUJM4PT1TaUevZZx_XIN2tl', {action: 'submit'});
+                    
+                    // Add token to hidden field
+                    document.getElementById('inquiryRecaptchaResponse').value = token;
+                    
+                    // Submit form
+                    const formData = new FormData(form);
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    
                     if (response.ok) {
-                        statusEl.textContent = 'Thank you! Your inquiry has been sent.';
+                        statusEl.textContent = 'Thank you for reaching out! Promise Pine will get back to you soon.';
+                        statusEl.style.color = 'rgba(199, 161, 122, 1)';
                         form.reset();
                         setTimeout(() => {
                             closeModal();
-                        }, 2000);
+                            statusEl.textContent = '';
+                            statusEl.style.color = '';
+                        }, 2500);
                     } else {
-                        throw new Error('Form submission failed');
+                        const data = await response.json();
+                        if (data.errors) {
+                            statusEl.textContent = data.errors.map(err => err.message).join(', ');
+                        } else {
+                            statusEl.textContent = 'Sorry, there was an error. Please try again.';
+                        }
+                        statusEl.style.color = '#ff6b6b';
+                        submitEl.disabled = false;
+                        submitEl.textContent = 'Send Inquiry';
                     }
-                })
-                .catch(error => {
+                } catch (error) {
+                    console.error('Form submission error:', error);
                     statusEl.textContent = 'Sorry, there was an error. Please try again.';
+                    statusEl.style.color = '#ff6b6b';
                     submitEl.disabled = false;
                     submitEl.textContent = 'Send Inquiry';
-                });
+                }
             });
         })();
     </script>
