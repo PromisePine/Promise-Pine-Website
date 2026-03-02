@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maria & Dillon | Once Upon A Time Events Wedding in Kiowa, Colorado | Promise Pine Films</title>
+    <meta name="description" content="A faith-centered wedding at Once Upon A Time Events in Kiowa, Colorado. Watch Maria & Dillon's intimate, cinematic wedding film by Promise Pine.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #c7a17a;
+            --text-color: #333;
+            --light-bg: #f9f9f9;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            color: var(--text-color);
+            line-height: 1.8;
+            background-color: var(--white);
+        }
+
+        /* Navigation Styles */
+        .main-nav {
+            position: fixed;
+            top: 40px;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1.2rem 0;
+            border-bottom: 2px solid rgba(199, 161, 122, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-logo {
+            display: none;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .nav-link {
+            color: #e8e8e8;
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            font-family: 'Arial', sans-serif;
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #c7a17a;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #c7a17a, #d4af8c);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 80%;
+        }
+
+        .nav-toggle {
+            display: none;
+        }
+
+        .contact-info-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1001;
+            padding: 0.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            height: 40px;
+        }
+
+        .contact-info-item {
+            font-size: 0.85rem;
+        }
+
+        .contact-info-item a {
+            color: #e8e8e8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info-item a:hover {
+            color: #c7a17a;
+        }
+
+        .contact-full {
+            display: inline;
+        }
+
+        .contact-short {
+            display: none;
+        }
+
+        .contact-info-item i {
+            color: #999;
+            margin-right: 0.4rem;
+            font-size: 0.85em;
+            opacity: 0.8;
+        }
+
+        .contact-info-item:hover i {
+            color: #c7a17a;
+            opacity: 1;
+        }
+
+        /* Blog Article Styles */
+        .blog-article {
+            max-width: 900px;
+            margin: 140px auto 60px;
+            padding: 0 2rem;
+        }
+
+        .article-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .article-meta {
+            font-size: 1rem;
+            color: #666;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .article-meta i {
+            margin-right: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .article-content {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        .article-content h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin: 2.5rem 0 1rem;
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .article-content em {
+            font-style: italic;
+            color: #555;
+        }
+
+        .article-image {
+            width: 100%;
+            margin: 2.5rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .article-image.featured {
+            margin-bottom: 3rem;
+        }
+
+        .video-container {
+            margin: 3rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-family: 'Arial', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--primary-color);
+            transform: translateX(-5px);
+        }
+
+        .back-link i {
+            margin-right: 0.5rem;
+        }
+
+        /* Mobile Navigation */
+        @media (max-width: 992px) {
+            .main-nav {
+                top: 0;
+                padding: 0.6rem 1rem;
+                height: 70px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .nav-toggle {
+                display: block;
+                cursor: pointer;
+                padding: 0.5rem;
+                z-index: 1000;
+            }
+
+            .nav-toggle span {
+                display: block;
+                width: 25px;
+                height: 3px;
+                background: #e8e8e8;
+                margin: 5px 0;
+                transition: 0.3s;
+            }
+
+            .nav-logo {
+                display: block;
+                margin-left: auto;
+            }
+
+            .nav-logo img {
+                height: 45px;
+                width: auto;
+                object-fit: contain;
+                border-radius: 4px;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.98);
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-link {
+                padding: 0.75rem 1.5rem;
+                text-align: center;
+            }
+
+            .contact-info-bar {
+                top: 23px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: auto;
+                background: transparent;
+            }
+
+            .contact-full {
+                display: none;
+            }
+
+            .contact-short {
+                display: inline;
+            }
+
+            .blog-article {
+                margin-top: 100px;
+                padding: 0 1.5rem;
+            }
+
+            .article-title {
+                font-size: 1.8rem;
+            }
+
+            .article-content {
+                font-size: 1rem;
+            }
+
+            .article-content h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-bottom {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Component -->
+    <div id="navigation-placeholder"></div>
+    <script src="../../shared/nav-component.js"></script>
+
+    <!-- Blog Article -->
+    <article class="blog-article">
+        <a href="/about/" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to About
+        </a>
+
+        <header class="article-header">
+            <h1 class="article-title">Maria & Dillon | Once Upon A Time Events Wedding in Kiowa, Colorado</h1>
+            <div class="article-meta">
+                <i class="fas fa-calendar"></i> August 11, 2025 | Once Upon A Time Events | Kiowa, Colorado Wedding Film
+            </div>
+        </header>
+
+        <div class="article-content">
+            <div class="article-image featured">
+                <img src="Maria & Dillon blog images/Cinematic Sunset.jpeg" alt="Maria and Dillon at sunset">
+            </div>
+
+            <p>Some weddings are planned down to the smallest detail — including the videographer.</p>
+
+            <p>Maria and Dillon's wasn't.</p>
+
+            <p>Just a few weeks before their August 11th wedding, they found out that several important family members would not be able to attend. What they originally thought would simply be a beautiful day shared in person suddenly became something they deeply wanted to preserve.</p>
+
+            <p>As Dillon later shared in his review:</p>
+
+            <p><em>"We scrambled to last minute find a videographer within our budget. Promise Pine was a lifesaver!"</em></p>
+
+            <p>I am so grateful they made that last-minute decision — because their wedding became one of the most meaningful stories I've had the privilege to film.</p>
+
+            <div class="article-image">
+                <img src="Maria & Dillon blog images/Holding hands.jpeg" alt="Maria and Dillon holding hands">
+            </div>
+
+            <h2>How They Met: A Story Rooted in Friendship</h2>
+
+            <p>Maria and Dillon met nearly three years ago at Bible study.</p>
+
+            <p>For the first year, they built a friendship the slow and steady way — spending time with friends, volunteering, studying Scripture, playing games, and sharing their stories. Dillon noticed Maria's heart for others, her faith, and how much he appreciated her presence in his life.</p>
+
+            <p>At the end of that first year, Dillon asked Maria to be his girlfriend.</p>
+
+            <p>She kindly said no.</p>
+
+            <p>And yet, he never treated her differently.</p>
+
+            <p>Their friendship remained strong. Maria began to realize how much Dillon's integrity, calming presence, and steady faith meant to her. Six months later, she asked him out — and the rest is history.</p>
+
+            <p>What began as friendship became something deeply intentional, God-honoring, and joyful.</p>
+
+            <p>And now here we are.</p>
+
+            <div class="article-image">
+                <img src="Maria & Dillon blog images/Wildflower Bouquet.jpeg" alt="Wildflower bouquet">
+            </div>
+
+            <h2>A Venue That Fit Them Perfectly<br>Once Upon A Time Events in Kiowa, Colorado</h2>
+
+            <p>There are venues that impress — and there are venues that fit.</p>
+
+            <p>Once Upon A Time Events in Kiowa, Colorado felt like it was made for Maria and Dillon. The rustic charm, the quiet countryside setting, and the intimate scale of the space perfectly reflected who they are: warm, grounded, and intentional.</p>
+
+            <p>Instead of traditional bouquets, the bridal party carried wildflowers. The decor felt personal and thoughtful rather than extravagant. It was sweet. Honest. Unpretentious.</p>
+
+            <div class="article-image">
+                <img src="Maria & Dillon blog images/Yellow truck.jpeg" alt="Yellow vintage truck at venue">
+            </div>
+
+            <p>The sky that day held soft clouds without turning overcast, giving us the most beautiful golden light at sunset. As Maria and Dillon stood together during couple portraits, they were literally basking in warm Colorado light — the kind that makes everything feel timeless.</p>
+
+            <p>It has quickly become one of my favorite Colorado wedding venues because of how simple, intimate, and beautiful it is.</p>
+
+            <div class="article-image">
+                <img src="Maria & Dillon blog images/Sunset.jpeg" alt="Golden sunset at Once Upon A Time Events">
+            </div>
+
+            <h2>A Ceremony Rooted in Faith</h2>
+
+            <p>When I asked them how they wanted their wedding day to feel years from now, Maria said:</p>
+
+            <p><em>"I want it to feel honoring to God, to each other, and to our guests."</em></p>
+
+            <p>And that's exactly what it was.</p>
+
+            <div class="article-image">
+                <img src="Maria & Dillon blog images/Alter.jpeg" alt="Wedding ceremony altar">
+            </div>
+
+            <p>Their personal pastor officiated the ceremony, and his voice carried such depth and calm authority that I used many of his words throughout their wedding film to help tell their story. The entire ceremony pointed back to Christ — not just in theme, but in sincerity.</p>
+
+            <p>Later at the reception, after the best man and maid of honor speeches, Maria took the microphone and did something bold and beautiful.</p>
+
+            <p>She turned her speech into a call to action.</p>
+
+            <p>She told her guests:</p>
+
+            <p><em>"If you feel you are too far from God to welcome you, let me encourage you; when you draw near to God, He will draw near to you. Grace literally means unearned favor."</em></p>
+
+            <p>It wasn't performative. It wasn't forced.</p>
+
+            <p>It was simply who they are.</p>
+
+            <p>The entire day felt like a celebration not just of marriage, but of faith.</p>
+
+            <div class="article-image">
+                <img src="Maria & Dillon blog images/Cinematic doorway.jpeg" alt="Cinematic doorway shot">
+            </div>
+
+            <h2>A Warm and Welcoming Celebration</h2>
+
+            <p>From the quiet reverence of the ceremony to the laughter and dancing at the reception, the atmosphere was warm and inviting.</p>
+
+            <p>Guests chatted freely, danced joyfully, and celebrated wholeheartedly. Nothing felt rushed or overly staged. I made it a priority to remain unobtrusive so Maria and Dillon could fully enjoy their day — something Dillon later mentioned meant a lot to them:</p>
+
+            <p><em>"He never felt like he was obtrusive so we were able to enjoy our day without hindrance, and he was still ready to be where he needed to be."</em></p>
+
+            <div class="article-image">
+                <img src="Maria & Dillon blog images/Walking in grass.jpeg" alt="Maria and Dillon walking in grass">
+            </div>
+
+            <p>Exactly one month after the wedding, they received their full ceremony video, speeches, and a 10-minute cinematic wedding film — extended from the original 6–8 minutes at no additional cost because the story simply deserved the space.</p>
+
+            <p>Dillon wrote:</p>
+
+            <p><em>"We were FLOORED… The wedding film was AMAZING… He incorporated aspects of the wedding that were most important to us and even modeled it after movie genres and songs that we liked making it feel really personal and like a whole cinematic experience."</em></p>
+
+            <p>That personal touch is always my goal — to make the film feel unmistakably theirs.</p>
+
+            <h2>A Personal Reflection</h2>
+
+            <p>This wedding felt personal to me.</p>
+
+            <p>I felt close to Maria and Dillon — to their story, their faith, and their intentionality. Capturing their wedding wasn't just about documenting moments; it was about preserving something sacred and deeply meaningful.</p>
+
+            <p>Their day reminded me why I love filming intimate Colorado weddings. When a couple is honest about who they are and what they believe, everything else falls beautifully into place.</p>
+
+            <h2>Watch Their Kiowa, Colorado Wedding Film Below</h2>
+
+            <div class="video-container">
+                <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1117159225?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Dillon &amp; Maria"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+            </div>
+
+            <p>If you're planning your own wedding at Once Upon A Time Events in Kiowa, Colorado — or dreaming of a faith-centered, intimate wedding film — I would love to tell your story.</p>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Promise Pine. All rights reserved.</p>
+        </div>
+        <div class="footer-bottom">
+            <p>Colorado Springs, Colorado</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation toggle for mobile
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.main-nav')) {
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
