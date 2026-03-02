@@ -46,9 +46,200 @@
                 padding-top: 100%;
             }
         }
+
+        /* Navigation Styles */
+        .main-nav {
+            position: fixed;
+            top: 40px;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1.2rem 0;
+            border-bottom: 2px solid rgba(199, 161, 122, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-logo {
+            display: none;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .nav-link {
+            color: #e8e8e8;
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #c7a17a;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #c7a17a, #d4af8c);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 80%;
+        }
+
+        .nav-toggle {
+            display: none;
+        }
+
+        /* Contact Info Bar */
+        .contact-info-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1001;
+            padding: 0.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            height: 40px;
+        }
+
+        .contact-info-item {
+            font-size: 0.85rem;
+        }
+
+        .contact-info-item a {
+            color: #e8e8e8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info-item a:hover {
+            color: #c7a17a;
+        }
+
+        .contact-full {
+            display: inline;
+        }
+
+        .contact-short {
+            display: none;
+        }
+
+        .contact-info-item i {
+            color: #999;
+            margin-right: 0.4rem;
+            font-size: 0.85em;
+            opacity: 0.8;
+        }
+
+        .contact-info-item:hover i {
+            color: #c7a17a;
+            opacity: 1;
+        }
+
+        /* Mobile Navigation */
+        @media (max-width: 992px) {
+            .main-nav {
+                top: 0;
+                padding: 0.6rem 1rem;
+                height: 70px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .nav-toggle {
+                display: block;
+                cursor: pointer;
+                padding: 0.5rem;
+                z-index: 1000;
+            }
+
+            .nav-toggle span {
+                display: block;
+                width: 25px;
+                height: 3px;
+                background: #e8e8e8;
+                margin: 5px 0;
+                transition: 0.3s;
+            }
+
+            .nav-logo {
+                display: block;
+                margin-left: auto;
+            }
+
+            .nav-logo img {
+                height: 45px;
+                width: auto;
+                object-fit: contain;
+                border-radius: 4px;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.98);
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-link {
+                padding: 0.75rem 1.5rem;
+                text-align: center;
+            }
+
+            .contact-info-bar {
+                top: 23px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: auto;
+                background: transparent;
+            }
+
+            .contact-full {
+                display: none;
+            }
+
+            .contact-short {
+                display: inline;
+            }
+        }
     </style>
 </head>
-<body class="bg-black">
+<body class="bg-black" style="padding-top: 80px;">
     <!-- Navigation Component -->
     <div id="navigation-placeholder"></div>
     <script src="../shared/nav-component.js"></script>
