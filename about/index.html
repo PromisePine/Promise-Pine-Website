@@ -217,6 +217,110 @@
             border: 1px solid rgba(199, 161, 122, 0.3);
         }
 
+        /* Blog Section */
+        .blog {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, var(--light-bg) 0%, #e8e6e0 100%);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .blog-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        .blog-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-card:hover .blog-image img {
+            transform: scale(1.05);
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .blog-meta i {
+            margin-right: 0.4rem;
+            color: var(--secondary-color);
+        }
+
+        .blog-title {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+            line-height: 1.4;
+        }
+
+        .blog-excerpt {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .blog-card:hover .read-more {
+            gap: 0.8rem;
+            color: var(--primary-color);
+        }
+
+        .read-more i {
+            transition: transform 0.3s ease;
+        }
+
+        .blog-card:hover .read-more i {
+            transform: translateX(4px);
+        }
+
         /* Footer */
         .footer {
             background: var(--black);
@@ -362,6 +466,32 @@
                     <div class="about-text">
                         <p>Hi, I'm Matthew, the filmmaker behind Promise Pine. I've been creating films since I was eight years old. What started as homemade movies with friends and family slowly grew into a lifelong passion for storytelling. Growing up in Colorado, I developed a deep love for nature, light, and the quiet beauty found in ordinary moments. Those same inspirations now guide my work as I capture diverse stories — from wedding celebrations to business promotions and documentary projects — each approached with honesty, artistry, and emotional connection.</p>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog" class="blog">
+            <div class="container">
+                <h2 class="section-title">Blog</h2>
+                
+                <div class="blog-grid">
+                    <article class="blog-card">
+                        <a href="Maria & Dillon Blog/" class="blog-link">
+                            <div class="blog-image">
+                                <img src="Maria & Dillon Blog/Maria & Dillon blog images/Cinematic Sunset.jpeg" alt="Maria and Dillon wedding at sunset">
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span><i class="fas fa-calendar"></i> August 11, 2025</span>
+                                    <span><i class="fas fa-map-marker-alt"></i> Kiowa, Colorado</span>
+                                </div>
+                                <h3 class="blog-title">Maria & Dillon | Once Upon A Time Events Wedding</h3>
+                                <p class="blog-excerpt">A faith-centered wedding at Once Upon A Time Events in Kiowa, Colorado. Discover how a last-minute videography decision preserved one of the most meaningful stories I've had the privilege to film.</p>
+                                <span class="read-more">Read More <i class="fas fa-arrow-right"></i></span>
+                            </div>
+                        </a>
+                    </article>
                 </div>
             </div>
         </section>
