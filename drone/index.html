@@ -6,6 +6,7 @@
     <title>Promise Pine Drone Services - Professional Aerial Photography & Videography</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://www.google.com/recaptcha/api.js?render=6Lflf3wsAAAAAD0HbMUJM4PT1TaUevZZx_XIN2tl"></script>
     <style>
         .hero-gradient {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -236,6 +237,31 @@
             .contact-short {
                 display: inline;
             }
+        }
+
+        /* Hide reCAPTCHA badge */
+        .grecaptcha-badge {
+            visibility: hidden;
+        }
+
+        /* reCAPTCHA privacy notice */
+        .recaptcha-notice {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 1rem;
+            line-height: 1.5;
+        }
+
+        .recaptcha-notice a {
+            color: #9333ea;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .recaptcha-notice a:hover {
+            color: #7e22ce;
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -617,7 +643,9 @@
             
             <div class="max-w-2xl mx-auto">
                 <div class="bg-white p-8 rounded-2xl shadow-lg">
-                    <form action="https://formspree.io/f/mzdrwygz" method="POST" class="space-y-6">
+                    <form action="https://formspree.io/f/mzdrwygz" method="POST" class="space-y-6" id="droneContactForm">
+                        <input type="text" name="_gotcha" style="display:none">
+                        <input type="hidden" name="g-recaptcha-response" id="recaptchaResponse">
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-gray-700 font-semibold mb-2">Name</label>
@@ -646,9 +674,14 @@
                             <label class="block text-gray-700 font-semibold mb-2">Project Details</label>
                             <textarea name="message" rows="4" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-200 transition" placeholder="Tell us about your project..."></textarea>
                         </div>
-                        <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white py-4 rounded-lg font-semibold transition transform hover:scale-105 shadow-lg">
+                        <button type="submit" id="submitBtn" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white py-4 rounded-lg font-semibold transition transform hover:scale-105 shadow-lg">
                             Request Free Quote
                         </button>
+                        <div class="recaptcha-notice">
+                            This site is protected by reCAPTCHA and the Google
+                            <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a> and
+                            <a href="https://policies.google.com/terms" target="_blank">Terms of Service</a> apply.
+                        </div>
                     </form>
                 </div>
             </div>
@@ -735,11 +768,52 @@
             });
         }
 
-        // Form submission
-        document.querySelector('form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Thank you for your inquiry! We will contact you within 24 hours.');
-        });
+        // Contact Form with reCAPTCHA v3
+        const form = document.getElementById('droneContactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        
+        if (form) {
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+                
+                try {
+                    // Get reCAPTCHA token
+                    const token = await grecaptcha.execute('6Lflf3wsAAAAAD0HbMUJM4PT1TaUevZZx_XIN2tl', {action: 'submit'});
+                    document.getElementById('recaptchaResponse').value = token;
+                    
+                    // Submit form
+                    const formData = new FormData(form);
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        alert('Thank you for reaching out! Promise Pine will get back to you soon.');
+                        form.reset();
+                    } else {
+                        const data = await response.json();
+                        if (data.errors) {
+                            alert(data.errors.map(err => err.message).join(', '));
+                        } else {
+                            alert('Oops! There was a problem sending your message. Please try again.');
+                        }
+                    }
+                } catch (error) {
+                    console.error('Form submission error:', error);
+                    alert('Oops! There was a problem sending your message. Please try again.');
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Request Free Quote';
+                }
+            });
+        }
     </script>
 </body>
 </html>
