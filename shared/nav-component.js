@@ -44,11 +44,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 <span></span>
             </div>
             <ul class="nav-links" id="navLinks">
-                <li><a href="/index.html" class="nav-link ${activePage === 'home' ? 'active' : ''}">Home</a></li>
-                <li><a href="/about/index.html" class="nav-link ${activePage === 'about' ? 'active' : ''}">About</a></li>
-                <li><a href="/weddings/index.html" class="nav-link ${activePage === 'weddings' ? 'active' : ''}">Weddings</a></li>
-                <li><a href="/drone/index.html" class="nav-link ${activePage === 'drone' ? 'active' : ''}">Drone</a></li>
-                <li><a href="/promos/index.html" class="nav-link ${activePage === 'promos' ? 'active' : ''}">Promos</a></li>
+                <li><a href="/" class="nav-link ${activePage === 'home' ? 'active' : ''}">Home</a></li>
+                <li><a href="/about/" class="nav-link ${activePage === 'about' ? 'active' : ''}">About</a></li>
+                <li><a href="/weddings/" class="nav-link ${activePage === 'weddings' ? 'active' : ''}">Weddings</a></li>
+                <li><a href="/drone/" class="nav-link ${activePage === 'drone' ? 'active' : ''}">Drone</a></li>
+                <li><a href="/promos/" class="nav-link ${activePage === 'promos' ? 'active' : ''}">Promos</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
             <div class="nav-logo">
