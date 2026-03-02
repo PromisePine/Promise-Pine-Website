@@ -6,16 +6,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const currentPath = window.location.pathname;
     let activePage = 'home';
     
-    if (currentPath.includes('/About')) activePage = 'about';
-    else if (currentPath.includes('/Weddings')) activePage = 'weddings';
-    else if (currentPath.includes('/Drone')) activePage = 'drone';
-    else if (currentPath.includes('/Promos')) activePage = 'promos';
-    else if (currentPath.includes('/Home')) activePage = 'home';
+    if (currentPath.includes('/about')) activePage = 'about';
+    else if (currentPath.includes('/weddings')) activePage = 'weddings';
+    else if (currentPath.includes('/drone')) activePage = 'drone';
+    else if (currentPath.includes('/promos')) activePage = 'promos';
+    else if (currentPath === '/' || currentPath === '/index.html') activePage = 'home';
     
     // Function to get the correct logo path based on current page location
     function getLogoPath() {
-        if (currentPath.includes('/Home')) return 'PP Logo.png';
-        else return '../Home/PP Logo.png';
+        if (currentPath === '/' || currentPath === '/index.html') return 'PP Logo.png';
+        else return '../PP Logo.png';
     }
     
     // Navigation HTML
@@ -44,11 +44,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 <span></span>
             </div>
             <ul class="nav-links" id="navLinks">
-                <li><a href="/Home/index.html" class="nav-link ${activePage === 'home' ? 'active' : ''}">Home</a></li>
-                <li><a href="/About/index.html" class="nav-link ${activePage === 'about' ? 'active' : ''}">About</a></li>
-                <li><a href="/Weddings/index.html" class="nav-link ${activePage === 'weddings' ? 'active' : ''}">Weddings</a></li>
-                <li><a href="/Drone/index.html" class="nav-link ${activePage === 'drone' ? 'active' : ''}">Drone</a></li>
-                <li><a href="/Promos/index.html" class="nav-link ${activePage === 'promos' ? 'active' : ''}">Promos</a></li>
+                <li><a href="/index.html" class="nav-link ${activePage === 'home' ? 'active' : ''}">Home</a></li>
+                <li><a href="/about/index.html" class="nav-link ${activePage === 'about' ? 'active' : ''}">About</a></li>
+                <li><a href="/weddings/index.html" class="nav-link ${activePage === 'weddings' ? 'active' : ''}">Weddings</a></li>
+                <li><a href="/drone/index.html" class="nav-link ${activePage === 'drone' ? 'active' : ''}">Drone</a></li>
+                <li><a href="/promos/index.html" class="nav-link ${activePage === 'promos' ? 'active' : ''}">Promos</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
             <div class="nav-logo">
