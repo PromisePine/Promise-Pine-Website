@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promos & Documentaries - Promise Pine</title>
+    <meta name="description" content="Promise Pine promotional films and documentaries - Coming Soon">
+    <link rel="icon" type="image/png" href="../Home/PP Favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2d5a3d;
+            --secondary-color: #c7a17a;
+            --accent-color: #d4af8c;
+            --text-color: #e8e8e8;
+            --text-dark: #2c2c2c;
+            --light-color: #0a0a0a;
+            --light-bg: #f8f6f2;
+            --dark-bg: #000000;
+            --white: #ffffff;
+            --black: #000000;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: linear-gradient(180deg, #000000 0%, #0a0a0a 100%);
+            padding-top: 80px;
+        }
+
+        /* Navigation */
+        .main-nav {
+            position: fixed;
+            top: 40px;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1.2rem 0;
+            border-bottom: 2px solid rgba(199, 161, 122, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-logo {
+            display: none;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--secondary-color);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 80%;
+        }
+
+        .nav-toggle {
+            display: none;
+        }
+
+        /* Contact Info Bar */
+        .contact-info-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1001;
+            padding: 0.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            height: 40px;
+        }
+
+        .contact-info-item {
+            font-size: 0.85rem;
+        }
+
+        .contact-info-item a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .contact-info-item a:hover {
+            color: var(--secondary-color);
+        }
+
+        .contact-full {
+            display: inline;
+        }
+
+        .contact-short {
+            display: none;
+        }
+
+        .contact-info-item i {
+            color: #999;
+            margin-right: 0.4rem;
+            font-size: 0.85em;
+            opacity: 0.8;
+        }
+
+        .contact-info-item:hover i {
+            color: var(--secondary-color);
+            opacity: 1;
+        }
+
+        /* Coming Soon Section */
+        .coming-soon {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 80px);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .coming-soon-logo {
+            max-width: 300px;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .coming-soon h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .coming-soon h2 {
+            font-size: 2rem;
+            color: var(--text-color);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .coming-soon p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--secondary-color);
+            color: var(--black);
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 25px rgba(199, 161, 122, 0.4);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(199, 161, 122, 0.6);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--black);
+            color: var(--text-color);
+            padding: 2rem;
+            border-top: 1px solid rgba(199, 161, 122, 0.2);
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 992px) {
+            .main-nav {
+                top: 0;
+                padding: 0.6rem 1rem;
+                height: 70px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .nav-toggle {
+                display: block;
+                cursor: pointer;
+                padding: 0.5rem;
+                z-index: 1000;
+            }
+
+            .nav-toggle span {
+                display: block;
+                width: 25px;
+                height: 3px;
+                background: var(--text-color);
+                margin: 5px 0;
+                transition: 0.3s;
+            }
+
+            .nav-logo {
+                display: block;
+                margin-left: auto;
+            }
+
+            .nav-logo img {
+                height: 45px;
+                width: auto;
+                object-fit: contain;
+                border-radius: 4px;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.98);
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-link {
+                padding: 0.75rem 1.5rem;
+                text-align: center;
+            }
+
+            .contact-info-bar {
+                top: 23px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: auto;
+                background: transparent;
+                gap: 1.5rem;
+            }
+
+            .contact-full {
+                display: none;
+            }
+
+            .contact-short {
+                display: inline;
+            }
+
+            body {
+                padding-top: 70px;
+            }
+
+            .coming-soon h1 {
+                font-size: 2.5rem;
+            }
+
+            .coming-soon h2 {
+                font-size: 1.5rem;
+            }
+
+            .coming-soon p {
+                font-size: 1rem;
+            }
+
+            .footer {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Component -->
+    <div id="navigation-placeholder"></div>
+    <script src="../Shared/nav-component.js"></script>
+
+    <!-- Main Content -->
+    <main>
+        <section class="coming-soon">
+            <img src="../Home/PP Logo.png" alt="Promise Pine Logo" class="coming-soon-logo">
+            <h1>Coming Soon</h1>
+            <h2>Promos & Documentaries</h2>
+            <p>We're currently working on showcasing our promotional films and documentary projects. Check back soon to see cinematic stories designed to connect, inform, and inspire.</p>
+            <a href="/Home/index.html#contact" class="cta-button">Get In Touch</a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Promise Pine. All rights reserved. | Colorado Springs, Colorado</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation toggle for mobile
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.main-nav')) {
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
