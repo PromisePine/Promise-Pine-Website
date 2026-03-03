@@ -1132,42 +1132,6 @@
 
     <script src="https://player.vimeo.com/api/player.js"></script>
     <script>
-        // Navigation Toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const navToggle = document.getElementById('navToggle');
-            const navLinks = document.querySelector('.nav-links');
-            
-            if (navToggle && navLinks) {
-                navToggle.addEventListener('click', function() {
-                    navLinks.classList.toggle('active');
-                    
-                    // Animate hamburger menu
-                    const spans = navToggle.querySelectorAll('span');
-                    if (navLinks.classList.contains('active')) {
-                        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-                        spans[1].style.opacity = '0';
-                        spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
-                    } else {
-                        spans[0].style.transform = 'none';
-                        spans[1].style.opacity = '1';
-                        spans[2].style.transform = 'none';
-                    }
-                });
-                
-                // Close mobile menu when clicking on a link
-                const links = navLinks.querySelectorAll('.nav-link');
-                links.forEach(link => {
-                    link.addEventListener('click', () => {
-                        navLinks.classList.remove('active');
-                        const spans = navToggle.querySelectorAll('span');
-                        spans[0].style.transform = 'none';
-                        spans[1].style.opacity = '1';
-                        spans[2].style.transform = 'none';
-                    });
-                });
-            }
-        });
-
         // Hero Video Loop Control - Infinite Loop
         (function() {
             const placeholder = document.getElementById('heroPlaceholder');
