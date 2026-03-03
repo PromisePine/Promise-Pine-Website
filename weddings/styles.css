@@ -1712,6 +1712,10 @@ body .pricing h2.section-title {
         text-align: center;
     }
     
+    .nav-link::after {
+        display: none;
+    }
+    
     .nav-link:hover, .nav-link.active {
         border-bottom: none;
     }
