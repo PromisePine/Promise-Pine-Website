@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     else if (currentPath.includes('/weddings')) activePage = 'weddings';
     else if (currentPath.includes('/drone')) activePage = 'drone';
     else if (currentPath.includes('/promos')) activePage = 'promos';
+    else if (currentPath.includes('/contact')) activePage = 'contact';
     else if (currentPath === '/' || currentPath === '/index.html') activePage = 'home';
     
     // Function to get the correct logo path based on current page location
@@ -49,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <li><a href="/weddings/" class="nav-link ${activePage === 'weddings' ? 'active' : ''}">Weddings</a></li>
                 <li><a href="/drone/" class="nav-link ${activePage === 'drone' ? 'active' : ''}">Drone</a></li>
                 <li><a href="/promos/" class="nav-link ${activePage === 'promos' ? 'active' : ''}">Promos</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="/contact/" class="nav-link ${activePage === 'contact' ? 'active' : ''}">Contact</a></li>
             </ul>
             <div class="nav-logo">
                 <img src="${getLogoPath()}" alt="Promise Pine Logo">
