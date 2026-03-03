@@ -80,7 +80,7 @@
             min-width: 177.78vh; /* 16:9 aspect ratio based on height */
             transform: translate(-50%, -50%);
             border: none;
-            pointer-events: auto;
+            pointer-events: none;
         }
 
         .hero-content {
@@ -791,6 +791,10 @@
             .nav-link {
                 padding: 0.75rem 1.5rem;
                 text-align: center;
+            }
+            
+            .nav-link::after {
+                display: none;
             }
             
             .nav-link:hover, .nav-link.active {
