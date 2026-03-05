@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Makes a Wedding Film Cinematic? Aspect Ratios & Emotional Storytelling in Colorado</title>
+    <meta name="description" content="Discover what makes a wedding film truly cinematic. Learn how framing, aspect ratios, and storytelling create emotional Colorado wedding films.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://www.google.com/recaptcha/api.js?render=6Lflf3wsAAAAAMWhWCyPRBm-5uONeyqu8NjCzj5f"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #c7a17a;
+            --text-color: #333;
+            --light-bg: #f9f9f9;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: var(--text-color);
+            background: var(--light-bg);
+        }
+
+        .main-nav {
+            position: fixed;
+            top: 40px;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1.2rem 0;
+            border-bottom: 2px solid rgba(199, 161, 122, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-logo {
+            display: none;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .nav-link {
+            color: #e8e8e8;
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            font-family: 'Arial', sans-serif;
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #c7a17a;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #c7a17a, #d4af8c);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 80%;
+        }
+
+        .nav-toggle {
+            display: none;
+        }
+
+        .contact-info-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1001;
+            padding: 0.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            height: 40px;
+        }
+
+        .contact-info-item {
+            font-size: 0.85rem;
+        }
+
+        .contact-info-item a {
+            color: #e8e8e8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info-item a:hover {
+            color: #c7a17a;
+        }
+
+        .contact-full {
+            display: inline;
+        }
+
+        .contact-short {
+            display: none;
+        }
+
+        .contact-info-item i {
+            color: #999;
+            margin-right: 0.4rem;
+            font-size: 0.85em;
+            opacity: 0.8;
+        }
+
+        .contact-info-item:hover i {
+            color: #c7a17a;
+            opacity: 1;
+        }
+
+        .blog-article {
+            max-width: 900px;
+            margin: 140px auto 60px;
+            padding: 0 2rem;
+        }
+
+        .article-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .article-meta {
+            color: #666;
+            font-size: 1rem;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .article-meta i {
+            margin-right: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--text-color);
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .article-content h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .article-content em {
+            color: #555;
+            font-style: italic;
+        }
+
+        .article-content strong {
+            font-weight: 600;
+        }
+
+        .article-content ul {
+            margin: 20px 0 20px 30px;
+        }
+
+        .article-content li {
+            margin-bottom: 10px;
+        }
+
+        .aspect-ratio-gallery {
+            margin: 2.5rem 0;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .aspect-ratio-gallery h3 {
+            margin-bottom: 30px;
+            font-size: 1.3em;
+            color: var(--primary-color);
+        }
+
+        .aspect-ratio-item {
+            margin-bottom: 40px;
+        }
+
+        .aspect-ratio-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .aspect-ratio-label {
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            color: var(--primary-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .aspect-ratio-description {
+            font-size: 0.95em;
+            color: #666;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .aspect-ratio-visual {
+            background: linear-gradient(135deg, var(--accent-color) 0%, #d4af8c 100%);
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .aspect-ratio-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></svg>');
+            background-size: 20px 20px;
+            opacity: 0.3;
+        }
+
+        .ratio-169 {
+            aspect-ratio: 16 / 9;
+        }
+
+        .ratio-185 {
+            aspect-ratio: 1.85 / 1;
+        }
+
+        .ratio-235 {
+            aspect-ratio: 2.35 / 1;
+        }
+
+        .ratio-43 {
+            aspect-ratio: 4 / 3;
+            max-width: 600px;
+        }
+
+        .ratio-143 {
+            aspect-ratio: 1.43 / 1;
+            max-width: 650px;
+        }
+
+        .visual-content {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5em;
+            font-weight: 300;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-family: 'Arial', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--primary-color);
+            transform: translateX(-5px);
+        }
+
+        .back-link i {
+            margin-right: 0.5rem;
+        }
+
+        .contact-form-container {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin: 3rem 0;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: 'Georgia', serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--white);
+            color: var(--text-color);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(199, 161, 122, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--accent-color) 0%, #d4af8c 100%);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(199, 161, 122, 0.3);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(199, 161, 122, 0.5);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .privacy-notice {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .privacy-notice a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .privacy-notice a:hover {
+            text-decoration: underline;
+        }
+
+        .form-status {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            display: none;
+        }
+
+        .form-status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .form-status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .grecaptcha-badge {
+            visibility: hidden;
+        }
+
+        @media (max-width: 992px) {
+            .main-nav {
+                top: 0;
+                padding: 0.6rem 1rem;
+                height: 70px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .nav-toggle {
+                display: block;
+                cursor: pointer;
+                padding: 0.5rem;
+                z-index: 1000;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                background: rgba(44, 62, 80, 0.98);
+                backdrop-filter: blur(10px);
+                width: 100%;
+                max-width: 400px;
+                height: calc(100vh - 70px);
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 2rem 0;
+                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                z-index: 999;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-link {
+                padding: 1rem 2rem;
+                font-size: 1.2rem;
+                width: 100%;
+                text-align: left;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-link:hover {
+                background: rgba(199, 161, 122, 0.1);
+            }
+
+            .nav-link::after {
+                display: none;
+            }
+
+            .blog-article {
+                margin-top: 100px;
+                padding: 0 1.5rem;
+            }
+
+            .article-title {
+                font-size: 1.8rem;
+            }
+
+            .article-content {
+                font-size: 1rem;
+            }
+
+            .article-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .aspect-ratio-gallery {
+                padding: 25px;
+            }
+
+            .contact-form-container {
+                padding: 2rem;
+            }
+        }
+
+        .footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-content p {
+            margin: 0.5rem 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .footer-bottom {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div id="navigation-placeholder"></div>
+    <script src="../../shared/nav-component.js"></script>
+
+    <article class="blog-article">
+        <a href="/about/" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to About
+        </a>
+
+        <header class="article-header">
+            <h1 class="article-title">What Makes a Wedding Film Cinematic? Aspect Ratios & Emotional Storytelling in Colorado</h1>
+            <div class="article-meta">
+                <i class="fas fa-film"></i> Cinematic Framing & Emotional Storytelling
+            </div>
+        </header>
+
+        <div class="article-content">
+            <h2>1. Cinematic Framing (Yes, Aspect Ratio Matters)</h2>
+            
+            <p>Aspect ratio — the relationship between width and height in a frame — subtly changes how a moment feels.</p>
+            
+            <p>Most online video uses 16:9. It's standard. Functional. Familiar.</p>
+            
+            <p>But cinema has always experimented beyond that.</p>
+
+            <div class="aspect-ratio-gallery">
+                <h3>Common Cinema Aspect Ratios</h3>
+                
+                <div class="aspect-ratio-item">
+                    <div class="aspect-ratio-label">
+                        <span>16:9</span>
+                        <span style="font-weight: 400; font-size: 0.9em; color: #666;">Standard HD/Online Video</span>
+                    </div>
+                    <div class="aspect-ratio-description">The default for most online content — functional and familiar</div>
+                    <div class="aspect-ratio-visual ratio-169">
+                        <div class="visual-content">16:9</div>
+                    </div>
+                </div>
+
+                <div class="aspect-ratio-item">
+                    <div class="aspect-ratio-label">
+                        <span>1.85:1</span>
+                        <span style="font-weight: 400; font-size: 0.9em; color: #666;">Theatrical Standard</span>
+                    </div>
+                    <div class="aspect-ratio-description">Slightly wider than 16:9, common in theatrical films</div>
+                    <div class="aspect-ratio-visual ratio-185">
+                        <div class="visual-content">1.85:1</div>
+                    </div>
+                </div>
+
+                <div class="aspect-ratio-item">
+                    <div class="aspect-ratio-label">
+                        <span>2.35:1</span>
+                        <span style="font-weight: 400; font-size: 0.9em; color: #666;">Ultra-Wide</span>
+                    </div>
+                    <div class="aspect-ratio-description">Ultra-wide "Cinemascope" — the classic epic format</div>
+                    <div class="aspect-ratio-visual ratio-235">
+                        <div class="visual-content">2.35:1</div>
+                    </div>
+                </div>
+
+                <div class="aspect-ratio-item">
+                    <div class="aspect-ratio-label">
+                        <span>4:3 (1.33:1)</span>
+                        <span style="font-weight: 400; font-size: 0.9em; color: #666;">Classic/Intimate</span>
+                    </div>
+                    <div class="aspect-ratio-description">Classic, taller frame now re-emerging in modern cinema</div>
+                    <div class="aspect-ratio-visual ratio-43">
+                        <div class="visual-content">4:3</div>
+                    </div>
+                </div>
+
+                <div class="aspect-ratio-item">
+                    <div class="aspect-ratio-label">
+                        <span>1.43:1</span>
+                        <span style="font-weight: 400; font-size: 0.9em; color: #666;">IMAX</span>
+                    </div>
+                    <div class="aspect-ratio-description">Used in full-frame IMAX presentations — immersive and tall</div>
+                    <div class="aspect-ratio-visual ratio-143">
+                        <div class="visual-content">1.43:1</div>
+                    </div>
+                </div>
+            </div>
+
+            <p>IMAX, often shot on massive 70mm film, uses a taller frame that fills more of your vision vertically. Interestingly, that reflects a broader cultural shift. For decades, cinema pushed wider and wider. Now we're seeing a renewed appreciation for height — for immersion that surrounds rather than stretches.</p>
+
+            <p>That mirrors how we consume media today:</p>
+
+            <ul>
+                <li>Phones are vertical.</li>
+                <li>Stories are vertical.</li>
+                <li>Moments are framed upright.</li>
+            </ul>
+
+            <p><strong>The frame is getting taller again.</strong></p>
+
+            <p>And in weddings, taller frames often feel more intimate.</p>
+
+            <h2>2. Why I Love 4:3 for Emotional Moments</h2>
+
+            <p>4:3 has a way of pulling you inward.</p>
+
+            <p>There's less empty space. Faces dominate the frame. Background distractions fall away. It feels closer — almost like flipping through a memory rather than watching a production.</p>
+
+            <p>In wedding films, that can transform the experience:</p>
+
+            <ul>
+                <li>Vows feel personal instead of performative</li>
+                <li>First looks feel intimate instead of staged</li>
+                <li>Reactions feel human, not cinematic spectacle</li>
+            </ul>
+
+            <p>Wider isn't always more emotional.</p>
+
+            <p><strong>Sometimes taller feels more honest.</strong></p>
+
+            <h2>3. Subtle Width: 1.85:1 Over 16:9</h2>
+
+            <p>While 16:9 is today's default, it can feel… neutral.</p>
+
+            <p>Television-like.</p>
+
+            <p>That's why even small shifts matter.</p>
+
+            <p><strong>1.85:1</strong> is only slightly wider, but it introduces separation from the everyday. It feels more intentional. More immersive.</p>
+
+            <p>In one of my past projects, I opted for 1.85:1 instead of 16:9 specifically to create that subtle cinematic distinction. The difference is small on paper — but emotionally, it changes how the frame breathes.</p>
+
+            <p><strong>Cinematic filmmaking often lives in those subtle choices.</strong></p>
+
+            <h2>4. Cinematic Movement</h2>
+
+            <p>Aspect ratio alone doesn't create cinema.</p>
+
+            <p><strong>Movement does.</strong></p>
+
+            <ul>
+                <li>Slow, controlled camera motion</li>
+                <li>Natural handheld energy when appropriate</li>
+                <li>Letting moments breathe instead of rushing cuts</li>
+            </ul>
+
+            <p>In Colorado especially — with mountain backdrops, open skies, and dramatic landscapes — movement interacts with space. A wider frame emphasizes scale. A taller frame emphasizes presence.</p>
+
+            <p>Both can be powerful. The key is choosing intentionally.</p>
+
+            <h2>5. Cinematic Editing</h2>
+
+            <p>Cinematic doesn't mean long.</p>
+
+            <p><strong>It means purposeful.</strong></p>
+
+            <ul>
+                <li>Letting silence exist</li>
+                <li>Building pacing around emotion</li>
+                <li>Using audio (vows, toasts, ambient sound) as narrative anchors</li>
+                <li>Cutting based on feeling rather than just chronology</li>
+            </ul>
+
+            <p>A cinematic wedding film feels like a story unfolding — not an event being summarized.</p>
+
+            <h2>6. Cinematic Isn't a Trend</h2>
+
+            <p>The word "cinematic" gets overused.</p>
+
+            <p>But at its core, it simply means this:</p>
+
+            <p><strong>The film was crafted — not just recorded.</strong></p>
+
+            <p>It means someone thought about:</p>
+
+            <ul>
+                <li>Framing</li>
+                <li>Negative space</li>
+                <li>Emotional proximity</li>
+                <li>How the image shape influences feeling</li>
+            </ul>
+
+            <p>Whether that's through 4:3 for intimacy, 1.85:1 for immersion, or thoughtful composition within any ratio — the goal is always the same:</p>
+
+            <p><strong>To make you feel like you're back inside the moment.</strong></p>
+
+            <h2>Why This Matters for Colorado Weddings</h2>
+
+            <p>Colorado weddings are unique.</p>
+
+            <p>They're often outdoors. Expansive. Textural. Emotional against dramatic landscapes.</p>
+
+            <p>A cinematic wedding film here isn't just about showing the mountains.</p>
+
+            <p><strong>It's about balancing scale with intimacy.</strong></p>
+
+            <p>Your film should feel both epic and personal.</p>
+
+            <p>That balance often begins with something as simple — and as powerful — as the shape of the frame.</p>
+
+            <h2>Get In Touch</h2>
+            
+            <div class="contact-form-container">
+                <form id="blogContactForm" action="https://formspree.io/f/mpwlzbld" method="POST">
+                    <input type="hidden" name="g-recaptcha-response" id="recaptchaResponse">
+                    <input type="hidden" name="_subject" value="New inquiry from Aspect Ratio blog post">
+                    
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send Message</button>
+                    
+                    <p class="privacy-notice">
+                        This site is protected by reCAPTCHA and the Google
+                        <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a> and
+                        <a href="https://policies.google.com/terms" target="_blank">Terms of Service</a> apply.
+                    </p>
+                    
+                    <div id="formStatus" class="form-status"></div>
+                </form>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Promise Pine. All rights reserved.</p>
+        </div>
+        <div class="footer-bottom">
+            <p>Colorado Springs, Colorado</p>
+        </div>
+    </footer>
+
+    <script>
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.main-nav')) {
+                navLinks.classList.remove('active');
+            }
+        });
+
+        const blogContactForm = document.getElementById('blogContactForm');
+        const formStatus = document.getElementById('formStatus');
+        
+        if (blogContactForm) {
+            blogContactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const submitBtn = blogContactForm.querySelector('.submit-btn');
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+                
+                grecaptcha.ready(function() {
+                    grecaptcha.execute('6Lflf3wsAAAAAMWhWCyPRBm-5uONeyqu8NjCzj5f', {action: 'submit'}).then(function(token) {
+                        document.getElementById('recaptchaResponse').value = token;
+                        
+                        const formData = new FormData(blogContactForm);
+                        
+                        fetch(blogContactForm.action, {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        })
+                        .then(response => {
+                            if (response.ok) {
+                                formStatus.textContent = 'Thank you for your message! I\'ll get back to you soon.';
+                                formStatus.className = 'form-status success';
+                                formStatus.style.display = 'block';
+                                blogContactForm.reset();
+                            } else {
+                                throw new Error('Form submission failed');
+                            }
+                        })
+                        .catch(error => {
+                            formStatus.textContent = 'Oops! There was a problem submitting your form. Please try again or email directly.';
+                            formStatus.className = 'form-status error';
+                            formStatus.style.display = 'block';
+                        })
+                        .finally(() => {
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = 'Send Message';
+                        });
+                    });
+                });
+            });
+        }
+    </script>
+</body>
+</html>
