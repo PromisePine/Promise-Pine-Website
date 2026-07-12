@@ -430,9 +430,10 @@
 
         /* Responsive tweaks */
         @media (max-width: 640px) {
+            .container { width: 94vw; padding: 0 1rem; }
             .video-section { margin-top: 2rem; }
             .section-title { margin: 2.5rem 0 1.5rem; }
-            .play-button { top: 62%; padding: 0.65rem 1.25rem; font-size: 0.95rem; }
+            .play-button { top: 50%; padding: 0.65rem 1.25rem; font-size: 0.95rem; }
             .hero-slide { transform: scale(1.08); }
             .watch-actions { flex-direction: column; align-items: stretch; }
             .button { justify-content: center; }
@@ -441,6 +442,12 @@
             .download-section { margin: 3rem 0 3rem; }
             .download-button { padding: 0.75rem 1.75rem; font-size: 1rem; }
             .review-button { padding: 0.75rem 1.75rem; font-size: 1rem; }
+            
+            /* Referral section mobile fixes */
+            .referral-section { padding: 2rem 1rem; margin: 3rem 0 4rem; }
+            .referral-code-container { flex-direction: column; gap: 1rem; width: 100%; }
+            .referral-code { width: 100%; text-align: center; font-size: 1rem; padding: 0.75rem 1rem; }
+            .referral-copy-btn { width: 100%; justify-content: center; }
         }
     </style>
 </head>
