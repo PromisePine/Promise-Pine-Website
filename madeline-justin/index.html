@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madeline & Justin — Promise Pine</title>
+    <meta name="description" content="Madeline & Justin — Wedding film by Promise Pine.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Base */
+        :root {
+            --bg: #0e0e0e;
+            --text: #eaeaea;
+            --muted: #b8b8b8;
+            --accent: #c7a17a;
+            --overlay: rgba(0,0,0,0.45);
+        }
+        * { box-sizing: border-box; }
+        html, body { height: 100%; }
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+            line-height: 1.6;
+        }
+        img { max-width: 100%; display: block; }
+        .container { width: min(1100px, 92vw); margin: 0 auto; padding: 0 1rem; }
+
+        /* Hero */
+        .hero { position: relative; height: min(70vh, 720px); min-height: 380px; overflow: hidden; }
+
+        /* Hero slideshow */
+        .hero-slideshow { position: absolute; inset: 0; }
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            transform: scale(1.05);
+        }
+        .hero-slide.active { opacity: 1; }
+
+        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.15), rgba(0,0,0,0.35)); z-index: 1; }
+
+        /* Wedding Date */
+        .wedding-date {
+            position: absolute;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            text-align: center;
+            font-family: Inter, sans-serif;
+        }
+
+        .brand-link {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            color: var(--accent);
+            text-decoration: none;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            transition: opacity 0.3s ease;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        .brand-link:hover {
+            opacity: 0.8;
+        }
+
+        .date-text {
+            font-size: 0.875rem;
+            font-weight: 300;
+            letter-spacing: 1.5px;
+            color: rgba(255, 255, 255, 0.85);
+            text-transform: uppercase;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Section */
+        .section-title { font-family: "Playfair Display", Georgia, serif; font-weight: 600; margin: 4rem 0 2rem; letter-spacing: 0.3px; text-align: center; font-size: clamp(1.75rem, 3vw + 0.5rem, 2.5rem); }
+        .lead { color: #d6d6d6; max-width: 65ch; margin: 0 auto; text-align: center; }
+
+        /* Video */
+        .video-section { margin-top: 3rem; }
+        .video-frame { position: relative; width: 100%; border-radius: 16px; overflow: hidden; background: #111; box-shadow: 0 10px 30px rgba(0,0,0,0.35), 0 1px 0 rgba(255,255,255,0.03) inset; }
+        .video-frame iframe { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
+        .video-fallback { padding: 2rem; text-align: center; color: var(--muted); }
+
+        /* Custom thumbnail with play button */
+        .video-thumbnail { position: relative; width: 100%; aspect-ratio: 16 / 9; cursor: pointer; overflow: hidden; }
+        .thumbnail-image { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.95);
+            color: #111;
+            border: none;
+            border-radius: 999px;
+            padding: 0.75rem 1.5rem;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 200ms ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        }
+        .play-button:hover {
+            background: #fff;
+            transform: translate(-50%, -50%) scale(1.05);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+        .play-button:active {
+            transform: translate(-50%, -50%) scale(1);
+        }
+        .play-button svg { width: 20px; height: 20px; }
+
+        /* Ensure common Vimeo oEmbed wrappers behave nicely inside the frame */
+        .video-frame > div:not(.video-thumbnail) { width: 100% !important; height: auto !important; border-radius: inherit; overflow: hidden; }
+        .video-frame > div iframe { border: 0; }
+
+        /* Actions */
+        .watch-actions { margin: 1.5rem 0 0; display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+        .button { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--text); border: 1px solid #2a2a2a; border-radius: 999px; padding: 0.6rem 1.25rem; text-decoration: none; font-weight: 500; transition: all 180ms ease; cursor: pointer; font-family: inherit; font-size: inherit; }
+        .button svg { flex-shrink: 0; }
+        .button:hover { border-color: #3a3a3a; background: rgba(255,255,255,0.03); transform: translateY(-1px); }
+        .button:active { transform: translateY(0); }
+
+        /* Download Section */
+        .download-section { margin: 5rem 0 4rem; text-align: center; }
+        .download-section .lead { margin-bottom: 2rem; color: var(--muted); }
+        .download-actions { display: flex; justify-content: center; margin-top: 2rem; }
+        .download-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.625rem;
+            background: var(--accent);
+            color: #0e0e0e;
+            border: none;
+            border-radius: 999px;
+            padding: 0.875rem 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 200ms ease;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(199, 161, 122, 0.25);
+        }
+        .download-button:hover {
+            background: #d4b08c;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(199, 161, 122, 0.35);
+        }
+        .download-button:active {
+            transform: translateY(0);
+        }
+        .download-button svg { flex-shrink: 0; }
+
+        /* Review Button */
+        .review-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.625rem;
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--accent);
+            border-radius: 999px;
+            padding: 0.875rem 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 200ms ease;
+            cursor: pointer;
+        }
+
+        .review-button:hover {
+            background: var(--accent);
+            color: #0e0e0e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(199, 161, 122, 0.25);
+        }
+
+        .review-button:active {
+            transform: translateY(0);
+        }
+
+        .review-button svg { flex-shrink: 0; }
+
+        /* Review Options Modal */
+        .review-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .review-modal.active {
+            display: flex;
+        }
+
+        .review-modal-content {
+            background: #1a1a1a;
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .review-modal-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text);
+            font-family: "Playfair Display", Georgia, serif;
+            margin-bottom: 1rem;
+        }
+
+        .review-modal-subtitle {
+            font-size: 1rem;
+            color: var(--muted);
+            margin-bottom: 2rem;
+            font-family: Inter, sans-serif;
+        }
+
+        .review-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .review-option {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: #252525;
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .review-option:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border-color: var(--accent);
+            background: #2a2a2a;
+        }
+
+        .review-option svg {
+            width: 24px;
+            height: 24px;
+            color: var(--accent);
+        }
+
+        .review-option-text {
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: Inter, sans-serif;
+        }
+
+        .review-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+
+        .review-modal-close:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* About */
+        .about { margin: 3rem 0 4rem; text-align: center; }
+        .about .lead { color: #d6d6d6; max-width: 65ch; margin: 0 auto; text-align: center; }
+
+        /* Thank You Letter Section */
+        .thank-you-section { margin: 5rem 0 4rem; text-align: center; }
+        .thank-you-container { max-width: 800px; margin: 0 auto; }
+        .thank-you-title { font-family: "Playfair Display", Georgia, serif; font-weight: 600; margin: 4rem 0 2rem; letter-spacing: 0.3px; text-align: center; font-size: clamp(1.75rem, 3vw + 0.5rem, 2.5rem); color: var(--text); }
+        .thank-you-message { color: #d6d6d6; max-width: 65ch; margin: 0 auto 2rem; text-align: center; line-height: 1.8; font-size: 1.1rem; }
+        .thank-you-signature { color: var(--accent); margin-top: 2rem; font-weight: 500; }
+
+        /* Footer */
+        .site-footer { border-top: 1px solid #1f1f1f; color: var(--muted); padding: 3rem 0; }
+        .site-footer-content { max-width: 800px; margin: 0 auto; text-align: center; }
+        .site-footer p { margin: 0; padding: 0.5rem 0; text-align: center; font-size: 0.95rem; }
+        .footer-links { display: flex; justify-content: center; gap: 2rem; margin: 1.5rem 0; flex-wrap: wrap; }
+        .footer-link { color: var(--muted); text-decoration: none; transition: color 0.3s ease; }
+        .footer-link:hover { color: var(--accent); }
+
+        /* Responsive tweaks */
+        @media (max-width: 640px) {
+            .video-section { margin-top: 2rem; }
+            .section-title { margin: 2.5rem 0 1.5rem; }
+            .play-button { top: 50%; padding: 0.65rem 1.25rem; font-size: 0.95rem; }
+            .hero-slide { transform: scale(1.08); }
+            .watch-actions { flex-direction: column; align-items: stretch; }
+            .button { justify-content: center; }
+            .download-section { margin: 3rem 0 3rem; }
+            .download-button { padding: 0.75rem 1.75rem; font-size: 1rem; }
+            .review-button { padding: 0.75rem 1.75rem; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+  <header class="hero" role="banner" aria-label="Madeline & Justin">
+    <div class="hero-slideshow" id="heroSlideshow" aria-hidden="true">
+      <div class="hero-slide active" style="background-image: url('Images/Bride & Honor.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('Images/Bride Laughter.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('Images/Ceremony Kiss.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('Images/Ceremony.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('Images/Couple looking.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('Images/Grand Entrance.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('Images/Groom & Bestman.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('Images/Groom.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('Images/Head 2 Head.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('Images/Head to Head.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('Images/Nice View.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('Images/Silhouette.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('Images/Sunset 2.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('Images/Sunset.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('Images/Sweet Hug.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('Images/Walking Holding Hands.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('Images/Wedding Party.jpg');"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="wedding-date">
+      <a href="https://www.promisepine.com" class="brand-link">Promise Pine</a>
+      <div class="date-text">May 31, 2026</div>
+    </div>
+  </header>
+
+  <main class="container" role="main">
+
+    <section class="video-section" aria-labelledby="film-title">
+      <h2 id="film-title" class="section-title">Wedding Film</h2>
+
+      <div class="video-frame" id="videoFrame" aria-label="Vimeo video player">
+        <noscript>
+          <p>To watch this film, please enable JavaScript or open it directly on Vimeo:</p>
+          <p><a class="button" href="https://vimeo.com/1220651310" target="_blank" rel="noopener">Open on Vimeo</a></p>
+        </noscript>
+      </div>
+
+      <div class="watch-actions">
+        <a class="button" href="https://vimeo.com/1220651310" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+          Open in Vimeo
+        </a>
+        <button class="button" id="copyLinkBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+          </svg>
+          Copy Link
+        </button>
+        <button class="button" id="shareBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="18" cy="5" r="3"></circle>
+            <circle cx="6" cy="12" r="3"></circle>
+            <circle cx="18" cy="19" r="3"></circle>
+            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+          </svg>
+          Share
+        </button>
+      </div>
+    </section>
+
+    <section class="about">
+      <p class="lead">Thank you for including me in your day. I hope this film brings you back to the warmth, vows, and celebration of your story.</p>
+    </section>
+
+    <section class="download-section">
+      <h2 class="section-title">Download Files</h2>
+      <p class="lead">Access your wedding videos here</p>
+      <div class="download-actions">
+        <a class="download-button" href="https://1drv.ms/f/c/a7ba6ea02575ee91/IgCdoDMp5fA_RKL7wwI3ma6RAb7ESHTChm5h6ey7bbQ378Y?e=XgVz6c" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Download from OneDrive
+        </a>
+      </div>
+      <div class="review-actions" style="margin-top: 2rem; text-align: center;">
+        <p class="lead" style="margin-bottom: 1rem; color: var(--muted);">Enjoyed our work? Leave us a review!</p>
+        <button class="review-button" onclick="openReviewModal()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          Leave a Review
+        </button>
+      </div>
+    </section>
+
+    <!-- Thank You Letter Section -->
+    <section class="thank-you-section">
+      <div class="thank-you-container">
+        <h2 class="thank-you-title">Congratulations!</h2>
+        <p class="thank-you-message">
+          Madeline & Justin, thank you from the bottom of my heart for allowing me to be part of your incredible wedding day. 
+          It was an absolute honor to capture these precious moments and preserve the memories that you'll cherish for a lifetime. 
+          Your love story is truly inspiring, and I feel privileged to have witnessed the beginning of your forever together.
+        </p>
+        <p class="thank-you-message">
+          May your journey ahead be filled with endless joy, laughter, and adventure. I wish you all the happiness in the world 
+          as you build your life together. Thank you for trusting me with your special day.
+        </p>
+        <p class="thank-you-signature">With love and best wishes,<br>Matthew at Promise Pine Films</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Review Options Modal -->
+  <div class="review-modal" id="reviewModal">
+    <button class="review-modal-close" onclick="closeReviewModal()">&times;</button>
+    <div class="review-modal-content">
+      <h3 class="review-modal-title">Choose a Platform</h3>
+      <p class="review-modal-subtitle">We'd love to hear your thoughts!</p>
+      
+      <div class="review-options">
+        <a href="https://g.page/r/CYtKKGGLKByWEAE/review" target="_blank" class="review-option">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          <span class="review-option-text">Google</span>
+        </a>
+        <a href="https://theknot.com/review-wedding-vendors/2095933" target="_blank" class="review-option">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          <span class="review-option-text">The Knot</span>
+        </a>
+        <a href="https://www.weddingwire.com/shared/rate/new?vid=5994eb3553677fe4" target="_blank" class="review-option">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <span class="review-option-text">WeddingWire</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer-content">
+      <p>© <span id="year"></span> Promise Pine</p>
+      
+      <div class="footer-links">
+        <a href="https://promisepine.com" target="_blank" class="footer-link">Main Website</a>
+        <a href="https://promisepine.com/portfolio" target="_blank" class="footer-link">Portfolio</a>
+        <a href="https://promisepine.com" target="_blank" class="footer-link">Contact</a>
+      </div>
+      
+      <p style="margin-top: 1rem; color: var(--muted); font-size: 0.9rem;">Crafted with ❤️ for Madeline & Justin</p>
+    </div>
+  </footer>
+
+  <script>
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Hero slideshow animation
+    (function initSlideshow() {
+      const slides = document.querySelectorAll('.hero-slide');
+      let currentSlide = 0;
+      
+      function nextSlide() {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+      }
+      
+      // Change slide every 4 seconds
+      if (slides.length > 1) {
+        setInterval(nextSlide, 4000);
+      }
+    })();
+
+    // Custom thumbnail with play button - loads player on click
+    (function initCustomPlayer() {
+      const target = document.getElementById('videoFrame');
+      
+      // Detect mobile device
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+
+      // Create custom thumbnail with play button using first hero image
+      const thumbnailContainer = document.createElement('div');
+      thumbnailContainer.className = 'video-thumbnail';
+      thumbnailContainer.style.cssText = 'position: relative; width: 100%; aspect-ratio: 16/9; cursor: pointer; overflow: hidden;';
+      thumbnailContainer.innerHTML = `
+        <img src="Images/Head to Head.jpg" alt="Madeline & Justin Wedding Film Thumbnail" class="thumbnail-image" />
+        <button class="play-button" aria-label="Play wedding film">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+          <span>Play</span>
+        </button>
+      `;
+      
+      target.appendChild(thumbnailContainer);
+      
+      // Load player on click - use direct embed for better mobile compatibility
+      thumbnailContainer.addEventListener('click', function() {
+        const autoplayParam = isMobile ? '&autoplay=1&muted=1' : '&autoplay=1';
+        target.innerHTML = '<div style="padding:54.01% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1220651310?badge=0&autopause=0&player_id=0&app_id=58479' + autoplayParam + '" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Madeline & Justin"></iframe></div><script src="https://player.vimeo.com/api/player.js"><\/script>';
+      });
+    })();
+
+    // Copy link functionality
+    document.getElementById('copyLinkBtn').addEventListener('click', function() {
+      const vimeoLink = 'https://vimeo.com/1220651310';
+      navigator.clipboard.writeText(vimeoLink).then(() => {
+        const btn = this;
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!';
+        setTimeout(() => {
+          btn.innerHTML = originalText;
+        }, 2000);
+      }).catch(() => {
+        alert('Failed to copy link. Please copy manually: https://vimeo.com/1220651310');
+      });
+    });
+
+    // Share functionality
+    document.getElementById('shareBtn').addEventListener('click', function() {
+      const vimeoLink = 'https://vimeo.com/1220651310';
+      const shareData = {
+        title: 'Madeline & Justin - Wedding Film',
+        text: 'Watch our wedding film by Promise Pine',
+        url: vimeoLink
+      };
+      
+      if (navigator.share) {
+        navigator.share(shareData).catch(() => {
+          // User cancelled or error - do nothing
+        });
+      } else {
+        // Fallback: copy to clipboard
+        navigator.clipboard.writeText(vimeoLink).then(() => {
+          alert('Link copied to clipboard! Share it with your friends and family.');
+        }).catch(() => {
+          alert('Share link: https://vimeo.com/1220651310');
+        });
+      }
+    });
+
+    // Review modal
+    function openReviewModal() {
+      document.getElementById('reviewModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeReviewModal() {
+      document.getElementById('reviewModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Close modal on outside click
+    document.getElementById('reviewModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeReviewModal();
+      }
+    });
+
+    // Close modal on escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeReviewModal();
+      }
+    });
+  </script>
+</body>
+</html>
