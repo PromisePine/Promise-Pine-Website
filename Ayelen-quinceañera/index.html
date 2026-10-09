@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Ayelen's Quinceañera — Promise Pine</title>
+    <meta name="description" content="Ayelen's Quinceañera photos and video by Promise Pine.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Base */
+        :root {
+            --bg: #0e0e0e;
+            --text: #eaeaea;
+            --muted: #b8b8b8;
+            --accent: #c7a17a;
+            --accent-secondary: #d4a574;
+            --overlay: rgba(0,0,0,0.45);
+        }
+        * { box-sizing: border-box; }
+        html, body { height: 100%; }
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+            line-height: 1.6;
+        }
+        img { max-width: 100%; display: block; }
+        .container { width: min(1100px, 92vw); margin: 0 auto; padding: 0 1rem; }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: min(60vh, 600px);
+            min-height: 350px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(199, 161, 122, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+        }
+
+        .brand-link {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            color: var(--accent);
+            text-decoration: none;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .brand-link:hover {
+            opacity: 0.8;
+        }
+
+        .hero-title {
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: clamp(2.5rem, 5vw + 1rem, 4rem);
+            font-weight: 700;
+            margin: 0 0 1rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--muted);
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+
+        /* Navigation Buttons */
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .nav-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--accent);
+            border-radius: 999px;
+            padding: 0.875rem 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 200ms ease;
+            cursor: pointer;
+            font-family: inherit;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .nav-button:hover {
+            background: var(--accent);
+            color: #0e0e0e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(199, 161, 122, 0.25);
+        }
+
+        .nav-button:active {
+            transform: translateY(0);
+        }
+
+        @media (hover: none) {
+            .nav-button:hover {
+                transform: none;
+            }
+        }
+
+        .nav-button svg {
+            flex-shrink: 0;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 5rem 0;
+            scroll-margin-top: 2rem;
+        }
+
+        .section-title {
+            font-family: "Playfair Display", Georgia, serif;
+            font-weight: 600;
+            margin: 0 0 2rem;
+            letter-spacing: 0.3px;
+            text-align: center;
+            font-size: clamp(1.75rem, 3vw + 0.5rem, 2.5rem);
+            color: var(--text);
+        }
+
+        /* Video Section */
+        .video-section {
+            background: linear-gradient(to bottom, var(--bg), #151515);
+        }
+
+        .video-container {
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .video-container iframe {
+            display: block;
+            width: 100%;
+        }
+
+        .download-video-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.625rem;
+            background: var(--accent);
+            color: #0e0e0e;
+            border: none;
+            border-radius: 999px;
+            padding: 0.875rem 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 200ms ease;
+            cursor: pointer;
+            margin: 2rem auto 0;
+            box-shadow: 0 4px 12px rgba(199, 161, 122, 0.25);
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .download-video-btn:hover {
+            background: #d4b08c;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(199, 161, 122, 0.35);
+        }
+
+        .download-video-btn svg {
+            flex-shrink: 0;
+        }
+
+        @media (hover: none) {
+            .download-video-btn:hover {
+                transform: none;
+            }
+        }
+
+        .button-container {
+            text-align: center;
+            width: 100%;
+        }
+
+        .button-container .download-video-btn,
+        .button-container .view-all-btn,
+        .button-container .review-button {
+            max-width: 100%;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            background: #151515;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 3/2;
+            overflow: hidden;
+            border-radius: 12px;
+            cursor: pointer;
+            background: #1a1a1a;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        @media (hover: none) {
+            .gallery-item:hover {
+                transform: none;
+            }
+            
+            .gallery-item:active {
+                transform: scale(0.98);
+            }
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-item:hover .gallery-item-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item-overlay svg {
+            width: 40px;
+            height: 40px;
+            color: white;
+            opacity: 0.9;
+        }
+
+        .gallery-item.hidden {
+            display: none;
+        }
+
+        .view-all-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--accent);
+            border-radius: 999px;
+            padding: 0.875rem 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 200ms ease;
+            cursor: pointer;
+            font-family: inherit;
+            margin: 2rem auto 0;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .view-all-btn:hover {
+            background: var(--accent);
+            color: #0e0e0e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(199, 161, 122, 0.25);
+        }
+
+        .view-all-btn svg {
+            flex-shrink: 0;
+        }
+
+        @media (hover: none) {
+            .view-all-btn:hover {
+                transform: none;
+            }
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90vw;
+            max-height: 90vh;
+            aspect-ratio: 16/9;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .lightbox-nav:active {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-50%) scale(0.95);
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        /* Message Section */
+        .message-section {
+            background: linear-gradient(to bottom, #151515, var(--bg));
+            text-align: center;
+        }
+
+        .message-content {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .message-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #d6d6d6;
+            margin-bottom: 1.5rem;
+        }
+
+        .message-highlight {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        /* Review Section */
+        .review-section {
+            background: var(--bg);
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .review-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.625rem;
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--accent);
+            border-radius: 999px;
+            padding: 0.875rem 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 200ms ease;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .review-button:hover {
+            background: var(--accent);
+            color: #0e0e0e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(199, 161, 122, 0.25);
+        }
+
+        .review-button svg {
+            flex-shrink: 0;
+        }
+
+        @media (hover: none) {
+            .review-button:hover {
+                transform: none;
+            }
+        }
+
+        /* Footer */
+        .site-footer {
+            border-top: 1px solid #1f1f1f;
+            color: var(--muted);
+            padding: 3rem 0;
+            background: var(--bg);
+        }
+
+        .site-footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .site-footer p {
+            margin: 0;
+            padding: 0.5rem 0;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                height: auto;
+                min-height: 50vh;
+                padding: 3rem 1rem;
+            }
+
+            .hero-title {
+                font-size: 1.8rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.75rem;
+                margin-top: 1.5rem;
+            }
+
+            .nav-button {
+                justify-content: center;
+                padding: 1rem 1.5rem;
+                font-size: 0.95rem;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .video-container {
+                border-radius: 12px;
+            }
+
+            .download-video-btn {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.95rem;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+
+            .gallery-item {
+                border-radius: 8px;
+            }
+
+            .gallery-item-overlay svg {
+                width: 32px;
+                height: 32px;
+            }
+
+            .view-all-btn {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.95rem;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .lightbox-content {
+                max-width: 95vw;
+                max-height: 80vh;
+                aspect-ratio: 16/9;
+            }
+
+            .lightbox-close,
+            .lightbox-nav {
+                width: 44px;
+                height: 44px;
+                font-size: 1.5rem;
+            }
+
+            .lightbox-close {
+                top: 10px;
+                right: 10px;
+            }
+
+            .lightbox-prev {
+                left: 10px;
+            }
+
+            .lightbox-next {
+                right: 10px;
+            }
+
+            .message-text {
+                font-size: 1rem;
+            }
+
+            .review-button {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.95rem;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .button-container {
+                padding: 0 1rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            .nav-button,
+            .download-video-btn,
+            .view-all-btn,
+            .review-button {
+                padding: 0.875rem 1.25rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-content">
+            <a href="https://www.promisepine.com" class="brand-link">Promise Pine</a>
+            <h1 class="hero-title">Ayelen's Quinceañera</h1>
+            <p class="hero-subtitle">A beautiful celebration captured forever</p>
+            
+            <nav class="nav-buttons">
+                <a href="#video" class="nav-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                    Watch Highlight Video
+                </a>
+                <a href="#gallery" class="nav-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                        <polyline points="21 15 16 10 5 21"></polyline>
+                    </svg>
+                    See Picture Gallery
+                </a>
+                <a href="https://1drv.ms/f/c/a7ba6ea02575ee91/IgCfKLBnEynESp02sYFNogURAf9raT_Q-PQoX3j_lbQWOaI?e=3jY3Tq" target="_blank" rel="noopener" class="nav-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download Media
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Video Section -->
+        <section id="video" class="section video-section">
+            <div class="container">
+                <h2 class="section-title">Highlight Video</h2>
+                <div class="video-container">
+                    <div style="padding:56.25% 0 0 0;position:relative;">
+                        <iframe src="https://player.vimeo.com/video/1234278399?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Quince Highlight"></iframe>
+                    </div>
+                </div>
+                <div class="button-container">
+                    <a href="https://1drv.ms/f/c/a7ba6ea02575ee91/IgAhS6JYDaCuTLhcDjo8MywYAW44FL8YrBRU7px9ZkuL6og?e=caKClF" target="_blank" rel="noopener" class="download-video-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Download Highlight Video
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="section gallery-section">
+            <div class="container">
+                <h2 class="section-title">Picture Gallery</h2>
+                <div class="gallery-grid" id="galleryGrid">
+                    <!-- Images will be loaded dynamically -->
+                </div>
+                <div class="button-container" style="margin-top: 2rem;">
+                    <button id="viewAllBtn" class="view-all-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                        View All
+                    </button>
+                </div>
+                <div class="button-container" style="margin-top: 3rem;">
+                    <a href="https://1drv.ms/f/c/a7ba6ea02575ee91/IgAym5v7TIQLQ4xNXYb1zN6aAQO1h1Yb-PjvGh3RpAu7jLM?e=BvXy6r" target="_blank" rel="noopener" class="download-video-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Download Pictures
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Message Section -->
+        <section class="section message-section">
+            <div class="container">
+                <div class="message-content">
+                    <h2 class="section-title">A Special Note</h2>
+                    <p class="message-text">
+                        <span class="message-highlight">Happy Birthday, Ayelen! 🎉</span>
+                    </p>
+                    <p class="message-text">
+                        It was such an honor and privilege to capture your beautiful Quinceañera celebration. 
+                        The joy, laughter, and love that filled the room were truly magical, and I feel so grateful 
+                        to have been part of this special milestone in your life.
+                    </p>
+                    <p class="message-text">
+                        Your celebration was absolutely stunning, from the elegant details to the heartfelt moments 
+                        shared with family and friends. I hope these photos and video bring you back to the wonderful 
+                        memories of this day for years to come.
+                    </p>
+                    <p class="message-text">
+                        Thank you to you and your wonderful family for trusting me to document such an important occasion. 
+                        May this birthday mark the beginning of an amazing journey filled with happiness, success, and 
+                        endless beautiful moments.
+                    </p>
+                    <p class="message-text" style="color: var(--accent); font-weight: 500; margin-top: 2rem;">
+                        With love and best wishes,<br>Matthew at Promise Pine Films
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Review Section -->
+        <section id="review" class="section review-section">
+            <div class="container">
+                <h2 class="section-title">Share Your Experience</h2>
+                <p style="color: var(--muted); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Did you enjoy your photos and video? We'd love to hear your thoughts!
+                </p>
+                <a href="https://g.page/r/CYtKKGGLKByWEAI/review" target="_blank" rel="noopener" class="review-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                    Leave a Review
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)">&#10094;</button>
+        <img src="" alt="Gallery image" class="lightbox-content" id="lightboxImage">
+        <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)">&#10095;</button>
+    </div>
+
+    <footer class="site-footer">
+        <div class="site-footer-content">
+            <p>© <span id="year"></span> Promise Pine</p>
+            
+            <div class="footer-links">
+                <a href="https://promisepine.com" target="_blank" class="footer-link">Main Website</a>
+                <a href="https://promisepine.com/portfolio" target="_blank" class="footer-link">Portfolio</a>
+                <a href="https://promisepine.com" target="_blank" class="footer-link">Contact</a>
+            </div>
+            
+            <p style="margin-top: 1rem; color: var(--muted); font-size: 0.9rem;">Crafted with ❤️ for Ayelen's Quinceañera</p>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Image gallery loading
+        const imageFiles = [
+            'DSC08284 Large.jpeg', 'DSC08297 Large.jpeg', 'DSC08305 Large.jpeg', 'DSC08315 Large.jpeg',
+            'DSC08318 Large.jpeg', 'DSC08322 Large.jpeg', 'DSC08325 Large.jpeg', 'DSC08331 Large.jpeg',
+            'DSC08332 Large.jpeg', 'DSC08337 Large.jpeg', 'DSC08350 Large.jpeg', 'DSC08354 Large.jpeg',
+            'DSC08355 Large.jpeg', 'DSC08360 Large.jpeg', 'DSC08362 Large.jpeg', 'DSC08363 Large.jpeg',
+            'DSC08366 Large.jpeg', 'DSC08369 Large.jpeg', 'DSC08374 Large.jpeg', 'DSC08376 Large.jpeg',
+            'DSC08381 Large.jpeg', 'DSC08383 Large.jpeg', 'DSC08385 Large.jpeg', 'DSC08389 Large.jpeg',
+            'DSC08390 Large.jpeg', 'DSC08394 Large.jpeg', 'DSC08396 Large.jpeg', 'DSC08397 Large.jpeg',
+            'DSC08400 Large.jpeg', 'DSC08402 Large.jpeg', 'DSC08403 Large.jpeg', 'DSC08410 Large.jpeg',
+            'DSC08415 Large.jpeg', 'DSC08417 Large.jpeg', 'DSC08419 Large.jpeg', 'DSC08420 Large.jpeg',
+            'DSC08423 Large.jpeg', 'DSC08425 Large.jpeg', 'DSC08428 Large.jpeg', 'DSC08431 Large.jpeg',
+            'DSC08433 Large.jpeg', 'DSC08436 Large.jpeg', 'DSC08437 Large.jpeg', 'DSC08441 Large.jpeg',
+            'DSC08443 Large.jpeg', 'DSC08444 Large.jpeg', 'DSC08445 Large.jpeg', 'DSC08449 Large.jpeg',
+            'DSC08451 Large.jpeg', 'DSC08452 Large.jpeg', 'DSC08453 Large.jpeg', 'DSC08454 Large.jpeg',
+            'DSC08458 Large.jpeg', 'DSC08460 Large.jpeg', 'DSC08463 Large.jpeg', 'DSC08465 Large.jpeg',
+            'DSC08468 Large.jpeg', 'DSC08469 Large.jpeg', 'DSC08471 Large.jpeg', 'DSC08472 Large.jpeg',
+            'DSC08473 Large.jpeg', 'DSC08477 Large.jpeg', 'DSC08478 Large.jpeg', 'DSC08479 Large.jpeg',
+            'DSC08486 Large.jpeg', 'DSC08492 Large.jpeg', 'DSC08493 Large.jpeg', 'DSC08494 Large.jpeg',
+            'DSC08497 Large.jpeg', 'DSC08499 Large.jpeg', 'DSC08500 Large.jpeg', 'DSC08501 Large.jpeg',
+            'DSC08502 Large.jpeg', 'DSC08510 Large.jpeg', 'DSC08515 Large.jpeg', 'DSC08517 Large.jpeg',
+            'DSC08518 Large.jpeg', 'DSC08522 Large.jpeg', 'DSC08526 Large.jpeg', 'DSC08528 Large.jpeg',
+            'DSC08531 Large.jpeg', 'DSC08532 Large.jpeg', 'DSC08537 Large.jpeg', 'DSC08538 Large.jpeg',
+            'DSC08542 Large.jpeg', 'DSC08544 Large.jpeg', 'DSC08548 Large.jpeg', 'DSC08550 Large.jpeg',
+            'DSC08552 Large.jpeg', 'DSC08553 Large.jpeg', 'DSC08558 Large.jpeg', 'DSC08564 Large.jpeg',
+            'DSC08567 Large.jpeg', 'DSC08569 Large.jpeg', 'DSC08574 Large.jpeg', 'DSC08578 Large.jpeg',
+            'DSC08580 Large.jpeg', 'DSC08581 Large.jpeg', 'DSC08583 Large.jpeg', 'DSC08585 Large.jpeg',
+            'DSC08586 Large.jpeg', 'DSC08587 Large.jpeg', 'DSC08588 Large.jpeg', 'DSC08590 Large.jpeg',
+            'DSC08591 Large.jpeg', 'DSC08592 Large.jpeg', 'DSC08594 Large.jpeg', 'DSC08599 Large.jpeg',
+            'DSC08602 Large.jpeg', 'DSC08606 Large.jpeg', 'DSC08611 Large.jpeg', 'DSC08624 Large.jpeg',
+            'DSC08626 Large.jpeg', 'DSC08633 Large.jpeg', 'DSC08637 Large.jpeg', 'DSC08638 Large.jpeg',
+            'DSC08639 Large.jpeg', 'DSC08643 Large.jpeg', 'DSC08651 Large.jpeg', 'DSC08654 Large.jpeg',
+            'DSC08663 Large.jpeg', 'DSC08665 Large.jpeg', 'DSC08667 Large.jpeg', 'DSC08670 Large.jpeg',
+            'DSC08672 Large.jpeg', 'DSC08675 Large.jpeg', 'DSC08676 Large.jpeg', 'DSC08677 Large.jpeg',
+            'DSC08680 Large.jpeg', 'DSC08681 Large.jpeg', 'DSC08682 Large.jpeg', 'DSC08683 Large.jpeg',
+            'DSC08684 Large.jpeg', 'DSC08686 Large.jpeg', 'DSC08688 Large.jpeg', 'DSC08691 Large.jpeg',
+            'DSC08695 Large.jpeg', 'DSC08696 Large.jpeg', 'DSC08700 Large.jpeg', 'DSC08702 Large.jpeg',
+            'DSC08703 Large.jpeg', 'DSC08708 Large.jpeg', 'DSC08710 Large.jpeg', 'DSC08712 Large.jpeg',
+            'DSC08714 Large.jpeg', 'DSC08716 Large.jpeg', 'DSC08723 Large.jpeg', 'DSC08724 Large.jpeg',
+            'DSC08727 Large.jpeg', 'DSC08728 Large.jpeg', 'DSC08730 Large.jpeg', 'DSC08732 Large.jpeg',
+            'DSC08733 Large.jpeg', 'DSC08740 Large.jpeg', 'DSC08741 Large.jpeg', 'DSC08743 Large.jpeg',
+            'DSC08744 Large.jpeg', 'DSC08746 Large.jpeg', 'DSC08749 Large.jpeg', 'DSC08750 Large.jpeg',
+            'DSC08756 Large.jpeg', 'DSC08758 Large.jpeg', 'DSC08759 Large.jpeg', 'DSC08763 Large.jpeg',
+            'DSC08767 Large.jpeg', 'DSC08770 Large.jpeg', 'DSC08772 Large.jpeg', 'DSC08775 Large.jpeg',
+            'DSC08776 Large.jpeg', 'DSC08777 Large.jpeg', 'DSC08778 Large.jpeg', 'DSC08780 Large.jpeg',
+            'DSC08785 Large.jpeg', 'DSC08793 Large.jpeg', 'DSC08797 Large.jpeg', 'DSC08799 Large.jpeg',
+            'DSC08801 Large.jpeg', 'DSC08802 Large.jpeg', 'DSC08804 Large.jpeg', 'DSC08807 Large.jpeg',
+            'DSC08810 Large.jpeg', 'DSC08814 Large.jpeg', 'DSC08817 Large.jpeg', 'DSC08821 Large.jpeg',
+            'DSC08826 Large.jpeg', 'DSC08827 Large.jpeg', 'DSC08828 Large.jpeg', 'DSC08833 Large.jpeg',
+            'DSC08836 Large.jpeg', 'DSC08838 Large.jpeg', 'DSC08841 Large.jpeg', 'DSC08842 Large.jpeg',
+            'DSC08847 Large.jpeg', 'DSC08848 Large.jpeg', 'DSC08849 Large.jpeg', 'DSC08853 Large.jpeg',
+            'DSC08855 Large.jpeg', 'DSC08857 Large.jpeg', 'DSC08859 Large.jpeg', 'DSC08862 Large.jpeg',
+            'DSC08863 Large.jpeg', 'DSC08866 Large.jpeg', 'DSC08868 Large.jpeg', 'DSC08870 Large.jpeg',
+            'DSC08872 Large.jpeg', 'DSC08875 Large.jpeg', 'DSC08878 Large.jpeg', 'DSC08882 Large.jpeg',
+            'DSC08885 Large.jpeg', 'DSC08888 Large.jpeg', 'DSC08889 Large.jpeg', 'DSC08890 Large.jpeg',
+            'DSC08894 Large.jpeg', 'DSC08896 Large.jpeg', 'DSC08897 Large.jpeg', 'DSC08898 Large.jpeg',
+            'DSC08900 Large.jpeg', 'DSC08902 Large.jpeg', 'DSC08905 Large.jpeg', 'DSC08909 Large.jpeg',
+            'DSC08910 Large.jpeg', 'DSC08911 Large.jpeg', 'DSC08913 Large.jpeg', 'DSC08914 Large.jpeg',
+            'DSC08917 Large.jpeg', 'DSC08918 Large.jpeg', 'DSC08920 Large.jpeg', 'DSC08923 Large.jpeg',
+            'DSC08924 Large.jpeg', 'DSC08927 Large.jpeg', 'DSC08932 Large.jpeg', 'DSC08935 Large.jpeg',
+            'DSC08945 Large.jpeg', 'DSC08951 Large.jpeg', 'DSC08952 Large.jpeg', 'DSC08957 Large.jpeg',
+            'DSC08958 Large.jpeg', 'DSC08959 Large.jpeg', 'DSC08963 Large.jpeg', 'DSC08966 Large.jpeg',
+            'DSC08967 Large.jpeg', 'DSC08968 Large.jpeg', 'DSC08971 Large.jpeg', 'DSC08973 Large.jpeg',
+            'DSC08974 Large.jpeg', 'DSC08977 Large.jpeg', 'DSC08978 Large.jpeg', 'DSC08981 Large.jpeg',
+            'DSC08982 Large.jpeg', 'DSC08984 Large.jpeg', 'DSC08986 Large.jpeg', 'DSC08987 Large.jpeg',
+            'DSC08989 Large.jpeg', 'DSC08991 Large.jpeg', 'DSC08992 Large.jpeg', 'DSC08993 Large.jpeg',
+            'DSC08995 Large.jpeg', 'DSC08997 Large.jpeg', 'DSC08999 Large.jpeg', 'DSC09002 Large.jpeg',
+            'DSC09003 Large.jpeg', 'DSC09005 Large.jpeg', 'DSC09008 Large.jpeg', 'DSC09009 Large.jpeg',
+            'DSC09012 Large.jpeg', 'DSC09013 Large.jpeg', 'DSC09016 Large.jpeg', 'DSC09017 Large.jpeg',
+            'DSC09020 Large.jpeg', 'DSC09025 Large.jpeg', 'DSC09027 Large.jpeg', 'DSC09028 Large.jpeg',
+            'DSC09030 Large.jpeg', 'DSC09035 Large.jpeg', 'DSC09036 Large.jpeg', 'DSC09038 Large.jpeg',
+            'DSC09040 Large.jpeg', 'DSC09043 Large.jpeg', 'DSC09044 Large.jpeg', 'DSC09046 Large.jpeg',
+            'DSC09051 Large.jpeg', 'DSC09053 Large.jpeg', 'DSC09054 Large.jpeg', 'DSC09058 Large.jpeg',
+            'DSC09059 Large.jpeg', 'DSC09066 Large.jpeg', 'DSC09068 Large.jpeg', 'DSC09071 Large.jpeg',
+            'DSC09073 Large.jpeg', 'DSC09080 Large.jpeg', 'DSC09083 Large.jpeg', 'DSC09091 Large.jpeg',
+            'DSC09098 Large.jpeg', 'DSC09099 Large.jpeg', 'DSC09100 Large.jpeg', 'DSC09106 Large.jpeg',
+            'DSC09107 Large.jpeg', 'DSC09109 Large.jpeg', 'DSC09111 Large.jpeg', 'DSC09113 Large.jpeg',
+            'DSC09117 Large.jpeg', 'DSC09122 Large.jpeg', 'DSC09123 Large.jpeg', 'DSC09125 Large.jpeg',
+            'DSC09128 Large.jpeg', 'DSC09129 Large.jpeg', 'DSC09130 Large.jpeg', 'DSC09131 Large.jpeg',
+            'DSC09136 Large.jpeg', 'DSC09137 Large.jpeg', 'DSC09139 Large.jpeg', 'DSC09143 Large.jpeg',
+            'DSC09148 Large.jpeg', 'DSC09149 Large.jpeg', 'DSC09151 Large.jpeg', 'DSC09158 Large.jpeg',
+            'DSC09166 Large.jpeg', 'DSC09167 Large.jpeg', 'DSC09168 Large.jpeg', 'DSC09169 Large.jpeg',
+            'DSC09171 Large.jpeg', 'DSC09175 Large.jpeg', 'DSC09184 Large.jpeg', 'DSC09185 Large.jpeg',
+            'DSC09186 Large.jpeg', 'DSC09187 Large.jpeg', 'DSC09189 Large.jpeg', 'DSC09190 Large.jpeg',
+            'DSC09191 Large.jpeg', 'DSC09192 Large.jpeg', 'DSC09194 Large.jpeg', 'DSC09200 Large.jpeg',
+            'DSC09201 Large.jpeg', 'DSC09202 Large.jpeg', 'DSC09205 Large.jpeg', 'DSC09212 Large.jpeg',
+            'DSC09213 Large.jpeg', 'DSC09214 Large.jpeg', 'DSC09218 Large.jpeg', 'DSC09219 Large.jpeg',
+            'DSC09221 Large.jpeg', 'DSC09225 Large.jpeg', 'DSC09227 Large.jpeg', 'DSC09229 Large.jpeg',
+            'DSC09234 Large.jpeg', 'DSC09237 Large.jpeg', 'DSC09242 Large.jpeg', 'DSC09243 Large.jpeg',
+            'DSC09244 Large.jpeg', 'DSC09245 Large.jpeg', 'DSC09246 Large.jpeg', 'DSC09247 Large.jpeg',
+            'DSC09252 Large.jpeg', 'DSC09253 Large.jpeg', 'DSC09254 Large.jpeg', 'DSC09256 Large.jpeg',
+            'DSC09262 Large.jpeg', 'DSC09267 Large.jpeg', 'DSC09273 Large.jpeg', 'DSC09276 Large.jpeg',
+            'DSC09278 Large.jpeg', 'DSC09279 Large.jpeg', 'DSC09280 Large.jpeg', 'DSC09287 Large.jpeg',
+            'DSC09289 Large.jpeg', 'DSC09292 Large.jpeg', 'DSC09293 Large.jpeg', 'DSC09297 Large.jpeg',
+            'DSC09301 Large.jpeg', 'DSC09302 Large.jpeg', 'DSC09303 Large.jpeg', 'DSC09306 Large.jpeg',
+            'DSC09311 Large.jpeg', 'DSC09315 Large.jpeg', 'DSC09317 Large.jpeg', 'DSC09320 Large.jpeg',
+            'DSC09330 Large.jpeg', 'DSC09337 Large.jpeg', 'DSC09340 Large.jpeg', 'DSC09342 Large.jpeg',
+            'DSC09348 Large.jpeg', 'DSC09349 Large.jpeg', 'DSC09352 Large.jpeg', 'DSC09355 Large.jpeg',
+            'DSC09360 Large.jpeg', 'DSC09361 Large.jpeg', 'DSC09364 Large.jpeg', 'DSC09368 Large.jpeg',
+            'DSC09370 Large.jpeg', 'DSC09379 Large.jpeg', 'DSC09380 Large.jpeg', 'DSC09388 Large.jpeg',
+            'DSC09389 Large.jpeg', 'DSC09390 Large.jpeg', 'DSC09391 Large.jpeg', 'DSC09394 Large.jpeg',
+            'DSC09398 Large.jpeg', 'DSC09404 Large.jpeg', 'DSC09405 Large.jpeg', 'DSC09408 Large.jpeg',
+            'DSC09410 Large.jpeg', 'DSC09411 Large.jpeg', 'DSC09412 Large.jpeg', 'DSC09415 Large.jpeg',
+            'DSC09416 Large.jpeg', 'DSC09421 Large.jpeg', 'DSC09422 Large.jpeg', 'DSC09428 Large.jpeg',
+            'DSC09430 Large.jpeg', 'DSC09431 Large.jpeg', 'DSC09433 Large.jpeg', 'DSC09436 Large.jpeg',
+            'DSC09440 Large.jpeg', 'DSC09444 Large.jpeg', 'DSC09446 Large.jpeg', 'DSC09447 Large.jpeg',
+            'DSC09448 Large.jpeg', 'DSC09451 Large.jpeg', 'DSC09455 Large.jpeg', 'DSC09457 Large.jpeg',
+            'DSC09459 Large.jpeg', 'DSC09464 Large.jpeg', 'DSC09469 Large.jpeg', 'DSC09474 Large.jpeg',
+            'DSC09475 Large.jpeg', 'DSC09477 Large.jpeg', 'DSC09478 Large.jpeg', 'DSC09479 Large.jpeg',
+            'DSC09486 Large.jpeg', 'DSC09494 Large.jpeg', 'DSC09496 Large.jpeg', 'DSC09501 Large.jpeg',
+            'DSC09503 Large.jpeg', 'DSC09505 Large.jpeg', 'DSC09515 Large.jpeg', 'DSC09519 Large.jpeg',
+            'DSC09520 Large.jpeg', 'DSC09521 Large.jpeg', 'DSC09522 Large.jpeg', 'DSC09524 Large.jpeg',
+            'DSC09527 Large.jpeg', 'DSC09534 Large.jpeg', 'DSC09535 Large.jpeg', 'DSC09536 Large.jpeg',
+            'DSC09543 Large.jpeg', 'DSC09544 Large.jpeg', 'DSC09549 Large.jpeg', 'DSC09553 Large.jpeg',
+            'DSC09555 Large.jpeg', 'DSC09562 Large.jpeg', 'DSC09564 Large.jpeg', 'DSC09568 Large.jpeg',
+            'DSC09571 Large.jpeg', 'DSC09573 Large.jpeg', 'DSC09574 Large.jpeg', 'DSC09575 Large.jpeg',
+            'DSC09576 Large.jpeg', 'DSC09577 Large.jpeg'
+        ];
+
+        const galleryGrid = document.getElementById('galleryGrid');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightboxImage');
+        let currentImageIndex = 0;
+
+        // Load images into gallery
+        imageFiles.forEach((filename, index) => {
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item';
+            if (index >= 9) {
+                galleryItem.classList.add('hidden');
+            }
+            galleryItem.onclick = () => openLightbox(index);
+            
+            const img = document.createElement('img');
+            img.src = `Website Images/${filename}`;
+            img.alt = `Quinceañera photo ${index + 1}`;
+            img.loading = 'lazy';
+            
+            const overlay = document.createElement('div');
+            overlay.className = 'gallery-item-overlay';
+            overlay.innerHTML = `
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    <line x1="11" y1="8" x2="11" y2="14"></line>
+                    <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+            `;
+            
+            galleryItem.appendChild(img);
+            galleryItem.appendChild(overlay);
+            galleryGrid.appendChild(galleryItem);
+        });
+
+        // View All button functionality
+        const viewAllBtn = document.getElementById('viewAllBtn');
+        let allImagesVisible = false;
+
+        viewAllBtn.addEventListener('click', function() {
+            const hiddenItems = document.querySelectorAll('.gallery-item.hidden');
+            
+            if (!allImagesVisible) {
+                hiddenItems.forEach(item => {
+                    item.classList.remove('hidden');
+                });
+                viewAllBtn.innerHTML = `
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="18 15 12 9 6 15"></polyline>
+                    </svg>
+                    View Less
+                `;
+                allImagesVisible = true;
+            } else {
+                const allItems = document.querySelectorAll('.gallery-item');
+                allItems.forEach((item, index) => {
+                    if (index >= 9) {
+                        item.classList.add('hidden');
+                    }
+                });
+                viewAllBtn.innerHTML = `
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                    View All
+                `;
+                allImagesVisible = false;
+                
+                // Scroll back to top of gallery
+                document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+
+        // Lightbox functions
+        function openLightbox(index) {
+            currentImageIndex = index;
+            updateLightboxImage();
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function updateLightboxImage() {
+            lightboxImage.src = `Website Images/${imageFiles[currentImageIndex]}`;
+        }
+
+        function navigateLightbox(direction) {
+            currentImageIndex += direction;
+            if (currentImageIndex < 0) {
+                currentImageIndex = imageFiles.length - 1;
+            } else if (currentImageIndex >= imageFiles.length) {
+                currentImageIndex = 0;
+            }
+            updateLightboxImage();
+        }
+
+        // Close lightbox on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            } else if (e.key === 'ArrowLeft') {
+                navigateLightbox(-1);
+            } else if (e.key === 'ArrowRight') {
+                navigateLightbox(1);
+            }
+        });
+
+        // Touch swipe support for mobile lightbox
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        lightbox.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+
+        lightbox.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    navigateLightbox(1); // Swipe left - next image
+                } else {
+                    navigateLightbox(-1); // Swipe right - previous image
+                }
+            }
+        }
+
+        // Close lightbox on outside click
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
