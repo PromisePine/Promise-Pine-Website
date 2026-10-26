@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Promise Pine — Cinematic Wedding Stories</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bark:#2B3522;--forest:#3D4F2E;--olive:#566840;--clay:#A35F38;--sun:#D9A166;--cream:#EBDCC0;--ivory:#F6EFDF;--mute:#5C6650;--line:rgba(43,53,34,.18)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--bark);font:400 16px/1.6 'Archivo',sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.serif{font-family:'Newsreader',serif;font-weight:500;margin:0;line-height:1.1}
+h2{font-size:clamp(34px,4vw,50px)}
+a{color:inherit}button{font:inherit}
+.wrap{max-width:1160px;margin:0 auto;padding:0 40px}
+section{padding:100px 0}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;margin-bottom:50px}
+.head .note{max-width:320px;color:var(--mute);font-size:15px}
+.divider{display:block;width:100%;height:46px}
+header{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:20px 48px;background:rgba(235,220,192,.92);backdrop-filter:blur(6px)}
+.brand{font:600 20px 'Newsreader',serif;letter-spacing:.14em;text-decoration:none;color:var(--forest)}
+nav{display:flex;gap:28px}nav a{text-decoration:none;font-size:14px;color:var(--bark);border-bottom:1px solid transparent}nav a:hover{border-color:var(--clay)}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 28px;border:1px solid transparent;border-radius:2px;font-size:14.5px;cursor:pointer;text-decoration:none;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn.primary{background:var(--sun);color:var(--bark)}.btn.primary:hover{background:#E3B27B}
+.btn.dark{background:var(--forest);color:var(--ivory)}.btn.ghost{border-color:var(--forest);color:var(--forest)}
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:140px 60px 260px;overflow:hidden}
+.hero .in{max-width:640px;position:relative;z-index:2}
+.hero .tag{font-size:13px;letter-spacing:.22em;color:var(--forest);margin-bottom:20px}
+.hero h1{font-size:clamp(52px,8vw,100px);color:var(--forest)}
+.hero p{max-width:460px;margin:24px 0 36px;font-size:17px;color:var(--mute)}
+.hero .acts{display:flex;gap:14px;flex-wrap:wrap}
+.hero svg{position:absolute;left:0;bottom:0;width:100%;height:46%}
+.about{background:var(--ivory)}.about .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:center}
+.about p{color:var(--mute);max-width:480px;margin:22px 0 0}
+.pull{font:italic 500 clamp(26px,2.8vw,36px)/1.35 'Newsreader',serif;border-left:2px solid var(--clay);padding-left:28px;color:var(--forest)}
+.pull small{display:block;font:400 14px 'Archivo',sans-serif;color:var(--mute);margin-top:14px}
+.films{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.film{position:relative;aspect-ratio:4/5;overflow:hidden;display:block;color:var(--ivory);text-decoration:none}
+.film .g{position:absolute;inset:0;transform:scale(1.06);transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.film:hover .g{transform:scale(1.15)}
+.film:nth-child(1) .g{background:linear-gradient(160deg,#566840,#8A7B4B 60%,#D9A166)}
+.film:nth-child(2) .g{background:linear-gradient(160deg,#3D4F2E,#7A5A3E 60%,#B46F46)}
+.film:nth-child(3) .g{background:linear-gradient(160deg,#4C5936,#A9854F 60%,#E3B27B)}
+.film::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,transparent 45%,rgba(43,53,34,.8))}
+.film .cap{position:absolute;left:22px;right:22px;bottom:20px;z-index:2}
+.film .cap b{font:italic 500 26px 'Newsreader',serif}
+.film .cap span{display:block;font-size:13px;opacity:0;transform:translateY(6px);transition:.3s}
+.film:hover .cap span{opacity:.85;transform:none}
+.film .play{position:absolute;top:18px;right:18px;z-index:2;width:38px;height:38px;border:1px solid rgba(246,239,223,.7);border-radius:50%;opacity:0;transition:.3s}
+.film:hover .play{opacity:1}
+.film .play::after{content:"";position:absolute;left:15px;top:11px;border:7px solid transparent;border-left:11px solid var(--ivory)}
+.links{margin-top:30px;display:flex;gap:14px}
+.step{display:grid;grid-template-columns:60px 1fr;gap:24px;padding:26px 0;border-top:1px solid var(--line)}.step:last-child{border-bottom:1px solid var(--line)}
+.step i{font:italic 500 26px 'Newsreader',serif;color:var(--clay)}.step h3{font-size:26px;margin-bottom:6px}.step p{margin:0;color:var(--mute);max-width:520px}
+.tabs{display:flex;gap:30px;border-bottom:1px solid var(--line)}
+.tab{background:none;border:0;border-bottom:2px solid transparent;padding:12px 2px;font:500 24px 'Newsreader',serif;color:var(--mute);cursor:pointer}
+.tab.on{color:var(--bark);border-color:var(--clay)}
+.panel{display:none;padding-top:44px;gap:60px;grid-template-columns:1fr 1.3fr}.panel.on{display:grid}
+.panel h3{font-size:40px;margin-bottom:12px}.panel p{color:var(--mute);max-width:320px;margin:0}
+ul.inc{list-style:none;margin:0;padding:0}ul.inc li{padding:15px 0;border-top:1px solid var(--line)}ul.inc li:last-child{border-bottom:1px solid var(--line)}
+ul.inc li::before{content:"— ";color:var(--clay)}
+.drone{margin-top:30px;font-size:14px;color:var(--mute)}
+.addons{background:var(--ivory)}
+details{border-top:1px solid var(--line);padding:20px 0}details:last-child{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;font:500 26px 'Newsreader',serif}
+summary::-webkit-details-marker{display:none}summary::after{content:"+";color:var(--clay);transition:transform .25s}
+details[open] summary::after{transform:rotate(45deg)}details p{margin:12px 0 0;color:var(--mute);max-width:560px}
+.dark{background:var(--forest);color:var(--ivory)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.split p.lede{color:rgba(246,239,223,.8);max-width:400px;margin-top:16px}
+.card{background:rgba(246,239,223,.07);border:1px solid rgba(246,239,223,.2);padding:36px;min-height:340px}
+.light .card{background:var(--ivory);border-color:var(--line)}
+.q{font:italic 500 26px 'Newsreader',serif;margin-bottom:20px}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{text-align:left;background:transparent;border:1px solid rgba(246,239,223,.3);color:inherit;padding:13px 16px;cursor:pointer;transition:.2s}
+.opt:hover{border-color:var(--sun);background:rgba(246,239,223,.08)}
+.light .opt{border-color:var(--line)}.light .opt:hover{border-color:var(--clay);background:rgba(163,95,56,.06)}
+.opt[aria-pressed=true]{background:var(--sun);border-color:var(--sun);color:var(--bark)}
+.prog{font-size:12.5px;opacity:.6;margin-bottom:14px}
+.back{background:none;border:0;color:inherit;opacity:.65;text-decoration:underline;cursor:pointer;font-size:13.5px;padding:0;margin-top:20px;margin-right:18px}
+.res .t{font:italic 500 38px 'Newsreader',serif;color:var(--sun);margin:6px 0 10px}
+.light .res .t{color:var(--clay)}
+.res p{max-width:420px;opacity:.85;margin:0 0 6px}
+.res dl{margin:0 0 20px}.res dt{font-size:12px;opacity:.55;margin-top:14px}.res dd{margin:2px 0 0;font:italic 500 20px 'Newsreader',serif}
+form.f{display:flex;flex-direction:column;gap:14px;margin-top:22px}
+form.f input,form.f textarea{width:100%;background:transparent;border:0;border-bottom:1px solid currentColor;opacity:.9;padding:9px 2px;font:inherit;color:inherit;outline:none}
+form.f input::placeholder,form.f textarea::placeholder{color:inherit;opacity:.5}
+form.f input:focus,form.f textarea:focus{border-color:var(--sun)}
+form.f .r{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ok{font:italic 500 24px 'Newsreader',serif;color:var(--sun);margin-top:18px}
+.err{color:#E3B27B;font-size:13.5px}
+.t-wrap{max-width:760px;margin:0 auto;text-align:center}
+.slide{display:none}.slide.on{display:block}
+.slide p{font:italic 500 clamp(24px,2.8vw,32px)/1.4 'Newsreader',serif;margin:0}
+.slide span{display:block;margin-top:22px;color:var(--mute);font-size:14px}
+.dots{display:flex;justify-content:center;gap:14px;margin-top:34px}
+.dot{width:8px;height:8px;border-radius:50%;border:0;padding:0;background:var(--line);cursor:pointer}.dot.on{background:var(--clay)}
+.contact{background:var(--ivory)}.contact .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px}
+.contact .lede{color:var(--mute);max-width:380px;margin-top:16px}
+.contact form.f input,.contact form.f textarea{border-color:var(--line)}
+.contact .info{margin-top:30px;font-size:15px;line-height:1.9}
+footer{background:var(--bark);color:rgba(246,239,223,.7);padding:44px 0;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}footer a{text-decoration:none;margin-left:16px}
+@media(max-width:860px){.wrap{padding:0 24px}header{padding:16px 24px}nav{display:none}.hero{padding:120px 24px 220px}
+.about .wrap,.split,.contact .wrap,.panel.on{grid-template-columns:1fr}.films{grid-template-columns:1fr}.film{aspect-ratio:16/10}form.f .r{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.film .g{transition:none}}
+
+:root{--ink:#161D11}
+h2{font-size:clamp(30px,3.6vw,44px)}
+section{padding:120px 0}
+.rail{position:fixed;top:0;bottom:0;left:0;width:14px;display:flex;flex-direction:column;justify-content:space-evenly;align-items:center;z-index:50;pointer-events:none}
+.rail span{width:5px;height:8px;background:var(--sun);opacity:.35;border-radius:1px}
+header{padding:26px 48px 26px 60px;background:transparent;backdrop-filter:none;transition:background .3s}
+header.solid{background:rgba(22,29,17,.94)}
+.brand{font:italic 500 22px 'Newsreader',serif;letter-spacing:0;color:var(--ivory)}
+nav a{color:var(--ivory);opacity:.86}nav a:hover{opacity:1;border-color:var(--sun)}
+.hero{align-items:flex-end;padding:0 60px 90px;color:var(--ivory);background:radial-gradient(120% 90% at 78% 8%,rgba(217,161,102,.38),transparent 55%),linear-gradient(200deg,#3D4F2E 0%,#26331D 45%,#161D11 100%)}
+.hero::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,.035) 0 2px,transparent 2px 5px);mix-blend-mode:overlay;pointer-events:none}
+.hero svg{height:46%}
+.hero .in{max-width:760px}
+.hero .tag{font:italic 500 15px 'Newsreader',serif;letter-spacing:0;color:var(--sun)}
+.hero h1{font-size:clamp(38px,6vw,74px);line-height:1.06;color:var(--ivory)}
+.hero p{color:rgba(246,239,223,.82)}
+.hero .btn.ghost{border-color:rgba(246,239,223,.4);color:var(--ivory)}.hero .btn.ghost:hover{border-color:var(--ivory)}
+.about{background:var(--ink);color:var(--ivory)}.about p{color:rgba(246,239,223,.78)}
+.pull{color:var(--ivory);border-color:var(--sun);font-size:clamp(24px,2.6vw,32px)}.pull small{color:var(--sun)}
+.films{gap:4px}.film .cap b{font-size:20px}
+.step i{font-size:20px}.step h3{font-size:22px}
+.tab{font-size:20px}.panel h3{font-size:32px}summary{font-size:22px}
+.q{font-size:20px}.res .t{font-size:30px}.res dd{font-size:18px}.ok{font-size:22px}
+.slide p{font-size:clamp(21px,2.6vw,28px)}
+.dark{background:var(--forest)}
+.contact{background:var(--cream)}
+footer{background:var(--ink)}
+@media(max-width:860px){.rail{display:none}header{padding:18px 24px}.hero{padding:0 24px 70px}}
+[hidden]{display:none!important}
+.film{display:block;width:100%;border:0;padding:0;font:inherit;text-align:left;cursor:pointer;background:none;color:var(--ivory)}
+#md{position:fixed;inset:0;z-index:100;background:rgba(15,20,10,.93);display:flex;align-items:center;justify-content:center;padding:40px}
+#mb{position:relative}#mb iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+#mx{position:absolute;top:18px;right:26px;background:none;border:0;color:var(--ivory);font-size:38px;cursor:pointer;line-height:1}
+.pk{margin-top:24px}
+.addons-row{margin-top:34px;padding-top:26px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.addons-row b{font:italic 500 20px 'Newsreader',serif;margin-right:10px;font-weight:500}
+.addons-row span{border:1px solid var(--line);padding:7px 14px;font-size:13.5px;color:var(--mute)}
+.film{aspect-ratio:16/10}.film:hover .g{transform:scale(1.04)}
+.film .g{background-size:cover!important;background-position:center!important}
+.pv{position:absolute;inset:0;overflow:hidden;opacity:0;transition:opacity .6s}.pv.on{opacity:1}
+.pv iframe{position:absolute;top:50%;left:50%;width:100%;height:100%;border:0;transform:translate(-50%,-50%) scale(1.3);pointer-events:none}
+.pkcta{margin-top:26px}</style>
+</head>
+<body>
+<div class="rail" aria-hidden="true"><script>document.write("<span></span>".repeat(26))</script></div>
+<header id="hd"><a class="brand" href="#top">Promise Pine</a>
+<nav><a href="#films">Films</a><a href="#packages">Packages</a><a href="#addons">Add-ons</a><a href="#quiz">Find Your Film</a><a href="#build">Build Yours</a><a href="#inquire">Inquire</a></nav></header>
+
+<section class="hero" id="top">
+<svg viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true"><polygon points="0,300 0,200 180,110 340,170 520,70 700,160 880,60 1060,150 1200,110 1200,300" fill="#2F3F24" opacity=".55"/><polygon points="0,300 0,240 200,170 380,225 600,140 800,215 1000,160 1200,225 1200,300" fill="#141B0F"/></svg>
+<div class="in"><div class="tag">Colorado Springs · Cinematic wedding stories</div><h1>Films for the two people<br>who will watch them for sixty years.</h1>
+<p>Filmed quietly, crafted with intention, and cut to feel exactly like your day did.</p>
+<div class="acts"><a class="btn primary" href="#films">Watch films</a><a class="btn ghost" href="#inquire">Start an inquiry</a></div></div></section>
+
+<section class="about"><div class="wrap"><div><h2>Crafted quietly, intentionally, honestly</h2>
+<p>Promise Pine wedding films are filmed quietly, allowing the day to unfold naturally without disruption. Every film is centered on the couple and the moments that matter most to them — an honest, cinematic story that reflects who you are and how it truly felt to be there.</p></div>
+<div class="pull">“It felt like we were reliving that beautiful day again when we watched it.”<small>Linda P.</small></div></div></section>
+
+<section id="films"><div class="wrap"><div class="head"><h2>Watch films</h2><div class="note">Hover to preview, click to watch.</div></div>
+<div class="films">
+<button class="film" data-id="1131806323" data-r="54.05" data-t="Drea & David"><div class="g"></div><div class="play"></div><div class="cap"><b>Drea &amp; David</b><span>Watch the film</span></div></button>
+<button class="film" data-id="1138765351" data-r="66.67" data-t="Courtney & Derek"><div class="g"></div><div class="play"></div><div class="cap"><b>Courtney &amp; Derek</b><span>Watch the film</span></div></button>
+<button class="film" data-id="1117159225" data-r="56.25" data-t="Dillon & Maria"><div class="g"></div><div class="play"></div><div class="cap"><b>Dillon &amp; Maria</b><span>Watch the film</span></div></button></div>
+<div class="links"><a class="btn dark" href="https://vimeo.com/promisepine?fl=pp&fe=sh" target="_blank" rel="noopener">See more on Vimeo</a><a class="btn ghost" href="https://www.instagram.com/promisepine?xtok=MWV4YTZqZHZxZ2tlYg%3D%3D&amp;utm_source=qr" target="_blank" rel="noopener">Reels on Instagram</a></div></div></section>
+
+<section style="padding-top:0"><div class="wrap"><div class="head"><h2>From first message to final film</h2><div class="note">The same five steps for every couple.</div></div>
+<div class="step"><i>1</i><div><h3>Inquiry</h3><p>Tell me about your day and the story you're picturing.</p></div></div>
+<div class="step"><i>2</i><div><h3>Consultation call</h3><p>We talk through the film you want and match it to the right package.</p></div></div>
+<div class="step"><i>3</i><div><h3>The wedding day</h3><p>Filmed quietly, so the day unfolds naturally.</p></div></div>
+<div class="step"><i>4</i><div><h3>Editing</h3><p>Hand-graded, cut around the moments that matter most to you.</p></div></div>
+<div class="step"><i>5</i><div><h3>Delivery</h3><p>Your films in a personalized website gallery to watch and share.</p></div></div></div></section>
+
+<section class="addons" id="packages"><div class="wrap"><div class="head"><h2>Three ways to tell the same day</h2><div class="note">Drone footage and a multi-cam setup are part of the story, not an upgrade.</div></div>
+<div class="tabs"><button class="tab on" data-t="e">Essentials</button><button class="tab" data-t="s">Signature</button><button class="tab" data-t="h">Heirloom</button></div>
+<div class="panel on" data-p="e"><div><h3>Essentials</h3><p>A beautiful, honest film of your day.</p></div><ul class="inc"><li>6 hours of coverage</li><li>4–8 minute highlight film</li><li>Drone footage &amp; multi-cam setup</li><li>Personalized website gallery</li></ul></div>
+<div class="panel" data-p="s"><div><h3>Signature</h3><p>More coverage, a fuller story, and something to share.</p></div><ul class="inc"><li>8 hours of coverage</li><li>8–12 minute highlight film</li><li>Drone footage &amp; multi-cam setup</li><li>Social highlight reel</li><li>Personalized website gallery</li></ul></div>
+<div class="panel" data-p="h"><div><h3>Heirloom</h3><p>The full story, cut like a short film.</p></div><ul class="inc"><li>10 hours of coverage</li><li>12–16 minute feature film</li><li>Ceremony edit, speeches edit &amp; first look edit</li><li>Social highlight reel</li><li>Personalized website gallery</li></ul></div>
+<p class="drone">Drone footage is included in every package, weather and airspace permitting.</p><div class="pkcta"><button class="btn primary" id="pk-btn">Inquire about the Essentials</button><div id="pkf" style="max-width:640px"></div></div><div class="addons-row" id="addons"><b>Add-ons</b><span>Second shooter</span><span>Super 8mm film</span><span>RAW footage archive</span><span>Documentary film</span><span>Additional hour of coverage</span></div></div></section>
+
+
+<section class="dark" id="quiz"><div class="wrap split"><div><h2>Not sure which film fits your day?</h2><p class="lede">Three quick questions — this won't ask for your budget, just what you're picturing.</p></div><div class="card" id="quiz-card"></div></div></section>
+
+<section class="light" id="build"><div class="wrap split"><div><h2>Or build your own starting point</h2><p class="lede" style="color:var(--mute)">Answer a few questions and see your custom build. It isn't a quote — it's where our call begins.</p></div><div class="card" id="build-card"></div></div></section>
+
+<section><div class="wrap"><div class="head"><h2>Kind words</h2></div><div class="t-wrap">
+<div class="slide on"><p>“We were FLOORED. The ceremony and speeches were clean and clear, and the wedding film was AMAZING.”</p><span>Dillon M.</span></div>
+<div class="slide"><p>“You were never in the way, and you were professional and kind. I don't think we could have hired a better videographer.”</p><span>Linda P.</span></div>
+<div class="slide"><p>“The end result was a video that we will cherish forever.”</p><span>Sarah</span></div>
+<div class="slide"><p>“Matt did a great job of delivering our wedding video, was professional, kind and was high value.”</p><span>Hayley</span></div>
+<div class="dots" id="dots"></div></div></div></section>
+
+<section class="contact" id="inquire"><div class="wrap"><div><h2>Tell me about your day</h2><p class="lede">Share the date, the venue if you have one, and the film you're picturing. I'll follow up to set up a call.</p>
+<div class="info">(719) 332-1001<br>matthew@promisepine.com</div></div><div id="main-form"></div></div></section>
+
+<footer><div class="wrap"><div>Promise Pine · Capturing love stories since 2025 · © 2026</div><div><a href="https://vimeo.com/promisepine">Vimeo</a><a href="https://www.instagram.com/promisepine/">Instagram</a><a href="https://www.facebook.com/profile.php?id=61578366600307">Facebook</a><a href="https://www.theknot.com/marketplace/promise-pine-colorado-springs-co-2095933">The Knot</a></div></div></footer>
+
+<div id="md" hidden><button id="mx" aria-label="Close">&times;</button><div id="mb"></div></div>
+<script>
+const ENDPOINT='https://formspree.io/f/xoeeepzw';
+const RC_KEY='6Lflf3wsAAAAAMWhWCyPRBm-5uONeyqu8NjCzj5f'; // reCAPTCHA v3 site key
+if(RC_KEY){const sc=document.createElement('script');sc.src='https://www.google.com/recaptcha/api.js?render='+RC_KEY;document.head.appendChild(sc)}
+const $=(s,r=document)=>r.querySelector(s);
+const hd=document.getElementById('hd');addEventListener('scroll',()=>hd.classList.toggle('solid',scrollY>80));
+const md=$('#md'),mb=$('#mb');
+function closeFilm(){md.hidden=true;mb.innerHTML=''}
+document.querySelectorAll('.film').forEach(b=>b.onclick=()=>{mb.style.paddingTop=b.dataset.r+'%';mb.style.width=`min(1000px,100%,calc((100vh - 120px)*${100/b.dataset.r}))`;mb.innerHTML=`<iframe src="https://player.vimeo.com/video/${b.dataset.id}?badge=0&autoplay=1&player_id=0&app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="${b.dataset.t}"></iframe>`;md.hidden=false});
+md.onclick=e=>{if(e.target===md||e.target.id==='mx')closeFilm()};addEventListener('keydown',e=>{if(e.key==='Escape')closeFilm()});
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.querySelectorAll('.film').forEach(b=>{const g=$('.g',b),set=u=>{g.style.backgroundImage=`url("${u}")`};
+if(b.dataset.img)set(b.dataset.img);else fetch('https://vimeo.com/api/oembed.json?width=1280&url='+encodeURIComponent('https://vimeo.com/'+b.dataset.id)).then(r=>r.json()).then(d=>set(d.thumbnail_url)).catch(()=>{});
+const pv=document.createElement('div');pv.className='pv';b.insertBefore(pv,$('.play',b));let t;
+b.addEventListener('mouseenter',()=>{if(reduce)return;t=setTimeout(()=>{pv.innerHTML=`<iframe src="https://player.vimeo.com/video/${b.dataset.id}?background=1&autoplay=1&muted=1&loop=1&autopause=0&app_id=58479" allow="autoplay" title=""></iframe>`;$('iframe',pv).onload=()=>setTimeout(()=>pv.classList.add('on'),400)},300)});
+b.addEventListener('mouseleave',()=>{clearTimeout(t);pv.classList.remove('on');pv.innerHTML=''})});
+// Tabs
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab,.panel').forEach(x=>x.classList.remove('on'));b.classList.add('on');$(`[data-p="${b.dataset.t}"]`).classList.add('on')});
+// Inquiry form (Formspree)
+function formHTML(interest,details,btn){return `<form class="f"><input type="hidden" name="_subject" value="Promise Pine inquiry: ${interest}"><input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off"><input type="hidden" name="interested_in" value="${interest}"><input type="hidden" name="details" value="${details}">
+<div class="r"><input name="names" placeholder="Your names" required><input name="email" type="email" placeholder="Email" required></div>
+<div class="r"><input name="wedding_date" placeholder="Wedding date"><input name="venue" placeholder="Venue (if you have one)"></div>
+<textarea name="message" rows="3" placeholder="Tell me about your day"></textarea><div class="err" hidden>Something went wrong — please email matthew@promisepine.com.</div>
+<button class="btn primary" type="submit" style="align-self:flex-start">${btn}</button><p style="font-size:12px;opacity:.6;margin:0">Protected by reCAPTCHA; the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.</p></form>`}
+function wire(box,ep=ENDPOINT){const f=$('form',box);f.onsubmit=async e=>{e.preventDefault();const b=$('button',f);b.disabled=true;b.textContent='Sending…';
+try{const fd=new FormData(f);if(RC_KEY){await new Promise(r=>grecaptcha.ready(r));fd.set('g-recaptcha-response',await grecaptcha.execute(RC_KEY,{action:'submit'}))}const r=await fetch(ep,{method:'POST',body:fd,headers:{Accept:'application/json'}});
+if(r.ok){f.outerHTML='<div class="ok">Thank you — I\'ll be in touch soon.</div>'}else throw 0}catch(_){$('.err',f).hidden=false;b.disabled=false;b.textContent='Try again'}}}
+let pkName='Essentials';const pkb=$('#pk-btn'),pkf=$('#pkf');
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{pkName=b.textContent;pkb.textContent='Inquire about the '+pkName;pkb.hidden=false;pkf.innerHTML=''}));
+pkb.onclick=()=>{pkf.innerHTML=formHTML(pkName+' (from packages)','','Send inquiry');wire(pkf);pkb.hidden=true};
+const mf=$('#main-form');mf.innerHTML=formHTML('General inquiry','','Send inquiry');wire(mf);
+// Quiz
+const TIERS={Essentials:'6 hours of coverage, a 4–8 minute highlight film, drone footage and a multi-cam setup, and a personalized website gallery.',
+Signature:'8 hours of coverage, an 8–12 minute highlight film, drone footage and a multi-cam setup, a social highlight reel, and a personalized website gallery.',
+Heirloom:'10 hours of coverage, a 12–16 minute feature film, ceremony, speeches and first look edits, a social highlight reel, and a personalized website gallery.'};
+const QS=[['First — how big is the day itself?',['Intimate. Just us and the people who matter most.','Mid-size — a real celebration, close friends and family.','The whole weekend. Rehearsal dinner through brunch.']],
+['When you picture the film, what matters most?',['That it exists, and it\'s beautiful.','That it feels like a short film — not just a highlight reel.','Every detail. Speeches, vows, the way the light changed that day.']],
+['Is a touch of Super 8 film or a documentary-style film part of the picture?',['Not especially.','Maybe a touch of Super 8.','Both — I want the full story.']]];
+const qc=$('#quiz-card');let qi=0,qs=0;
+function quiz(){if(qi>=QS.length){const t=qs<=4?'Essentials':qs<=7?'Signature':'Heirloom';
+qc.innerHTML=`<div class="res"><div class="q">Based on that —</div><div class="t">${t}</div><p>${TIERS[t]}</p><button class="btn primary" id="qi" style="margin-top:20px">Inquire about the ${t}</button><div id="qf"></div><button class="back" id="qr" style="margin-left:0">Start over</button></div>`;
+$('#qi').onclick=()=>{const q=$('#qf');q.innerHTML=formHTML(t+' (from quiz)','','Send inquiry');wire(q);$('#qi').hidden=true};
+$('#qr').onclick=()=>{qi=0;qs=0;quiz()};return}
+const [q,o]=QS[qi];qc.innerHTML=`<div class="prog">${qi+1} of ${QS.length}</div><div class="q">${q}</div><div class="opts">${o.map((x,i)=>`<button class="opt" data-i="${i+1}">${x}</button>`).join('')}</div>`;
+qc.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{qs+=+b.dataset.i;qi++;quiz()})}
+quiz();
+// Custom build carousel
+const BS=[{k:'Coverage',q:'How many hours of coverage?',o:['6 hours','8 hours','10 hours']},
+{k:'Highlight film',q:'How long should your highlight film be?',o:['4–8 minutes','8–12 minutes','12–16 minutes']},
+{k:'Additional edits',q:'Any additional edits?',o:['Ceremony edit','Speeches edit','First look edit','Social highlight reel','None'],multi:1},
+{k:'Add-ons',q:'Anything you\'d like to add on?',o:['Second shooter','Super 8mm film','RAW footage archive','Documentary film','Additional hour of coverage','None'],multi:1}];
+const bc=$('#build-card');let bi=0,ba={};
+function build(){if(bi>=BS.length){const d=BS.map(s=>[s.k,[].concat(ba[s.k]||[]).join(', ')||'None']);
+const txt=d.map(x=>x.join(': ')).join(' | ');
+bc.innerHTML=`<div class="res"><div class="q">Your starting point</div><div class="t">Custom build</div><dl>${d.map(x=>`<dt>${x[0].toUpperCase()}</dt><dd>${x[1]}</dd>`).join('')}</dl><button class="btn dark" id="bi">Inquire about this build</button><div id="bf"></div><button class="back" id="br" style="margin-left:0">Start over</button></div>`;
+$('#bi').onclick=()=>{const b=$('#bf');b.innerHTML=formHTML('Custom build',txt,'Send inquiry');wire(b);$('#bi').hidden=true};
+$('#br').onclick=()=>{bi=0;ba={};build()};return}
+const s=BS[bi];bc.innerHTML=`<div class="prog">${bi+1} of ${BS.length}</div><div class="q">${s.q}</div><div class="opts">${s.o.map(x=>`<button class="opt" aria-pressed="false">${x}</button>`).join('')}</div>${s.multi?'<div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap"><button class="btn dark" id="bn">Continue</button></div>':''}${bi?'<button class="back" id="bb" style="margin-left:0">Back</button>':''}`;
+const opts=[...bc.querySelectorAll('.opt')];
+opts.forEach(b=>b.onclick=()=>{if(s.multi&&b.textContent==='None'){ba[s.k]=[];bi++;build()}else if(s.multi){b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')!=='true')}else{ba[s.k]=b.textContent;bi++;build()}});
+if(s.multi){$('#bn').onclick=()=>{ba[s.k]=opts.filter(o=>o.getAttribute('aria-pressed')==='true').map(o=>o.textContent);bi++;build()}}
+if($('#bb'))$('#bb').onclick=()=>{bi--;build()}}
+build();
+// Testimonials
+const sl=document.querySelectorAll('.slide'),dt=$('#dots');let ti=0;
+sl.forEach((_,i)=>{const d=document.createElement('button');d.className='dot'+(i?'':' on');d.setAttribute('aria-label','Review '+(i+1));d.onclick=()=>show(i);dt.appendChild(d)});
+function show(i){sl[ti].classList.remove('on');dt.children[ti].classList.remove('on');ti=i;sl[ti].classList.add('on');dt.children[ti].classList.add('on')}
+setInterval(()=>show((ti+1)%sl.length),7000);
+</script>
+</body>
+</html>
