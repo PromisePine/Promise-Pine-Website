@@ -149,12 +149,102 @@ footer{background:var(--ink)}
 .film .g{background-size:cover!important;background-position:center!important}
 .pv{position:absolute;inset:0;overflow:hidden;opacity:0;transition:opacity .6s}.pv.on{opacity:1}
 .pv iframe{position:absolute;top:50%;left:50%;width:100%;height:100%;border:0;transform:translate(-50%,-50%) scale(1.3);pointer-events:none}
-.pkcta{margin-top:26px}.grecaptcha-badge{visibility:hidden}</style>
+.pkcta{margin-top:26px}.grecaptcha-badge{visibility:hidden}.pk3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pk{background:var(--cream);border:1px solid var(--line);padding:36px 32px;display:flex;flex-direction:column}
+.pk h3{font-size:30px}
+.hl{margin:22px 0 24px;padding-bottom:24px;border-bottom:1px solid var(--line)}
+.hl .big{display:block;font:italic 500 clamp(56px,6vw,84px)/1 'Newsreader',serif;color:var(--clay)}
+.hl .u{display:block;margin-top:8px;font-size:15px;color:var(--mute)}
+.pk .inc{margin-bottom:28px}.pk .inc li:first-child{border-top:0;padding-top:0}.pk .inc li:last-child{border-bottom:0}
+.pk .btn{margin-top:auto;align-self:flex-start}
+.every{margin-top:34px;padding-top:24px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.every b{font:italic 500 20px 'Newsreader',serif;margin-right:10px;font-weight:500}
+.every span{border:1px solid var(--line);padding:7px 14px;font-size:13.5px;color:var(--mute)}
+.addgrid{display:grid;grid-template-columns:1fr 1fr;column-gap:60px;align-items:start;border-top:1px solid var(--line)}
+.addgrid details{border-top:0;border-bottom:1px solid var(--line)}
+.colls{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.coll{border:1px solid var(--line);padding:30px 28px}.coll h3{font-size:25px;margin-bottom:16px}
+.coll .inc li:first-child{border-top:0}.coll .inc li:last-child{border-bottom:0}
+@media(max-width:860px){.pk3,.colls,.addgrid{grid-template-columns:1fr}}
+
+.pk3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+.pk{position:relative;background:#FBF7EC;border:1px solid var(--line);border-radius:4px;padding:36px 30px 30px;display:flex;flex-direction:column;margin:0}
+.pk.pop{background:var(--forest);color:var(--ivory);border-color:var(--forest)}
+.pk .tag{position:absolute;top:-12px;left:30px;background:var(--sun);color:var(--bark);font-size:12px;font-weight:500;padding:4px 14px;border-radius:999px}
+.pk h3{font-size:30px}
+.price{display:flex;align-items:baseline;gap:8px;margin:12px 0 0}.price span{font-size:13px;opacity:.65}
+.price strong{font:500 40px/1 'Newsreader',serif;font-weight:500}
+.film{margin:20px 0;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font:italic 500 23px/1.25 'Newsreader',serif;color:var(--clay)}
+.pk.pop .film{color:var(--sun);border-color:rgba(246,239,223,.2)}
+.chk{list-style:none;margin:0 0 28px;padding:0}
+.chk li{position:relative;padding:7px 0 7px 28px;font-size:15px}
+.chk li::before{content:"";position:absolute;left:5px;top:12px;width:6px;height:11px;border:solid var(--clay);border-width:0 2px 2px 0;transform:rotate(45deg)}
+.pk.pop .chk li::before{border-color:var(--sun)}
+.pk .btn{margin-top:auto;align-self:flex-start;padding:13px 24px}
+.colls{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.coll{display:flex;flex-direction:column;background:var(--ivory);border:1px solid var(--line);border-radius:4px;padding:28px 24px}
+.coll.feat{background:var(--forest);color:var(--ivory);border-color:var(--forest)}
+.coll h3{font-size:22px;line-height:1.2}
+.cp{font:500 32px/1 'Newsreader',serif;color:var(--clay);margin:14px 0 6px}.coll.feat .cp{color:var(--sun)}
+.tg{margin:0 0 6px;font-size:14px;color:var(--mute)}.coll.feat .tg{color:rgba(246,239,223,.7)}
+.lst{list-style:none;margin:14px 0 18px;padding:0}
+.lst li{padding:8px 0;border-top:1px solid var(--line);font-size:14.5px}.coll.feat .lst li{border-color:rgba(246,239,223,.2)}
+.svl{margin-top:auto;font-size:13.5px;color:var(--clay)}.coll.feat .svl{color:var(--sun)}
+.coll small{display:block;margin-top:10px;font-size:12px;color:var(--mute);line-height:1.5}
+.tiles{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.tile{position:relative;aspect-ratio:1;background:var(--cream);border:1px solid var(--line);border-radius:4px;padding:18px;text-align:left;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;gap:8px;color:var(--bark);transition:background .25s,border-color .25s}
+.tile:hover{border-color:var(--clay)}
+.tile .plus{position:absolute;top:12px;right:16px;font-size:22px;color:var(--clay);transition:transform .25s}
+.tile .nm{font:500 19px/1.2 'Newsreader',serif;padding-right:18px}
+.tile .ds{display:none;font-size:13.5px;line-height:1.5}
+.tile .pr{font-size:14px;color:var(--mute)}
+.tile.on{background:var(--forest);color:var(--ivory);border-color:var(--forest)}
+.tile.on .ds{display:block}.tile.on .pr,.tile.on .plus{color:var(--sun)}.tile.on .plus{transform:rotate(45deg)}.tile.on .nm{font-size:17px}
+.bgrid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:start}
+.est{position:sticky;top:96px;background:var(--forest);color:var(--ivory);padding:32px;border-radius:4px}
+.est .k{font-size:12px;letter-spacing:.1em;opacity:.6;margin-bottom:12px}.est h3{font-size:26px;margin-bottom:8px}
+.est .rw{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid rgba(246,239,223,.14);font-size:14.5px}
+.est .tot{border:0;padding-top:18px;align-items:baseline;font-size:16px}
+.est .am{font:500 38px 'Newsreader',serif;color:var(--sun)}
+.est .sv2{color:var(--sun);font-size:13.5px}.est .mu{font-size:12.5px;opacity:.55;margin:16px 0 0;line-height:1.5}
+.opt.pr{display:flex;justify-content:space-between;align-items:center;gap:14px}
+.opt em{font-style:normal;opacity:.75;white-space:nowrap}.opt:disabled{opacity:.5;cursor:default}
+.hint{font-size:14px;opacity:.75;margin:-8px 0 16px}
+.bn{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:22px}
+.step2{display:flex;justify-content:space-between;align-items:center;gap:12px;border:1px solid var(--line);padding:12px 16px;font-size:14.5px}
+.step2 em{font-style:normal;opacity:.65}
+.ctr{display:flex;align-items:center;gap:14px}
+.ctr button{width:30px;height:30px;border-radius:50%;border:1px solid var(--line);background:none;cursor:pointer;font-size:18px;color:inherit}
+.ctr b{min-width:16px;text-align:center}
+@media(max-width:1000px){.colls{grid-template-columns:repeat(2,1fr)}.tiles{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:860px){.pk3,.bgrid{grid-template-columns:1fr}.est{position:static}.pk{margin-top:8px}}
+@media(max-width:700px){.colls{grid-template-columns:1fr}.tiles{grid-template-columns:repeat(2,1fr)}.tile{aspect-ratio:auto;min-height:190px}}
+
+.pk{transition:transform .3s,box-shadow .3s}
+.pk:hover{transform:translateY(-4px);box-shadow:0 26px 50px -30px rgba(43,53,34,.5)}
+.price{flex-direction:column;align-items:flex-start;gap:2px;margin:10px 0 0}
+.hf{margin:22px 0;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.hf small{display:block;font-size:12.5px;color:var(--mute);margin-bottom:4px}
+.hf b{font:italic 500 30px/1.1 'Newsreader',serif;color:var(--clay)}
+.pk.pop .hf{border-color:rgba(246,239,223,.2)}.pk.pop .hf small{color:rgba(246,239,223,.65)}.pk.pop .hf b{color:var(--sun)}
+.chk li.off{opacity:.6}.chk li.off::before{width:auto;height:auto;border:0;transform:none;content:"+";left:6px;top:5px;color:var(--clay);font-size:19px;line-height:1.3}
+.menu2{display:grid;grid-template-columns:1fr 1fr;column-gap:80px;row-gap:40px;align-items:start}
+.mcol{display:flex;flex-direction:column;gap:44px}
+.mg{border-top:1px solid var(--bark)}
+.mg h3{font:italic 500 20px 'Newsreader',serif;color:var(--clay);padding:14px 0 6px}
+.mi{padding:18px 0;border-bottom:1px solid var(--line)}
+.mt{display:flex;justify-content:space-between;align-items:baseline;gap:20px}
+.mi .nm{font:500 22px/1.2 'Newsreader',serif}
+.mi .pr{font:500 19px 'Newsreader',serif;color:var(--clay);white-space:nowrap}
+.mi p{margin:6px 0 0;color:var(--mute);font-size:14.5px;max-width:460px}
+.opt small{display:block;font-size:12.5px;line-height:1.45;opacity:.7;margin-top:4px;font-weight:400}
+@media(max-width:860px){.menu2{grid-template-columns:1fr;row-gap:44px}}
+</style>
 </head>
 <body>
 <div class="rail" aria-hidden="true"><script>document.write("<span></span>".repeat(26))</script></div>
 <header id="hd"><a class="brand" href="#top">Promise Pine</a>
-<nav><a href="#films">Films</a><a href="#packages">Packages</a><a href="#addons">Add-ons</a><a href="#quiz">Find Your Film</a><a href="#build">Build Yours</a><a href="#inquire">Inquire</a></nav></header>
+<nav><a href="#films">Films</a><a href="#packages">Packages</a><a href="#collections">Collections</a><a href="#addons">Add-ons</a><a href="#build">Build Yours</a><a href="#inquire">Inquire</a></nav></header>
 
 <section class="hero" id="top">
 <svg viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true"><polygon points="0,300 0,200 180,110 340,170 520,70 700,160 880,60 1060,150 1200,110 1200,300" fill="#2F3F24" opacity=".55"/><polygon points="0,300 0,240 200,170 380,225 600,140 800,215 1000,160 1200,225 1200,300" fill="#141B0F"/></svg>
@@ -180,17 +270,18 @@ footer{background:var(--ink)}
 <div class="step"><i>4</i><div><h3>Editing</h3><p>Hand-graded, cut around the moments that matter most to you.</p></div></div>
 <div class="step"><i>5</i><div><h3>Delivery</h3><p>Your films in a personalized website gallery to watch and share.</p></div></div></div></section>
 
-<section class="addons" id="packages"><div class="wrap"><div class="head"><h2>Three ways to tell the same day</h2><div class="note">Drone footage and a multi-cam setup are part of the story, not an upgrade.</div></div>
-<div class="tabs"><button class="tab on" data-t="e">Essentials</button><button class="tab" data-t="s">Signature</button><button class="tab" data-t="h">Heirloom</button></div>
-<div class="panel on" data-p="e"><div><h3>Essentials</h3><p>A beautiful, honest film of your day.</p></div><ul class="inc"><li>6 hours of coverage</li><li>4–8 minute highlight film</li><li>Drone footage &amp; multi-cam setup</li><li>Personalized website gallery</li></ul></div>
-<div class="panel" data-p="s"><div><h3>Signature</h3><p>More coverage, a fuller story, and something to share.</p></div><ul class="inc"><li>8 hours of coverage</li><li>8–12 minute highlight film</li><li>Drone footage &amp; multi-cam setup</li><li>Social highlight reel</li><li>Personalized website gallery</li></ul></div>
-<div class="panel" data-p="h"><div><h3>Heirloom</h3><p>The full story, cut like a short film.</p></div><ul class="inc"><li>10 hours of coverage</li><li>12–16 minute feature film</li><li>Ceremony edit, speeches edit &amp; first look edit</li><li>Social highlight reel</li><li>Personalized website gallery</li></ul></div>
-<p class="drone">Drone footage is included in every package, weather and airspace permitting.</p><div class="pkcta"><button class="btn primary" id="pk-btn">Inquire about the Essentials</button><div id="pkf" style="max-width:640px"></div></div><div class="addons-row" id="addons"><b>Add-ons</b><span>Second shooter</span><span>Super 8mm film</span><span>RAW footage archive</span><span>Documentary film</span><span>Additional hour of coverage</span></div></div></section>
+<section class="addons" id="packages"><div class="wrap"><div class="head"><h2>Choose your highlight film</h2><div class="note">Packages are built around your highlight film. Everything extra comes through collections and add-ons.</div></div>
+<div class="pk3" id="pk3"></div>
+<p class="drone">Drone footage is flown weather and airspace permitting. Package prices are starting prices; final pricing is confirmed on your consultation call.</p>
+<div id="pkf" style="max-width:640px"></div></div></section>
+<section id="collections"><div class="wrap"><div class="head"><h2>Collections</h2><div class="note">Bundled add-ons: extra films and files, priced below buying them one by one. Heirloom includes a $300 credit toward any collection.</div></div>
+<div class="colls" id="colls"></div></div></section>
+<section class="addons" id="addons"><div class="wrap"><div class="head"><h2>Add-ons</h2><div class="note">Individual extras you can add to any package. Collections bundle several together for less.</div></div>
+<div class="menu2" id="tiles"></div></div></section>
 
 
-<section class="dark" id="quiz"><div class="wrap split"><div><h2>Not sure which film fits your day?</h2><p class="lede">Three quick questions — this won't ask for your budget, just what you're picturing.</p></div><div class="card" id="quiz-card"></div></div></section>
-
-<section class="light" id="build"><div class="wrap split"><div><h2>Or build your own starting point</h2><p class="lede" style="color:var(--mute)">Answer a few questions and see your custom build. It isn't a quote — it's where our call begins.</p></div><div class="card" id="build-card"></div></div></section>
+<section class="light" id="build"><div class="wrap"><div class="head"><h2>Build your own</h2><div class="note">Start with a package, then add collections and add-ons. Your estimate updates as you go, with collection savings applied automatically.</div></div>
+<div class="bgrid"><div class="card" id="build-card"></div><aside class="est" id="est"></aside></div></div></section>
 
 <section><div class="wrap"><div class="head"><h2>Kind words</h2></div><div class="t-wrap">
 <div class="slide on"><p>“We were FLOORED. The ceremony and speeches were clean and clear, and the wedding film was AMAZING.”</p><span>Dillon M.</span></div>
@@ -222,7 +313,7 @@ const pv=document.createElement('div');pv.className='pv';b.insertBefore(pv,$('.p
 b.addEventListener('mouseenter',()=>{if(reduce)return;t=setTimeout(()=>{pv.innerHTML=`<iframe src="https://player.vimeo.com/video/${b.dataset.id}?background=1&autoplay=1&muted=1&loop=1&autopause=0&app_id=58479" allow="autoplay" title=""></iframe>`;$('iframe',pv).onload=()=>setTimeout(()=>pv.classList.add('on'),400)},300)});
 b.addEventListener('mouseleave',()=>{clearTimeout(t);pv.classList.remove('on');pv.innerHTML=''})});
 // Tabs
-document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab,.panel').forEach(x=>x.classList.remove('on'));b.classList.add('on');$(`[data-p="${b.dataset.t}"]`).classList.add('on')});
+
 // Inquiry form (Formspree)
 function formHTML(interest,details,btn){return `<form class="f"><input type="hidden" name="_subject" value="Promise Pine inquiry: ${interest}"><input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off"><input type="hidden" name="interested_in" value="${interest}"><input type="hidden" name="details" value="${details}">
 <div class="r"><input name="names" placeholder="Your names" required><input name="email" type="email" placeholder="Email" required></div>
@@ -232,42 +323,75 @@ function formHTML(interest,details,btn){return `<form class="f"><input type="hid
 function wire(box,ep=ENDPOINT){const f=$('form',box);f.onsubmit=async e=>{e.preventDefault();const b=$('button',f);b.disabled=true;b.textContent='Sending…';
 try{const fd=new FormData(f);if(RC_KEY){await new Promise(r=>grecaptcha.ready(r));fd.set('g-recaptcha-response',await grecaptcha.execute(RC_KEY,{action:'submit'}))}const r=await fetch(ep,{method:'POST',body:fd,headers:{Accept:'application/json'}});
 if(r.ok){f.outerHTML='<div class="ok">Thank you — I\'ll be in touch soon.</div>'}else throw 0}catch(_){$('.err',f).hidden=false;b.disabled=false;b.textContent='Try again'}}}
-let pkName='Essentials';const pkb=$('#pk-btn'),pkf=$('#pkf');
-document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{pkName=b.textContent;pkb.textContent='Inquire about the '+pkName;pkb.hidden=false;pkf.innerHTML=''}));
-pkb.onclick=()=>{pkf.innerHTML=formHTML(pkName+' (from packages)','','Send inquiry');wire(pkf);pkb.hidden=true};
+const pkf=$('#pkf');
+document.addEventListener('click',e=>{const b=e.target.closest('.pkb');if(!b)return;pkf.innerHTML=formHTML(b.dataset.pk+' (from packages)','','Send inquiry');wire(pkf);pkf.scrollIntoView({behavior:'smooth',block:'center'})});
 const mf=$('#main-form');mf.innerHTML=formHTML('General inquiry','','Send inquiry');wire(mf);
 // Quiz
-const TIERS={Essentials:'6 hours of coverage, a 4–8 minute highlight film, drone footage and a multi-cam setup, and a personalized website gallery.',
-Signature:'8 hours of coverage, an 8–12 minute highlight film, drone footage and a multi-cam setup, a social highlight reel, and a personalized website gallery.',
-Heirloom:'10 hours of coverage, a 12–16 minute feature film, ceremony, speeches and first look edits, a social highlight reel, and a personalized website gallery.'};
-const QS=[['First — how big is the day itself?',['Intimate. Just us and the people who matter most.','Mid-size — a real celebration, close friends and family.','The whole weekend. Rehearsal dinner through brunch.']],
-['When you picture the film, what matters most?',['That it exists, and it\'s beautiful.','That it feels like a short film — not just a highlight reel.','Every detail. Speeches, vows, the way the light changed that day.']],
-['Is a touch of Super 8 film or a documentary-style film part of the picture?',['Not especially.','Maybe a touch of Super 8.','Both — I want the full story.']]];
-const qc=$('#quiz-card');let qi=0,qs=0;
-function quiz(){if(qi>=QS.length){const t=qs<=4?'Essentials':qs<=7?'Signature':'Heirloom';
-qc.innerHTML=`<div class="res"><div class="q">Based on that —</div><div class="t">${t}</div><p>${TIERS[t]}</p><button class="btn primary" id="qi" style="margin-top:20px">Inquire about the ${t}</button><div id="qf"></div><button class="back" id="qr" style="margin-left:0">Start over</button></div>`;
-$('#qi').onclick=()=>{const q=$('#qf');q.innerHTML=formHTML(t+' (from quiz)','','Send inquiry');wire(q);$('#qi').hidden=true};
-$('#qr').onclick=()=>{qi=0;qs=0;quiz()};return}
-const [q,o]=QS[qi];qc.innerHTML=`<div class="prog">${qi+1} of ${QS.length}</div><div class="q">${q}</div><div class="opts">${o.map((x,i)=>`<button class="opt" data-i="${i+1}">${x}</button>`).join('')}</div>`;
-qc.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{qs+=+b.dataset.i;qi++;quiz()})}
-quiz();
-// Custom build carousel
-const BS=[{k:'Coverage',q:'How many hours of coverage?',o:['6 hours','8 hours','10 hours']},
-{k:'Highlight film',q:'How long should your highlight film be?',o:['4–8 minutes','8–12 minutes','12–16 minutes']},
-{k:'Additional edits',q:'Any additional edits?',o:['Ceremony edit','Speeches edit','First look edit','Social highlight reel','None'],multi:1},
-{k:'Add-ons',q:'Anything you\'d like to add on?',o:['Second shooter','Super 8mm film','RAW footage archive','Documentary film','Additional hour of coverage','None'],multi:1}];
-const bc=$('#build-card');let bi=0,ba={};
-function build(){if(bi>=BS.length){const d=BS.map(s=>[s.k,[].concat(ba[s.k]||[]).join(', ')||'None']);
-const txt=d.map(x=>x.join(': ')).join(' | ');
-bc.innerHTML=`<div class="res"><div class="q">Your starting point</div><div class="t">Custom build</div><dl>${d.map(x=>`<dt>${x[0].toUpperCase()}</dt><dd>${x[1]}</dd>`).join('')}</dl><button class="btn dark" id="bi">Inquire about this build</button><div id="bf"></div><button class="back" id="br" style="margin-left:0">Start over</button></div>`;
+// ===== Pricing data: every price lives here once =====
+const $m=n=>'$'+n.toLocaleString('en-US');
+const ITEM={
+ceremony:{name:'Full ceremony edit',price:350,d:'Complete ceremony edit with dedicated audio and multiple camera angles where captured.'},
+speeches:{name:'Speeches edit',price:300,d:'Complete standalone edit of speeches and toasts held on the wedding day.'},
+firstlook:{name:'First look / private vows edit',price:200,d:'Dedicated edit centered on this intimate part of the day.'},
+doc:{name:'Documentary wedding film',price:850,d:'A longer-form chronological edit preserving more of the day and its unfolding story.'},
+raw:{name:'RAW footage archive',price:350,d:'Organized usable original camera footage, unedited and without color grading.'},
+reel:{name:'Social reel',price:250,d:'Short, shareable vertical edit for social platforms. Included in Signature and Heirloom.'},
+hour:{name:'Additional coverage hour',price:250,d:'Extend wedding-day coverage by one hour.'},
+second:{name:'Second shooter (up to 6 hours)',price:500,d:'An additional filmmaker for more perspectives and simultaneous moments. Up to 6 hours.'},
+s8:{name:'Super 8mm film',price:300,d:'Authentic motion-picture film for a nostalgic, textured accent to the wedding film.'},
+hi8:{name:'Hi8 camcorder',price:150,d:'Handheld analog home-video moments woven into the wedding film.'}};
+const COL=[
+{id:'archive',name:'The Archive Collection',price:750,items:['ceremony','speeches','firstlook'],tag:'For the moments you want to preserve in full.'},
+{id:'story',name:'The Story Collection',price:1050,items:['doc','raw'],tag:'For a richer retelling of the day.'},
+{id:'analog',name:'The Analog Memories Collection',price:400,items:['s8','hi8'],tag:'For the character and nostalgia of real analog formats.',note:'Availability and analog format details are confirmed before booking.'},
+{id:'complete',name:'The Complete Collection',price:2200,items:['ceremony','speeches','firstlook','doc','raw','s8','hi8'],inc:['archive','story','analog'],tag:'All three collections, together.',feat:1}];
+const PKG=[
+{id:'Essentials',price:1975,film:'4–8',hrs:6},
+{id:'Signature',price:2350,film:'8–12',hrs:8,reel:1,pop:1},
+{id:'Heirloom',price:2895,film:'12–18',hrs:10,reel:1,credit:300}];
+const listVal=c=>c.items.reduce((t,k)=>t+ITEM[k].price,0);
+const colVal=c=>c.inc?c.inc.reduce((t,i)=>t+listVal(COL.find(x=>x.id===i)),0):listVal(c);
+$('#pk3').innerHTML=PKG.map(p=>`<div class="pk${p.pop?' pop':''}">${p.pop?'<span class="tag">Most popular</span>':''}<h3>${p.id}</h3><div class="price"><span>Starting at</span><strong>${$m(p.price)}</strong></div><div class="hf"><small>Highlight film</small><b>${p.film} minutes</b></div><ul class="chk"><li>${p.hrs} hours of coverage</li><li>Drone footage &amp; multi-cam setup</li><li>Personalized website gallery</li>${p.reel?'<li>Social reel</li>':'<li class="off">Social reel available as an add-on</li>'}${p.credit?`<li>${$m(p.credit)} credit toward any collection</li>`:''}</ul><button class="btn ${p.pop?'primary':'dark'} pkb" data-pk="${p.id}">Inquire about the ${p.id}</button></div>`).join('');
+$('#colls').innerHTML=COL.map(c=>{const lv=c.inc?c.inc.reduce((t,i)=>t+listVal(COL.find(x=>x.id===i)),0):listVal(c);
+return `<div class="coll${c.feat?' feat':''}"><h3>${c.name}</h3><div class="cp">${$m(c.price)}</div><p class="tg">${c.tag}</p><ul class="lst">${(c.inc?c.inc.map(i=>COL.find(x=>x.id===i).name):c.items.map(k=>ITEM[k].name)).map(x=>`<li>${x}</li>`).join('')}</ul><div class="svl">Individually ${$m(lv)}. Save ${$m(lv-c.price)}.</div>${c.note?`<small>${c.note}</small>`:''}</div>`}).join('');
+const row=k=>`<div class="mi"><div class="mt"><span class="nm">${ITEM[k].name}</span><span class="pr">${$m(ITEM[k].price)}${k==='hour'?' per hour':''}</span></div><p>${ITEM[k].d}</p></div>`;
+const grp=(t,ks)=>`<div class="mg"><h3>${t}</h3>${ks.map(row).join('')}</div>`;
+$('#tiles').innerHTML=`<div class="mcol">${grp('Edits &amp; files',['ceremony','speeches','firstlook','doc','raw','reel'])}</div><div class="mcol">${grp('Coverage &amp; crew',['hour','second'])}${grp('Analog film',['s8','hi8'])}</div>`;
+
+// Build your own: running estimate with automatic collection pricing
+const bs={pkg:null,cols:new Set(),items:new Set(),hours:0};
+const bc=$('#build-card'),est=$('#est');let bi=0;
+function calc(){const p=PKG.find(x=>x.id===bs.pkg);if(!p)return{empty:1};
+const L=[[p.id+' package',p.price]];let cols=[...bs.cols];if(cols.includes('complete'))cols=['complete'];
+const cov=new Set();cols.forEach(id=>COL.find(c=>c.id===id).items.forEach(k=>cov.add(k)));
+const rem=new Set([...bs.items].filter(k=>!cov.has(k)&&!(k==='reel'&&p.reel)));
+const auto=[];[3,0,1,2].forEach(i=>{const c=COL[i];if(!cols.includes(c.id)&&c.items.every(k=>rem.has(k))){auto.push(c.id);c.items.forEach(k=>rem.delete(k))}});
+let save=0,sumC=0;[...cols.map(id=>[id,0]),...auto.map(id=>[id,1])].forEach(([id,a])=>{const c=COL.find(x=>x.id===id);L.push([c.name+(a?' (applied automatically)':''),c.price]);save+=(c.inc?c.inc.reduce((t,i)=>t+listVal(COL.find(x=>x.id===i)),0):listVal(c))-c.price;sumC+=c.price});
+const cr=Math.min(p.credit||0,sumC);if(cr)L.push([p.id+' collection credit',-cr]);
+rem.forEach(k=>L.push([ITEM[k].name,ITEM[k].price]));
+if(bs.hours)L.push(['Additional coverage hour × '+bs.hours,bs.hours*ITEM.hour.price]);
+return{L,total:L.reduce((t,l)=>t+l[1],0),save}}
+function renderEst(){const r=calc();
+if(r.empty){est.innerHTML='<div class="k">YOUR ESTIMATE</div><h3>Start with a package</h3><p class="mu">Your estimate builds here as you choose.</p>';return}
+est.innerHTML=`<div class="k">YOUR ESTIMATE</div>${r.L.map(l=>`<div class="rw"><span>${l[0]}</span><span>${l[1]<0?'−':''}${$m(Math.abs(l[1]))}</span></div>`).join('')}<div class="rw tot"><span>Estimated total</span><span class="am">${$m(r.total)}</span></div>${r.save?`<div class="sv2">Collection savings included: ${$m(r.save)}</div>`:''}<p class="mu">Packages are starting prices. Final pricing is confirmed on your consultation call.</p>`}
+const opt=(a,t,p,on,dis,sub)=>`<button class="opt pr" ${a}aria-pressed="${on}"${dis?' disabled':''}><span>${t}${sub?`<small>${sub}</small>`:''}</span><em>${p}</em></button>`;
+const nav=i=>`<div class="bn"><button class="btn dark" id="bn">Continue</button>${i<3?`<button class="btn ghost" id="bx">${i===1?'No collection':'No add-ons'}</button>`:''}<button class="back" id="bb" style="margin:0">Back</button></div>`;
+function wireNav(i){$('#bn').onclick=()=>{bi=i+1;step()};if($('#bx'))$('#bx').onclick=()=>{if(i===1)bs.cols.clear();else{bs.items.clear();bs.hours=0}bi=i+1;step()};$('#bb').onclick=()=>{bi=i-1;step()}}
+function step(){renderEst();const pr=`<div class="prog">${bi+1} of 4</div>`;
+if(bi===0){bc.innerHTML=pr+`<div class="q">Which package fits your highlight film?</div><div class="opts">${PKG.map(p=>opt(`data-p="${p.id}" `,`<strong>${p.id}</strong> ${p.film} minute highlight film`,$m(p.price),bs.pkg===p.id,0,`${p.hrs} hours, drone &amp; multi-cam, personalized gallery${p.reel?', social reel':''}${p.credit?', '+$m(p.credit)+' collection credit':''}`)).join('')}</div>`;
+bc.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>{bs.pkg=b.dataset.p;bi=1;step()});return}
+const p=PKG.find(x=>x.id===bs.pkg);
+if(bi===1){bc.innerHTML=pr+`<div class="q">Add a collection?</div><div class="hint">Bundled add-ons, priced below buying them one by one.${p.credit?' Your '+$m(p.credit)+' Heirloom credit applies to any collection.':''}</div><div class="opts">${COL.map(c=>opt(`data-c="${c.id}" `,`<strong>${c.name}</strong>`,$m(c.price),bs.cols.has(c.id),0,(c.inc?'Everything in the Archive, Story and Analog Memories Collections':c.items.map(k=>ITEM[k].name).join(', '))+'. Save '+$m(colVal(c)-c.price)+'.')).join('')}</div>${nav(1)}`;
+bc.querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>{const id=b.dataset.c;if(bs.cols.has(id))bs.cols.delete(id);else{id==='complete'?bs.cols.clear():bs.cols.delete('complete');bs.cols.add(id)}step()});wireNav(1);return}
+if(bi===2){const cov=new Set();(bs.cols.has('complete')?['complete']:[...bs.cols]).forEach(id=>COL.find(c=>c.id===id).items.forEach(k=>cov.add(k)));
+bc.innerHTML=pr+`<div class="q">Anything to add on?</div><div class="opts">${['ceremony','speeches','firstlook','doc','raw','reel','second','s8','hi8'].map(k=>{const inc=k==='reel'&&p.reel,c=cov.has(k);return opt(`data-k="${k}" `,ITEM[k].name+(inc?' (in your package)':c?' (in your collection)':''),inc||c?'Included':$m(ITEM[k].price),bs.items.has(k)&&!inc&&!c,inc||c)}).join('')}<div class="step2"><span>Additional coverage hours <em>${$m(ITEM.hour.price)} each</em></span><span class="ctr"><button id="hm" aria-label="Fewer hours">−</button><b id="hv">${bs.hours}</b><button id="hp" aria-label="More hours">+</button></span></div></div>${nav(2)}`;
+bc.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>{const k=b.dataset.k;bs.items.has(k)?bs.items.delete(k):bs.items.add(k);step()});
+$('#hm').onclick=()=>{bs.hours=Math.max(0,bs.hours-1);step()};$('#hp').onclick=()=>{bs.hours=Math.min(6,bs.hours+1);step()};wireNav(2);return}
+const r=calc(),txt=r.L.map(l=>l[0]+': '+(l[1]<0?'-':'')+$m(Math.abs(l[1]))).join(' | ')+' | Estimated total: '+$m(r.total);
+bc.innerHTML=pr+`<div class="res"><div class="q">Your build</div><div class="t">${$m(r.total)} estimated</div><p>${r.L.map(l=>l[0]).join(', ')}.</p><button class="btn dark" id="bi" style="margin-top:20px">Inquire about this build</button><div id="bf"></div><div class="bn"><button class="back" id="bb" style="margin:0">Back</button><button class="back" id="br" style="margin:0">Start over</button></div></div>`;
 $('#bi').onclick=()=>{const b=$('#bf');b.innerHTML=formHTML('Custom build',txt,'Send inquiry');wire(b);$('#bi').hidden=true};
-$('#br').onclick=()=>{bi=0;ba={};build()};return}
-const s=BS[bi];bc.innerHTML=`<div class="prog">${bi+1} of ${BS.length}</div><div class="q">${s.q}</div><div class="opts">${s.o.map(x=>`<button class="opt" aria-pressed="false">${x}</button>`).join('')}</div>${s.multi?'<div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap"><button class="btn dark" id="bn">Continue</button></div>':''}${bi?'<button class="back" id="bb" style="margin-left:0">Back</button>':''}`;
-const opts=[...bc.querySelectorAll('.opt')];
-opts.forEach(b=>b.onclick=()=>{if(s.multi&&b.textContent==='None'){ba[s.k]=[];bi++;build()}else if(s.multi){b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')!=='true')}else{ba[s.k]=b.textContent;bi++;build()}});
-if(s.multi){$('#bn').onclick=()=>{ba[s.k]=opts.filter(o=>o.getAttribute('aria-pressed')==='true').map(o=>o.textContent);bi++;build()}}
-if($('#bb'))$('#bb').onclick=()=>{bi--;build()}}
-build();
+$('#bb').onclick=()=>{bi=2;step()};$('#br').onclick=()=>{bs.pkg=null;bs.cols.clear();bs.items.clear();bs.hours=0;bi=0;step()}}
+step();
 // Testimonials
 const sl=document.querySelectorAll('.slide'),dt=$('#dots');let ti=0;
 sl.forEach((_,i)=>{const d=document.createElement('button');d.className='dot'+(i?'':' on');d.setAttribute('aria-label','Review '+(i+1));d.onclick=()=>show(i);dt.appendChild(d)});
